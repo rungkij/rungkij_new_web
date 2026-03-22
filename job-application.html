@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ร่วมงานกับเรา | RUNGKIJ V.S.K. Estate — สมัครงาน</title>
+  <meta name="description" content="รุ่งกิจ V.S.K. Estate เปิดรับสมัครพนักงาน ร่วมเป็นส่วนหนึ่งของทีมอสังหาริมทรัพย์ชั้นนำกว่า 50 ปี">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: 'Sarabun', 'Inter', sans-serif; }
+    .job-positions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 768px) { .job-positions { grid-template-columns: 1fr; } }
+    .job-pos-card {
+      background: var(--off-white);
+      padding: 36px 28px;
+      transition: background 0.25s;
+    }
+    .job-pos-card:hover { background: #f0ebe0; }
+    .job-pos-dept {
+      font-size: 0.72rem;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .job-pos-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+    .job-pos-card p { font-size: 0.83rem; color: var(--text-light); line-height: 1.7; margin-bottom: 0; }
+    .apply-form-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .apply-form-wrap .contact-form input,
+    .apply-form-wrap .contact-form select,
+    .apply-form-wrap .contact-form textarea {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      border-radius: 0;
+      background: transparent;
+      padding: 14px 0;
+      font-family: 'Sarabun','Inter',sans-serif;
+      font-size: 0.88rem;
+      margin-bottom: 24px;
+    }
+    .apply-form-wrap .contact-form input:focus,
+    .apply-form-wrap .contact-form select:focus,
+    .apply-form-wrap .contact-form textarea:focus {
+      border-bottom-color: var(--accent);
+      outline: none;
+      box-shadow: none;
+    }
+    .apply-form-wrap .contact-form textarea { min-height: 80px; }
+    .btn-thin {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      padding: 10px 26px;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+      cursor: pointer;
+    }
+    .btn-thin:hover { background: var(--accent); color: #fff; }
+    .btn-thin-white { border-color: rgba(255,255,255,0.7); color: #fff; }
+    .btn-thin-white:hover { background: rgba(255,255,255,0.15); color: #fff; }
+  </style>
+  <!-- ═══ SEO / Social Meta ═══ -->
+  <meta name="keywords" content="สมัครงาน รุ่งกิจ, งาน VSK Estate, career Rungkij, สมัครงาน อสังหาริมทรัพย์">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="V.S.K. Estate Company Limited">
+  <link rel="canonical" href="https://www.rungkij.co.th/job-application.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="RUNGKIJ — V.S.K. Estate">
+  <meta property="og:locale"      content="th_TH">
+  <meta property="og:url"         content="https://www.rungkij.co.th/job-application.html">
+  <meta property="og:title"       content="ร่วมงานกับเรา | RUNGKIJ V.S.K. Estate — สมัครงาน">
+  <meta property="og:description" content="รุ่งกิจ V.S.K. Estate เปิดรับสมัครพนักงาน ร่วมเป็นส่วนหนึ่งของทีมอสังหาริมทรัพย์ชั้นนำกว่า 50 ปี">
+  <meta property="og:image"       content="https://www.rungkij.co.th/images/og-cover.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@rungkij_official">
+  <meta name="twitter:title"       content="ร่วมงานกับเรา | RUNGKIJ V.S.K. Estate — สมัครงาน">
+  <meta name="twitter:description" content="รุ่งกิจ V.S.K. Estate เปิดรับสมัครพนักงาน ร่วมเป็นส่วนหนึ่งของทีมอสังหาริมทรัพย์ชั้นนำกว่า 50 ปี">
+  <meta name="twitter:image"       content="https://www.rungkij.co.th/images/og-cover.jpg">
+  <!-- ═══════════════════════════ -->
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img">
+      </a>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About Us</a>
+        <a href="news.html">News</a>
+        <a href="financial.html">Financial</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(9,23,54,0.50), rgba(9,23,54,0.78)), url('images/grand-verona/clubhouse-1.jpg'); background-size: cover; background-position: center;">
+    <div class="ph-horizon"></div>
+    <div class="page-header-content">
+      <span class="section-subtitle" style="color:var(--accent);">ร่วมงานกับเรา</span>
+      <h1>รับสมัครงาน</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>รับสมัครงาน</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN POSITIONS -->
+  <section class="section" style="padding-bottom:0;">
+    <div class="container">
+      <div class="text-center reveal" style="max-width:560px; margin:0 auto 56px;">
+        <span class="section-subtitle">ตำแหน่งที่เปิดรับ</span>
+        <h2 class="section-title">Join Our Team</h2>
+        <div class="section-divider"></div>
+        <p style="color:var(--text-light); font-size:0.95rem; line-height:1.9;">RUNGKIJ ให้ความสำคัญกับทีมงานที่มีความสามารถและมุ่งมั่น ร่วมเติบโตไปกับองค์กรอสังหาริมทรัพย์ชั้นนำที่มีประสบการณ์กว่า 50 ปี</p>
+      </div>
+      <div class="job-positions">
+        <div class="job-pos-card reveal">
+          <div class="job-pos-dept">Sales &amp; Marketing</div>
+          <h4>เจ้าหน้าที่ขาย</h4>
+          <p>ดูแลลูกค้าและนำเสนอโครงการ มีรายได้จากค่าคอมมิชชั่น ไม่จำกัดรายได้</p>
+        </div>
+        <div class="job-pos-card reveal">
+          <div class="job-pos-dept">Sales &amp; Marketing</div>
+          <h4>ผู้จัดการฝ่ายขาย</h4>
+          <p>บริหารทีมขาย วางแผนกลยุทธ์ และดูแลเป้าหมายยอดขายของโครงการ</p>
+        </div>
+        <div class="job-pos-card reveal">
+          <div class="job-pos-dept">Engineering</div>
+          <h4>วิศวกรโครงการ</h4>
+          <p>ควบคุมการก่อสร้าง ตรวจสอบคุณภาพงาน และประสานงานกับผู้รับเหมา</p>
+        </div>
+        <div class="job-pos-card reveal">
+          <div class="job-pos-dept">Design</div>
+          <h4>นักออกแบบภายใน</h4>
+          <p>ออกแบบ Showroom และ Material selection สำหรับโครงการบ้านพัฒนาใหม่</p>
+        </div>
+        <div class="job-pos-card reveal">
+          <div class="job-pos-dept">Finance</div>
+          <h4>เจ้าหน้าที่บัญชี</h4>
+          <p>บันทึกบัญชี จัดทำรายงานการเงิน และประสานงานกับสำนักงานบัญชี</p>
+        </div>
+        <div class="job-pos-card reveal">
+          <div class="job-pos-dept">Operations</div>
+          <h4>เจ้าหน้าที่ After Sales</h4>
+          <p>ดูแลลูกค้าหลังโอน รับแจ้งซ่อม และติดตามผลการให้บริการ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION FORM -->
+  <section class="section section-alt" id="apply-form">
+    <div class="container">
+      <div class="text-center mb-70 reveal">
+        <span class="section-subtitle">สมัครงาน</span>
+        <h2 class="section-title">ส่งใบสมัคร</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="apply-form-wrap reveal">
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('ขอบคุณที่สนใจร่วมงานกับเรา ทีมงานจะติดต่อกลับภายใน 3 วันทำการ');">
+          <div class="form-row">
+            <input type="text" placeholder="ชื่อ - นามสกุล *" required>
+            <input type="tel" placeholder="เบอร์โทรศัพท์ *" required>
+          </div>
+          <input type="email" placeholder="อีเมล *" required>
+          <select required>
+            <option value="">ตำแหน่งที่สนใจ *</option>
+            <option>เจ้าหน้าที่ขาย</option>
+            <option>ผู้จัดการฝ่ายขาย</option>
+            <option>วิศวกรโครงการ</option>
+            <option>นักออกแบบภายใน</option>
+            <option>เจ้าหน้าที่บัญชี</option>
+            <option>เจ้าหน้าที่ After Sales</option>
+            <option>ตำแหน่งอื่น (ระบุในช่องความคิดเห็น)</option>
+          </select>
+          <input type="text" placeholder="ประสบการณ์ทำงาน (ปี)">
+          <textarea placeholder="แนะนำตัวเองและเหตุผลที่สนใจร่วมงานกับ RUNGKIJ *" required></textarea>
+          <div style="margin-bottom:32px;">
+            <label style="font-size:0.80rem; color:var(--text-light); display:flex; align-items:flex-start; gap:10px; cursor:pointer; line-height:1.7;">
+              <input type="checkbox" required style="width:auto; margin-top:3px; margin-bottom:0; flex-shrink:0;">
+              <span>ยินยอมให้ บริษัท วี.เอส.เค. เอสเตท จำกัด เก็บรวบรวมข้อมูลส่วนบุคคลเพื่อประกอบการพิจารณาการสมัครงาน ตามนโยบายความเป็นส่วนตัว</span>
+            </label>
+          </div>
+          <div style="text-align:center;">
+            <button type="submit" class="btn-thin" style="padding:12px 48px;">ส่งใบสมัคร</button>
+          </div>
+        </form>
+        <div style="margin-top:40px; padding-top:28px; border-top:1px solid #e0d9cc; text-align:center;">
+          <p style="font-size:0.82rem; color:var(--text-light); line-height:1.8;">หรือส่ง Resume มาที่ <a href="mailto:hr@rungkij.com" style="color:var(--accent);">hr@rungkij.com</a><br>โทร <a href="tel:+6625407999" style="color:var(--accent);">+66 2 540 7999</a> ต่อ HR</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <span class="section-subtitle">Grow With Us</span>
+      <h2>ร่วมเป็นส่วนหนึ่ง<br>ของ RUNGKIJ</h2>
+      <p>สร้างอาชีพที่มั่นคงกับองค์กรอสังหาฯ ชั้นนำกว่า 50 ปี</p>
+      <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:32px;">
+        <a href="#apply-form" class="btn-thin btn-thin-white">สมัครงานเลย</a>
+        <a href="contact.html" class="btn-thin btn-thin-white">ติดต่อเรา</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-horizon"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img logo-img-footer">
+          <p>V.S.K. Estate Company Limited. Over 50 years of premium real estate development.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/rungkijcorp/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rungkij_official" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Line"><i class="fab fa-line"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="financial.html">Financial</a></li>
+            <li><a href="care.html">Care</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Projects</h4>
+          <ul class="footer-links">
+            <li><a href="project-grand-verona.html">Grand Verona</a></li>
+            <li><a href="project-osaka.html">Osaka</a></li>
+            <li><a href="project-hampton.html">The Hampton</a></li>
+            <li><a href="project-the-nice.html">The Nice</a></li>
+            <li><a href="project-the-verona.html">The Verona</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for the latest project launches and exclusive offers.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your email address">
+            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 V.S.K. Estate Company Limited. All rights reserved.</span>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- ── Floating Sticky Action Bar ── -->
+  <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="ติดต่อเรา">
+    <div class="sticky-bar-inner">
+      <div class="sticky-social">
+        <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Facebook Messenger">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+        <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line">
+          <i class="fab fa-line"></i>
+        </a>
+        <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร 02-540-7999">
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
+      <a href="calculator.html" class="sticky-btn sticky-btn-calc">
+        <i class="fas fa-calculator"></i>
+        <span>คำนวณสินเชื่อ</span>
+      </a>
+      <a href="#" onclick="ChatWidget.open();return false;" class="sticky-btn sticky-btn-ask">
+        <span class="icon-sparkle"><i class="fas fa-bolt"></i></span>
+        <span>ถามมาได้เลย</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="chat-widget.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

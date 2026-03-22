@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="90" height="90">
+  <defs>
+    <radialGradient id="bg_uob" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#0B2D8F" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#07206B" stop-opacity="1"/>
+    </radialGradient>
+    <radialGradient id="shine_uob" cx="40%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Circle background -->
+  <circle cx="45" cy="45" r="45" fill="url(#bg_uob)"/>
+  <!-- Glass shine overlay -->
+  <ellipse cx="45" cy="28" rx="28" ry="18" fill="url(#shine_uob)"/>
+  <!-- Gold accent arc top -->
+  <path d="M 20 45 A 25 25 0 0 1 70 45" stroke="#E8B84B" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+  <!-- Abbreviation -->
+  <text x="45" y="47" font-family="'Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800"
+        fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.5">UOB</text>
+  <!-- Full name -->
+  <text x="45" y="66" font-family="'Helvetica Neue',Arial,sans-serif" font-size="7" font-weight="400"
+        fill="#FFFFFF" text-anchor="middle" opacity="0.75" letter-spacing="0.3">UOB THAILAND</text>
+  <!-- Gold dots decoration -->
+  <circle cx="72" cy="20" r="2.5" fill="#E8B84B" opacity="0.55"/>
+  <circle cx="65" cy="18" r="1.8" fill="#E8B84B" opacity="0.35"/>
+  <circle cx="72" cy="28" r="1.8" fill="#E8B84B" opacity="0.35"/>
+</svg>

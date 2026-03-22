@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>คำนวณวงเงินสินเชื่อบ้าน | RUNGKIJ — Clinic Financial</title>
+  <meta name="description" content="ประเมินวงเงินกู้ซื้อบ้านเบื้องต้น เปรียบเทียบ 9 ธนาคารชั้นนำ TTB, SCB, กสิกร, กรุงไทย, ธอส, ออมสิน, LH, BBL, UOB แยกตามประเภทอาชีพ พนักงานประจำ เจ้าของกิจการ อาชีพอิสระ">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.rungkij.co.th/calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   CALCULATOR — iOS 26 Liquid Glass Design System
+═══════════════════════════════════════════════════════ */
+:root {
+  --glass-bg:      rgba(255,255,255,0.07);
+  --glass-border:  rgba(255,255,255,0.14);
+  --glass-blur:    blur(48px) saturate(180%);
+  --glass-hi:      rgba(255,255,255,0.18);
+  --gold:          #d4ae6a;
+  --gold-bright:   #f0cc7a;
+  --gold-dim:      rgba(212,174,106,0.55);
+  --navy:          #050d22;
+  --text-primary:  rgba(255,255,255,0.96);
+  --text-secondary:rgba(255,255,255,0.80);
+  --text-muted:    rgba(255,255,255,0.60);
+  --green:  #30d158;
+  --orange: #ff9f0a;
+  --red:    #ff453a;
+  --radius-glass: 22px;
+  --radius-input: 14px;
+  /* Noto Sans for all numerals — crisp tabular figures */
+  --font-numeric: 'Noto Sans', var(--font-body);
+}
+
+/* ─── Page backdrop ─── */
+.calc-bg {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 90% 70% at 15% 10%,  rgba(13,32,80,0.80) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 80%,  rgba(6,14,44,0.90) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%,  rgba(201,168,76,0.05) 0%, transparent 70%),
+    linear-gradient(160deg, #040c20 0%, #07122e 45%, #050e26 100%);
+  padding: 72px 0 140px;
+  position: relative;
+  overflow: hidden;
+}
+.calc-bg::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: -200px; right: -200px;
+  height: 400px;
+  background: radial-gradient(ellipse 60% 100% at 50% 0%,
+    rgba(201,168,76,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── Container ─── */
+.calc-wrap { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Hero intro ─── */
+.calc-hero { text-align: center; margin-bottom: 52px; }
+
+/* Stylized "9" numeral in the heading */
+.hero-num {
+  font-family: 'Noto Sans', var(--font-body);
+  font-style: italic;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: inline;
+  color: var(--gold-bright);
+  text-shadow: 0 0 18px rgba(212,174,106,0.60);
+}
+
+/* Bank logos strip */
+.hero-banks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.hero-bank-pill {
+  display: block;
+  width: 66px; height: 34px;
+  border-radius: 9px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.28);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.22s cubic-bezier(0.25,0.46,0.45,0.94);
+  flex-shrink: 0;
+}
+.hero-bank-pill:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.38), 0 0 0 1.5px rgba(201,168,76,0.55);
+  border-color: rgba(201,168,76,0.45);
+}
+.hero-bank-pill img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-banks-label {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.calc-hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 50px;
+  padding: 9px 22px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  margin-bottom: 20px;
+  box-shadow: 0 0 24px rgba(201,168,76,0.12);
+}
+.calc-hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+@media (min-width: 768px) {
+  .calc-hero h1 { font-size: clamp(3.2rem, 5.5vw, 4.4rem); }
+  .calc-hero p  { font-size: 1.15rem; }
+}
+.calc-hero h1 span.grad {
+  background: linear-gradient(135deg, #f0cc7a 0%, var(--gold) 50%, #c9a84c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.calc-hero p {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.85;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ─── Step pill progress ─── */
+.calc-progress-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 36px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 7px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.28),
+              0 1px 0 var(--glass-hi) inset;
+}
+.cp-step {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.34,1.2,0.64,1);
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+.cp-step.active {
+  background: linear-gradient(135deg, #c9a84c, #e8b84b);
+  color: #1a0d00;
+  box-shadow: 0 2px 20px rgba(201,168,76,0.50);
+}
+.cp-step.done { color: var(--gold-dim); }
+.cp-num {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-numeric);
+  font-size: 0.80rem; font-weight: 700;
+  background: rgba(255,255,255,0.10);
+  flex-shrink: 0;
+}
+.cp-step.active .cp-num { background: rgba(0,0,0,0.18); }
+.cp-step.done .cp-num   { background: rgba(201,168,76,0.22); color: var(--gold); }
+
+/* ─── Glass Card ─── */
+.g-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-glass);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.30),
+              0 1px 0 var(--glass-hi) inset;
+}
+.g-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(255,255,255,0.30), rgba(201,168,76,0.20), rgba(255,255,255,0.30), transparent);
+}
+.g-card-body { padding: 36px 40px; }
+
+/* ─── Step cards ─── */
+.step-card { display: none; }
+.step-card.active {
+  display: block;
+  animation: glassIn 0.45s cubic-bezier(0.25,0.46,0.45,0.94) both;
+}
+@keyframes glassIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Card header */
+.sc-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 32px 40px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.sc-icon {
+  width: 54px; height: 54px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.25), rgba(201,168,76,0.08));
+  border: 1px solid rgba(201,168,76,0.28);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem; color: var(--gold);
+  flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(201,168,76,0.12);
+}
+.sc-title {
+  font-family: var(--font-heading);
+  font-size: 1.60rem; font-weight: 600;
+  color: var(--text-primary); margin: 0;
+}
+.sc-sub {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 4px 0 0;
+}
+
+/* ─── Grid layouts ─── */
+.fg-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.fg-1 { display: grid; grid-template-columns: 1fr; gap: 22px; }
+.fg-full { grid-column: 1 / -1; }
+
+/* ─── Float-label field ─── */
+.fl-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.fl-label {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: rgba(212,174,106,0.85);
+  margin-bottom: 9px;
+}
+.fl-label .req { color: rgba(255,100,100,0.80); margin-left: 2px; }
+.fl-hint {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 7px;
+  font-family: 'Sarabun', var(--font-body);
+  line-height: 1.6;
+}
+
+/* ─── Inputs ─── */
+.fi-wrap { position: relative; }
+.fi-prefix {
+  position: absolute; left: 16px; top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-numeric);
+  font-size: 0.90rem; font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  pointer-events: none; z-index: 1;
+}
+.fi-suffix {
+  position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Noto Sans', 'Sarabun', var(--font-body);
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  pointer-events: none;
+}
+.g-input, .g-select {
+  width: 100%; box-sizing: border-box;
+  background: rgba(255,255,255,0.065);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-input);
+  padding: 16px 18px;
+  font-family: 'Noto Sans', 'Sarabun', var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.22s, background 0.22s, box-shadow 0.22s;
+  -webkit-appearance: none;
+}
+.g-input.has-prefix  { padding-left: 38px; }
+.g-input.has-suffix  { padding-right: 56px; }
+.g-input::placeholder { color: rgba(255,255,255,0.28); }
+.g-input:focus, .g-select:focus {
+  border-color: rgba(201,168,76,0.65);
+  background: rgba(201,168,76,0.06);
+  box-shadow: 0 0 0 3px rgba(201,168,76,0.10),
+              0 0 20px rgba(201,168,76,0.08);
+}
+.g-input.error { border-color: rgba(255,69,58,0.60); }
+.g-select option { background: #07122e; color: #fff; }
+
+/* ─── Toggle chips (bonus type) ─── */
+.chip-group { display: flex; gap: 10px; }
+.chip {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.65);
+  cursor: pointer;
+  transition: all 0.22s;
+  user-select: none;
+}
+.chip input { display: none; }
+.chip.on {
+  border-color: rgba(201,168,76,0.55);
+  background: rgba(201,168,76,0.10);
+  color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(201,168,76,0.20) inset;
+}
+.chip-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.20);
+  transition: background 0.2s;
+}
+.chip.on .chip-dot { background: var(--gold); }
+
+/* ─── Live mini-ledger ─── */
+.mini-ledger {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  padding: 18px 22px;
+  margin-top: 4px;
+}
+.ml-label {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  display: flex; align-items: center; gap: 8px;
+  font-weight: 600;
+}
+.ml-label i { font-size: 0.80rem; }
+.ml-value {
+  font-family: var(--font-numeric);
+  font-size: 1.60rem; font-weight: 600;
+  color: var(--gold);
+  transition: color 0.3s;
+}
+.ml-value.red { color: #ff6b6b; }
+.ml-value.green { color: #30d158; }
+
+/* ─── Divider ─── */
+.g-divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin: 12px 0;
+}
+
+/* ─── Navigation bar (bottom of card) ─── */
+.sc-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 24px 40px 34px;
+  gap: 14px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.btn-back {
+  display: flex; align-items: center; gap: 9px;
+  padding: 14px 26px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--text-secondary);
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.96rem; font-weight: 600;
+  cursor: pointer;
+  transition: all 0.22s;
+}
+.btn-back:hover { background: rgba(255,255,255,0.12); color: #fff; border-color: rgba(255,255,255,0.25); }
+.btn-next, .btn-calc {
+  display: flex; align-items: center; gap: 10px;
+  padding: 15px 34px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #c9a84c 0%, #e8b84b 60%, #c9a84c 100%);
+  border: none;
+  color: #1a0d00;
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 1.00rem; font-weight: 800;
+  cursor: pointer;
+  letter-spacing: 0.2px;
+  transition: all 0.25s;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.40),
+              0 1px 0 rgba(255,245,180,0.35) inset;
+}
+.btn-next:hover, .btn-calc:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 32px rgba(201,168,76,0.58),
+              0 1px 0 rgba(255,245,180,0.35) inset;
+}
+.btn-calc {
+  padding: 17px 44px; font-size: 1.05rem;
+  background: linear-gradient(135deg, #d4ae6a 0%, #f0cc7a 55%, #d4ae6a 100%);
+}
+
+/* ─── Results ─── */
+.calc-results-view { display: none; }
+.calc-results-view.show {
+  display: block;
+  animation: glassIn 0.5s ease both;
+}
+
+/* Summary strip */
+.result-strip {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+.rs-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 26px 20px;
+  text-align: center;
+  box-shadow: 0 10px 36px rgba(0,0,0,0.24),
+              0 1px 0 var(--glass-hi) inset;
+  position: relative; overflow: hidden;
+}
+.rs-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--glass-hi), transparent);
+}
+.rs-label {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.80rem; text-transform: uppercase;
+  letter-spacing: 0.8px; color: var(--text-muted);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.rs-val {
+  font-family: var(--font-numeric);
+  font-size: 1.90rem; font-weight: 600;
+  color: var(--gold); line-height: 1;
+}
+.rs-unit { font-size: 0.80rem; color: var(--text-muted); margin-top: 6px; font-family:'Sarabun',var(--font-body); font-weight: 600; }
+
+/* Bank result cards */
+.bank-results { display: flex; flex-direction: column; gap: 16px; }
+.bank-result-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.20),
+              0 1px 0 var(--glass-hi) inset;
+  transition: transform 0.22s, box-shadow 0.22s;
+  animation: glassIn 0.45s ease both;
+  position: relative;
+}
+.bank-result-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.28), 0 1px 0 var(--glass-hi) inset;
+}
+.bank-result-card.best-card {
+  border-color: rgba(201,168,76,0.38);
+  box-shadow: 0 12px 44px rgba(0,0,0,0.28),
+              0 0 0 1px rgba(201,168,76,0.15),
+              0 1px 0 rgba(201,168,76,0.30) inset;
+}
+.bank-result-card.best-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c 30%, #e8b84b 50%, #c9a84c 70%, transparent);
+}
+
+.brc-top {
+  display: flex; align-items: center;
+  padding: 24px 28px 18px;
+  gap: 18px;
+}
+.brc-logo {
+  width: 62px; height: 34px;
+  object-fit: contain; border-radius: 8px;
+  flex-shrink: 0;
+}
+.brc-name { flex: 1; min-width: 0; }
+.brc-name-main { font-weight: 700; font-size: 1.05rem; color: #fff; font-family:'Sarabun',var(--font-body); }
+.brc-name-sub  { font-size: 0.82rem; color: var(--text-muted); font-family:'Sarabun',var(--font-body); margin-top: 3px; }
+.brc-loan {
+  text-align: right; flex-shrink: 0;
+}
+.brc-loan-amt {
+  font-family: var(--font-numeric);
+  font-size: 1.80rem; font-weight: 600;
+  color: var(--gold); line-height: 1;
+}
+.brc-loan-unit { font-size: 0.78rem; color: var(--text-muted); font-family:'Sarabun',var(--font-body); margin-top: 3px; font-weight: 600; }
+
+/* Bar */
+.brc-bar-wrap {
+  padding: 2px 28px 8px;
+}
+.brc-bar-track {
+  height: 6px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.brc-bar-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, #c9a84c, #f0cc7a);
+  transition: width 1.0s cubic-bezier(0.25,0.46,0.45,0.94);
+  width: 0%;
+}
+.brc-bar-fill.green-bar { background: linear-gradient(90deg, #1a7a40, #30d158); }
+.brc-bar-fill.orange-bar { background: linear-gradient(90deg, #b86800, #ff9f0a); }
+.brc-bar-fill.red-bar    { background: rgba(255,69,58,0.50); }
+
+/* Interest rate section */
+.brc-rates {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.brc-rate-cell {
+  padding: 14px 24px 16px;
+  display: flex; flex-direction: column; gap: 5px;
+  background: rgba(255,255,255,0.025);
+}
+.brc-rate-cell:first-child {
+  border-right: 1px solid rgba(255,255,255,0.07);
+  background: rgba(201,168,76,0.04);
+}
+.brc-rate-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.71rem; font-weight: 700;
+  letter-spacing: 0.8px; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.brc-rate-tag i { font-size: 0.62rem; }
+.brc-rate-tag.promo { color: rgba(212,174,106,0.75); }
+.brc-rate-num {
+  font-family: var(--font-numeric);
+  font-size: 1.45rem; font-weight: 600;
+  color: rgba(255,255,255,0.92); line-height: 1;
+}
+.brc-rate-num .rate-note {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.72rem; font-weight: 400;
+  color: var(--text-muted); margin-left: 4px;
+}
+.brc-rate-pay {
+  font-family: var(--font-numeric);
+  font-size: 0.90rem; font-weight: 600;
+  color: var(--gold);
+}
+.brc-rate-pay .pay-unit {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.78rem; font-weight: 400;
+  color: var(--text-muted); margin-left: 2px;
+}
+.brc-rate-disclaimer {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.71rem; color: var(--text-muted);
+  padding: 8px 24px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+}
+
+/* Details row */
+.brc-details {
+  display: flex;
+  padding: 16px 28px 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  flex-wrap: wrap; gap: 16px;
+}
+.brc-detail-item {
+  display: flex; flex-direction: column; gap: 5px;
+  min-width: 100px;
+}
+.brc-dl { font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-family:'Sarabun',var(--font-body); font-weight: 600; }
+.brc-dv { font-size: 0.96rem; color: rgba(255,255,255,0.88); font-family:'Noto Sans','Sarabun',var(--font-body); font-weight: 700; }
+
+/* Status badge */
+.brc-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 5px 14px; border-radius: 50px;
+  font-size: 0.78rem; font-weight: 700;
+  font-family: 'Sarabun', var(--font-body);
+}
+.badge-ok     { background: rgba(48,209,88,0.12);  color: #30d158; border: 1px solid rgba(48,209,88,0.22); }
+.badge-warn   { background: rgba(255,159,10,0.12);  color: #ff9f0a; border: 1px solid rgba(255,159,10,0.22); }
+.badge-no     { background: rgba(255,69,58,0.10);   color: #ff6b6b; border: 1px solid rgba(255,69,58,0.18); }
+
+/* Best tag */
+.best-tag {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: linear-gradient(135deg, #c9a84c, #e8b84b);
+  color: #1a0d00;
+  padding: 4px 12px; border-radius: 50px;
+  font-size: 0.75rem; font-weight: 800;
+  letter-spacing: 0.4px;
+  margin-left: 10px;
+}
+
+/* ─── Disclaimer ─── */
+.g-disclaimer {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid rgba(201,168,76,0.45);
+  border-radius: 0 14px 14px 0;
+  padding: 20px 24px;
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.80;
+  margin-top: 24px;
+}
+
+/* ─── CTA strip ─── */
+.cta-glass {
+  margin-top: 32px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 22px;
+  padding: 28px 32px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.20),
+              0 1px 0 var(--glass-hi) inset;
+}
+.cta-glass h4 {
+  font-family: var(--font-heading);
+  font-size: 1.55rem; color: #fff; margin: 0 0 6px;
+}
+.cta-glass p {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.96rem; color: var(--text-muted); margin: 0;
+  line-height: 1.65;
+}
+.cta-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 26px; border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.20);
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.85);
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.95rem; font-weight: 600;
+  text-decoration: none;
+  transition: all 0.22s;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.13); color: #fff; }
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: 50px;
+  background: linear-gradient(135deg, #c9a84c, #e8b84b);
+  color: #1a0d00;
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.96rem; font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(201,168,76,0.38);
+  transition: all 0.22s;
+}
+.btn-gold:hover { transform: translateY(-1px); box-shadow: 0 8px 26px rgba(201,168,76,0.55); }
+
+/* Reset */
+.btn-reset {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 10px 22px; border-radius: 50px;
+  border: 1px solid rgba(201,168,76,0.28);
+  background: transparent; color: var(--gold-dim);
+  font-family: 'Sarabun', var(--font-body); font-size: 0.80rem;
+  cursor: pointer; transition: all 0.22s; margin-top: 20px;
+}
+.btn-reset:hover { background: rgba(201,168,76,0.08); border-color: rgba(201,168,76,0.55); color: var(--gold); }
+
+/* ─── Occupation selector cards ─── */
+.occ-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 8px;
+}
+.occ-card {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px;
+  padding: 22px 14px;
+  border-radius: 18px;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25,0.46,0.45,0.94);
+  user-select: none;
+  text-align: center;
+}
+.occ-card:hover {
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.06);
+  transform: translateY(-2px);
+}
+.occ-card.selected {
+  border-color: rgba(201,168,76,0.72);
+  background: rgba(201,168,76,0.11);
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.22),
+              0 8px 24px rgba(201,168,76,0.18);
+}
+.occ-card-icon {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.20);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  transition: all 0.25s;
+}
+.occ-card.selected .occ-card-icon {
+  background: rgba(201,168,76,0.28);
+  border-color: rgba(201,168,76,0.50);
+}
+.occ-card-title {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 1.02rem; font-weight: 700;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+  line-height: 1.3;
+}
+.occ-card.selected .occ-card-title { color: var(--gold); }
+.occ-card-sub {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.80rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.occ-check {
+  position: absolute; top: 10px; right: 10px;
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.20);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem;
+  color: transparent;
+  background: transparent;
+  transition: all 0.25s;
+}
+.occ-card.selected .occ-check {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1a0d00;
+}
+
+/* ─── Business income auto-calc strip ─── */
+.biz-result {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px;
+  background: linear-gradient(135deg, rgba(201,168,76,0.09), rgba(201,168,76,0.04));
+  border: 1px solid rgba(201,168,76,0.28);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-top: 4px;
+}
+.biz-result-label {
+  font-family: 'Sarabun', var(--font-body);
+  font-size: 0.90rem; font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.biz-result-label span {
+  display: block;
+  font-size: 0.78rem; color: var(--text-muted);
+  font-weight: 400; margin-top: 4px;
+}
+.biz-result-value {
+  font-family: var(--font-numeric);
+  font-size: 1.80rem; font-weight: 600;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+/* ─── Dynamic income sections ─── */
+.inc-section { display: none; }
+.inc-section.active { display: contents; }
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .calc-bg    { padding: 40px 0 90px; }
+  .g-card-body { padding: 24px 20px; }
+  .sc-header  { padding: 24px 20px 18px; }
+  .sc-nav     { padding: 18px 20px 26px; flex-direction: column-reverse; }
+  .btn-next, .btn-calc, .btn-back { width: 100%; justify-content: center; font-size: 1rem; }
+  .fg-2       { grid-template-columns: 1fr; gap: 18px; }
+  .fg-full    { grid-column: 1; }
+  .result-strip { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .result-strip .rs-card:last-child { grid-column: 1 / -1; }
+  .cta-glass  { flex-direction: column; text-align: center; padding: 24px 20px; }
+  .cta-btns   { width: 100%; justify-content: center; }
+  .brc-top    { gap: 14px; padding: 20px 20px 14px; }
+  .brc-loan-amt { font-size: 1.55rem; }
+  .brc-details { padding: 14px 20px 20px; gap: 12px; }
+  .calc-progress-pill { gap: 2px; }
+  .cp-step span { display: none; }
+  .cp-step    { padding: 10px 16px; }
+  .sc-title   { font-size: 1.35rem; }
+  .hero-bank-pill { width: 54px; height: 28px; border-radius: 7px; }
+  .hero-banks { gap: 5px; margin-top: 20px; }
+  .occ-grid   { grid-template-columns: 1fr; gap: 10px; }
+  .occ-card   { flex-direction: row; text-align: left; padding: 16px 18px; gap: 14px; }
+  .occ-card-icon { flex-shrink: 0; width: 44px; height: 44px; font-size: 1.15rem; }
+  .biz-result { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .biz-result-value { font-size: 1.45rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="RUNGKIJ" class="logo-img" loading="eager">
+    </a>
+    <div class="nav-menu" id="navMenu">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About Us</a>
+      <a href="news.html">News</a>
+      <a href="financial.html" class="active">Financial</a>
+      <a href="care.html">Care</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header" style="position:relative; background-image:linear-gradient(rgba(4,8,22,0.60),rgba(6,12,36,0.85)),url('images/hampton/photo-6.jpg'); background-size:cover; background-position:center;">
+  <div class="ph-horizon"></div>
+  <div class="page-header-content">
+    <span class="section-subtitle">Rungkij Clinic Financial</span>
+    <h1>คำนวณวงเงินสินเชื่อ</h1>
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span>/</span>
+      <a href="financial.html">Clinic Financial</a><span>/</span>
+      <span>คำนวณสินเชื่อ</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CALCULATOR ═══ -->
+<div class="calc-bg">
+<div class="calc-wrap">
+
+  <!-- Hero intro -->
+  <div class="calc-hero">
+    <div class="calc-hero-pill"><i class="fas fa-calculator"></i> Pre-Screening Tool</div>
+    <h1>ประเมินวงเงินกู้บ้าน<br><span class="grad">เปรียบเทียบ <span class="hero-num">9</span> ธนาคาร</span></h1>
+    <p>กรอกข้อมูลรายได้และภาระหนี้ของท่าน<br>ระบบจะคำนวณวงเงินสินเชื่อโดยประมาณจากแต่ละธนาคารให้ทันที</p>
+
+    <!-- Bank logos strip -->
+    <div class="hero-banks">
+      <div class="hero-banks-label">ธนาคารที่ร่วมคำนวณ</div>
+      <div class="hero-bank-pill" title="TTB ทีเอ็มบีธนชาต">
+        <img src="images/banks/ttb.svg" alt="TTB">
+      </div>
+      <div class="hero-bank-pill" title="SCB ไทยพาณิชย์">
+        <img src="images/banks/scb.svg" alt="SCB">
+      </div>
+      <div class="hero-bank-pill" title="กสิกรไทย KBank">
+        <img src="images/banks/kbank.svg" alt="KBank">
+      </div>
+      <div class="hero-bank-pill" title="กรุงไทย KTB">
+        <img src="images/banks/ktb.svg" alt="KTB">
+      </div>
+      <div class="hero-bank-pill" title="ธอส อาคารสงเคราะห์">
+        <img src="images/banks/ghb.svg" alt="ธอส">
+      </div>
+      <div class="hero-bank-pill" title="ออมสิน ธนาคารออมสิน">
+        <img src="images/banks/gsb.svg" alt="ออมสิน">
+      </div>
+      <div class="hero-bank-pill" title="BBL ธนาคารกรุงเทพ">
+        <img src="images/banks/bbl.svg" alt="BBL">
+      </div>
+      <div class="hero-bank-pill" title="LH Bank แลนด์แอนด์เฮ้าส์">
+        <img src="images/banks/lh.svg" alt="LH">
+      </div>
+      <div class="hero-bank-pill" title="UOB ยูโอบี">
+        <img src="images/banks/uob.svg" alt="UOB">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Step progress pill -->
+  <div class="calc-progress-pill" id="stepPill">
+    <div class="cp-step active" data-s="1"><div class="cp-num">1</div><span>ข้อมูลส่วนตัว</span></div>
+    <div class="cp-step" data-s="2"><div class="cp-num">2</div><span>รายได้</span></div>
+    <div class="cp-step" data-s="3"><div class="cp-num">3</div><span>ภาระหนี้</span></div>
+  </div>
+
+  <!-- ─── STEP 1 ─── -->
+  <div class="g-card step-card active" id="s1">
+    <div class="sc-header">
+      <div class="sc-icon"><i class="fas fa-user-circle"></i></div>
+      <div>
+        <h3 class="sc-title">เลือกประเภทอาชีพ</h3>
+        <p class="sc-sub">Occupation Type · Step 1 of 3</p>
+      </div>
+    </div>
+    <div class="g-card-body">
+
+      <!-- Age field -->
+      <div class="fl-field" style="max-width:280px; margin-bottom:30px;">
+        <label class="fl-label">อายุผู้กู้ <span class="req">*</span></label>
+        <div class="fi-wrap">
+          <input id="age" class="g-input has-suffix" type="number" min="18" max="80" placeholder="เช่น 35">
+          <span class="fi-suffix">ปี</span>
+        </div>
+        <span class="fl-hint">อายุ + ระยะกู้ ต้องไม่เกินเพดานของแต่ละธนาคาร (65–70 ปี)</span>
+      </div>
+
+      <!-- Occupation cards -->
+      <div class="fl-label" style="margin-bottom:14px;">ประเภทอาชีพ <span class="req">*</span></div>
+      <div class="occ-grid" id="occGrid">
+
+        <div class="occ-card" data-occ="employee" onclick="selectOcc(this)">
+          <div class="occ-check"><i class="fas fa-check"></i></div>
+          <div class="occ-card-icon"><i class="fas fa-id-badge"></i></div>
+          <div>
+            <div class="occ-card-title">พนักงานประจำ</div>
+            <div class="occ-card-sub">มีสลิปเงินเดือน<br>บริษัทเอกชน / ราชการ</div>
+          </div>
+        </div>
+
+        <div class="occ-card" data-occ="owner" onclick="selectOcc(this)">
+          <div class="occ-check"><i class="fas fa-check"></i></div>
+          <div class="occ-card-icon"><i class="fas fa-briefcase"></i></div>
+          <div>
+            <div class="occ-card-title">เจ้าของกิจการ</div>
+            <div class="occ-card-sub">SME / บริษัทจดทะเบียน<br>ถือหุ้นหรือเป็นเจ้าของ</div>
+          </div>
+        </div>
+
+        <div class="occ-card" data-occ="freelance" onclick="selectOcc(this)">
+          <div class="occ-check"><i class="fas fa-check"></i></div>
+          <div class="occ-card-icon"><i class="fas fa-palette"></i></div>
+          <div>
+            <div class="occ-card-title">อาชีพอิสระ</div>
+            <div class="occ-card-sub">Freelance / รับจ้างอิสระ<br>แพทย์ / ทนาย / สถาปนิก</div>
+          </div>
+        </div>
+
+      </div>
+      <input type="hidden" id="occupation" value="">
+
+    </div>
+    <div class="sc-nav">
+      <div></div>
+      <button class="btn-next" onclick="go(2)">ถัดไป <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- ─── STEP 2 ─── -->
+  <div class="g-card step-card" id="s2">
+    <div class="sc-header">
+      <div class="sc-icon"><i class="fas fa-coins"></i></div>
+      <div>
+        <h3 class="sc-title" id="s2Title">ข้อมูลรายได้</h3>
+        <p class="sc-sub">Monthly Income · Step 2 of 3</p>
+      </div>
+    </div>
+    <div class="g-card-body">
+      <div class="fg-2">
+
+        <!-- ══════ EMPLOYEE SECTION ══════ -->
+        <div class="inc-section" id="incEmployee">
+
+          <div class="fl-field">
+            <label class="fl-label">อายุงาน <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <input id="workMonths" class="g-input has-suffix" type="number" min="0" placeholder="เช่น 24">
+              <span class="fi-suffix">เดือน</span>
+            </div>
+            <span class="fl-hint">นับต่อเนื่องจนถึงปัจจุบัน (ผ่านทดลองงาน = ประมาณ 3–6 เดือนขึ้นไป)</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">เงินเดือนประจำ (Base Salary) <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <span class="fi-prefix">฿</span>
+              <input id="salary" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveIncome()">
+            </div>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">รายได้อื่น <span style="text-transform:none;font-weight:400;color:var(--text-muted)">(ค่าตำแหน่ง, ค่าน้ำมัน ฯลฯ)</span></label>
+            <div class="fi-wrap">
+              <span class="fi-prefix">฿</span>
+              <input id="otherIncome" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveIncome()">
+            </div>
+            <span class="fl-hint">ธนาคารส่วนใหญ่คิด 80–100% ขึ้นอยู่กับประเภทรายได้</span>
+          </div>
+
+          <div class="fl-field fg-full">
+            <label class="fl-label">ประเภทโบนัส <span style="text-transform:none;font-weight:400;color:var(--text-muted)">(ถ้ามี)</span></label>
+            <div class="chip-group">
+              <label class="chip on" id="chipFixed">
+                <input type="radio" name="bonusType" value="fixed" checked>
+                <div class="chip-dot"></div> Fixed — แน่นอนทุกปี
+              </label>
+              <label class="chip" id="chipNonFixed">
+                <input type="radio" name="bonusType" value="nonfixed">
+                <div class="chip-dot"></div> Non-Fixed — ตามผลงาน
+              </label>
+            </div>
+            <span class="fl-hint">Fixed โบนัสคิดได้เต็ม 100% · Non-Fixed บางธนาคารคิดเพียง 50%</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">โบนัสเฉลี่ย <span style="text-transform:none;font-weight:400;color:var(--text-muted)">(เฉลี่ยต่อเดือน)</span></label>
+            <div class="fi-wrap">
+              <span class="fi-prefix">฿</span>
+              <input id="bonus" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveIncome()">
+            </div>
+            <span class="fl-hint">โบนัส 60,000 บาท/ปี → กรอก 5,000/เดือน</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">รายได้ผันแปร <span style="text-transform:none;font-weight:400;color:var(--text-muted)">(Commission, OT)</span></label>
+            <div class="fi-wrap">
+              <span class="fi-prefix">฿</span>
+              <input id="variable" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveIncome()">
+            </div>
+          </div>
+
+          <!-- Live income total -->
+          <div class="fg-full">
+            <div class="mini-ledger">
+              <div class="ml-label"><i class="fas fa-circle-dot"></i> รายได้รวมที่กรอก</div>
+              <div class="ml-value" id="liveIncomeVal">฿ 0</div>
+            </div>
+          </div>
+
+        </div><!-- /incEmployee -->
+
+
+        <!-- ══════ OWNER SECTION ══════ -->
+        <div class="inc-section" id="incOwner">
+
+          <div class="fl-field">
+            <label class="fl-label">อายุกิจการ <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <input id="bizYears" class="g-input has-suffix" type="number" min="0" step="0.5" placeholder="เช่น 3">
+              <span class="fi-suffix">ปี</span>
+            </div>
+            <span class="fl-hint">ธนาคารส่วนใหญ่ต้องการอายุกิจการ 1–3 ปีขึ้นไป</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">ยอดขาย / รายรับรวม (ต่อเดือน) <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <span class="fi-prefix">฿</span>
+              <input id="bizRevenue" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveBiz()">
+            </div>
+            <span class="fl-hint">ยอดขายรวมทั้งกิจการต่อเดือน (ก่อนหักค่าใช้จ่าย)</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">สัดส่วนถือหุ้น <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <input id="shareholding" class="g-input has-suffix" type="number" min="1" max="100" placeholder="เช่น 51" oninput="liveBiz()">
+              <span class="fi-suffix">%</span>
+            </div>
+            <span class="fl-hint">ถือหุ้น 100% = เจ้าของกิจการคนเดียว</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">Margin กำไรสุทธิ <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <input id="margin" class="g-input has-suffix" type="number" min="1" max="100" placeholder="เช่น 15" oninput="liveBiz()">
+              <span class="fi-suffix">%</span>
+            </div>
+            <span class="fl-hint">ธนาคารใช้ Net Profit Margin เฉลี่ย ปกติ 10–25% ตามประเภทธุรกิจ</span>
+          </div>
+
+          <!-- Business income auto-calc -->
+          <div class="fg-full">
+            <div class="biz-result">
+              <div class="biz-result-label">
+                รายได้ที่ธนาคารนำมาพิจารณา
+                <span id="bizFormula">ยอดขาย × สัดส่วนถือหุ้น% × Margin%</span>
+              </div>
+              <div class="biz-result-value" id="liveBizVal">฿ 0</div>
+            </div>
+          </div>
+
+        </div><!-- /incOwner -->
+
+
+        <!-- ══════ FREELANCE SECTION ══════ -->
+        <div class="inc-section" id="incFreelance">
+
+          <div class="fl-field">
+            <label class="fl-label">อายุงาน / ประกอบอาชีพ <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <input id="freelanceYears" class="g-input has-suffix" type="number" min="0" step="0.5" placeholder="เช่น 3">
+              <span class="fi-suffix">ปี</span>
+            </div>
+            <span class="fl-hint">ทุกธนาคารกำหนดอายุงานขั้นต่ำ 2 ปีขึ้นไป</span>
+          </div>
+
+          <div class="fl-field">
+            <label class="fl-label">รายได้เฉลี่ย (ต่อเดือน) <span class="req">*</span></label>
+            <div class="fi-wrap">
+              <span class="fi-prefix">฿</span>
+              <input id="freelanceIncome" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveFreelance()">
+            </div>
+            <span class="fl-hint">รายได้เฉลี่ยย้อนหลัง 12 เดือน (หักค่าใช้จ่ายแล้ว)</span>
+          </div>
+
+          <div class="fg-full">
+            <div class="mini-ledger">
+              <div class="ml-label"><i class="fas fa-circle-dot"></i> รายได้ที่ใช้ประเมิน</div>
+              <div class="ml-value" id="liveFreelanceVal">฿ 0</div>
+            </div>
+          </div>
+
+        </div><!-- /incFreelance -->
+
+      </div>
+    </div>
+    <div class="sc-nav">
+      <button class="btn-back" onclick="go(1)"><i class="fas fa-arrow-left"></i> ย้อนกลับ</button>
+      <button class="btn-next" onclick="go(3)">ถัดไป <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </div>
+
+  <!-- ─── STEP 3 ─── -->
+  <div class="g-card step-card" id="s3">
+    <div class="sc-header">
+      <div class="sc-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+      <div>
+        <h3 class="sc-title">ภาระหนี้สินปัจจุบัน</h3>
+        <p class="sc-sub">Monthly Debt Obligations · Step 3 of 3</p>
+      </div>
+    </div>
+    <div class="g-card-body">
+      <div class="fg-2">
+
+        <div class="fl-field">
+          <label class="fl-label">ผ่อนบ้าน / คอนโดเดิม</label>
+          <div class="fi-wrap">
+            <span class="fi-prefix">฿</span>
+            <input id="dMortgage" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveDebt()">
+          </div>
+          <span class="fl-hint">คิดเต็ม 100% ของค่างวด</span>
+        </div>
+
+        <div class="fl-field">
+          <label class="fl-label">ผ่อนรถยนต์</label>
+          <div class="fi-wrap">
+            <span class="fi-prefix">฿</span>
+            <input id="dCar" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveDebt()">
+          </div>
+          <span class="fl-hint">คิดเต็ม 100% ของค่างวด</span>
+        </div>
+
+        <div class="fl-field">
+          <label class="fl-label">สินเชื่อส่วนบุคคล</label>
+          <div class="fi-wrap">
+            <span class="fi-prefix">฿</span>
+            <input id="dPersonal" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveDebt()">
+          </div>
+        </div>
+
+        <div class="fl-field">
+          <label class="fl-label">บัตรเครดิต <span style="text-transform:none;font-weight:400;color:var(--text-muted)">(วงเงินบัตรรวมทุกใบ)</span></label>
+          <div class="fi-wrap">
+            <span class="fi-prefix">฿</span>
+            <input id="dCredit" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveDebt()">
+          </div>
+          <span class="fl-hint">กรอก <strong style="color:rgba(255,255,255,0.70)">วงเงินบัตร</strong> รวมทุกใบ · ธนาคารคิดภาระ 10% ของวงเงิน</span>
+        </div>
+
+        <div class="fl-field">
+          <label class="fl-label">บัตรกดเงินสด <span style="text-transform:none;font-weight:400;color:var(--text-muted)">(วงเงินบัตรรวมทุกใบ)</span></label>
+          <div class="fi-wrap">
+            <span class="fi-prefix">฿</span>
+            <input id="dCash" class="g-input has-prefix" type="number" min="0" placeholder="0" oninput="liveDebt()">
+          </div>
+          <span class="fl-hint">กรอก <strong style="color:rgba(255,255,255,0.70)">วงเงินบัตร</strong> รวมทุกใบ · ธนาคารคิดภาระ 5% ของวงเงิน</span>
+        </div>
+
+        <!-- Live debt total -->
+        <div class="fl-field">
+          <div class="mini-ledger" style="background:rgba(255,69,58,0.05); border-color:rgba(255,69,58,0.12);">
+            <div class="ml-label"><i class="fas fa-circle-dot"></i> ภาระหนี้รวม/เดือน</div>
+            <div class="ml-value red" id="liveDebtVal">฿ 0</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="sc-nav">
+      <button class="btn-back" onclick="go(2)"><i class="fas fa-arrow-left"></i> ย้อนกลับ</button>
+      <button class="btn-calc" onclick="calculate()"><i class="fas fa-calculator"></i> คำนวณวงเงินสินเชื่อ</button>
+    </div>
+  </div>
+
+  <!-- ─── RESULTS ─── -->
+  <div class="calc-results-view" id="resultsView">
+
+    <div style="text-align:center; margin-bottom:28px;">
+      <div class="calc-hero-pill" style="margin-bottom:14px;"><i class="fas fa-chart-bar"></i> ผลการประเมินเบื้องต้น</div>
+      <h2 style="font-family:var(--font-heading); font-size:clamp(1.7rem,4vw,2.4rem); color:#fff; margin:0;">วงเงินสินเชื่อโดยประมาณ</h2>
+    </div>
+
+    <!-- Summary strip -->
+    <div class="result-strip" id="summaryStrip"></div>
+
+    <!-- Bank cards -->
+    <div class="bank-results" id="bankCards"></div>
+
+    <p class="g-disclaimer">
+      <i class="fas fa-info-circle" style="color:rgba(201,168,76,0.60); margin-right:6px;"></i>
+      <strong style="color:rgba(255,255,255,0.50);">หมายเหตุ:</strong>
+      ผลการคำนวณนี้เป็นการประเมินเบื้องต้นอ้างอิงจากเกณฑ์มาตรฐานธนาคาร
+      วงเงินที่ได้รับอนุมัติจริงขึ้นอยู่กับเอกสาร ประวัติเครดิต (NCB) และดุลยพินิจของธนาคาร
+      แนะนำให้ปรึกษาทีมที่ปรึกษาสินเชื่อรุ่งกิจเพื่อผลลัพธ์ที่แม่นยำยิ่งขึ้น
+    </p>
+
+    <div class="cta-glass">
+      <div>
+        <h4>ต้องการคำปรึกษาจากผู้เชี่ยวชาญ?</h4>
+        <p>ทีมที่ปรึกษาสินเชื่อรุ่งกิจพร้อมช่วยยื่นกู้ ผ่านง่าย ดอกเบี้ยพิเศษ</p>
+      </div>
+      <div class="cta-btns">
+        <a href="tel:+6625407999" class="btn-ghost"><i class="fas fa-phone"></i> 02-540-7999</a>
+        <a href="contact.html" class="btn-gold">ติดต่อที่ปรึกษา <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button class="btn-reset" onclick="reset()"><i class="fas fa-redo"></i> คำนวณใหม่</button>
+    </div>
+  </div>
+
+</div><!-- /.calc-wrap -->
+</div><!-- /.calc-bg -->
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-horizon"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img logo-img-footer">
+        <p>V.S.K. Estate Company Limited. Over 50 years of premium real estate development.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/rungkijcorp/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/rungkij_official" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Line"><i class="fab fa-line"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="financial.html">Clinic Financial</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Projects</h4>
+        <ul class="footer-links">
+          <li><a href="project-grand-verona.html">Grand Verona</a></li>
+          <li><a href="project-hampton.html">The Hampton</a></li>
+          <li><a href="project-the-nice.html">The Nice</a></li>
+          <li><a href="project-osaka.html">Osaka</a></li>
+        </ul>
+      </div>
+      <div class="footer-newsletter">
+        <h4>Stay Updated</h4>
+        <p>Subscribe for the latest project launches and exclusive offers.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Your email address">
+          <button type="submit"><i class="fas fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 V.S.K. Estate Company Limited. All rights reserved.</span>
+      <div><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Sticky Bar -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-inner">
+    <div class="sticky-social">
+      <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Messenger"><i class="fab fa-facebook-messenger"></i></a>
+      <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+      <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร"><i class="fas fa-phone"></i></a>
+    </div>
+    <a href="calculator.html" class="sticky-btn sticky-btn-calc"><i class="fas fa-calculator"></i><span>คำนวณสินเชื่อ</span></a>
+    <a href="#" onclick="ChatWidget.open();return false;" class="sticky-btn sticky-btn-ask"><span class="icon-sparkle"><i class="fas fa-bolt"></i></span><span>ถามมาได้เลย</span></a>
+  </div>
+</div>
+
+<script src="chat-widget.js" defer></script>
+  <script src="main.js" defer></script>
+<script>
+// ══════════════════════════════════════════════════
+//  CALCULATOR ENGINE v2 — Liquid Glass UX
+// ══════════════════════════════════════════════════
+
+var cur = 1;
+
+// ── Step navigation ──────────────────────────────
+function go(n) {
+  if (n > cur && !validate(cur)) return;
+  document.getElementById('s'+cur).classList.remove('active');
+  cur = n;
+  document.getElementById('s'+cur).classList.add('active');
+  syncPill();
+  scrollToCalc();
+}
+
+function syncPill() {
+  document.querySelectorAll('.cp-step').forEach(function(el) {
+    var s = +el.dataset.s;
+    el.classList.toggle('active', s === cur);
+    el.classList.toggle('done',   s < cur);
+  });
+}
+
+function scrollToCalc() {
+  var el = document.querySelector('.calc-bg');
+  if (el) window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+}
+
+// ── Validation ──────────────────────────────────
+function validate(n) {
+  if (n === 1) {
+    if (!g('age') || !g('occupation')) { shake('s1'); return false; }
+  }
+  if (n === 2) {
+    var occ = g('occupation');
+    if (occ === 'employee') {
+      if (!g('workMonths') || !n2('salary')) { shake('s2'); return false; }
+    } else if (occ === 'owner') {
+      if (!g('bizYears') || !n2('bizRevenue') || !n2('shareholding') || !n2('margin')) {
+        shake('s2'); return false;
+      }
+    } else if (occ === 'freelance') {
+      if (!g('freelanceYears') || !n2('freelanceIncome')) { shake('s2'); return false; }
+    } else {
+      shake('s2'); return false;
+    }
+  }
+  return true;
+}
+
+function shake(id) {
+  var el = document.getElementById(id);
+  el.style.animation = 'none';
+  el.offsetHeight;
+  el.style.animation = 'shakeX 0.4s ease';
+}
+
+// ── Helpers ──────────────────────────────────────
+function g(id)  { return (document.getElementById(id).value||'').trim(); }
+function n2(id) { return parseFloat(document.getElementById(id).value)||0; }
+function fmt(x) { return Math.round(x).toLocaleString('th-TH'); }
+function fmtM(x){ return x <= 0 ? '—' : (x/1e6).toFixed(2)+' ล้าน'; }
+
+// Monthly mortgage payment: P × r(1+r)^n / [(1+r)^n - 1]
+function calcPayment(principal, annualRatePct, years) {
+  if (principal <= 0 || annualRatePct <= 0) return 0;
+  var r = annualRatePct / 100 / 12;
+  var n = years * 12;
+  return principal * (r * Math.pow(1+r, n)) / (Math.pow(1+r, n) - 1);
+}
+
+// ── Occupation selector ──────────────────────────
+function selectOcc(card) {
+  document.querySelectorAll('.occ-card').forEach(function(c) { c.classList.remove('selected'); });
+  card.classList.add('selected');
+  var occ = card.dataset.occ;
+  document.getElementById('occupation').value = occ;
+  // Update step-2 income section visibility
+  var titleMap = { employee:'รายได้ พนักงานประจำ', owner:'รายได้ เจ้าของกิจการ', freelance:'รายได้ อาชีพอิสระ' };
+  var titleEl = document.getElementById('s2Title');
+  if (titleEl) titleEl.textContent = titleMap[occ] || 'ข้อมูลรายได้';
+  document.querySelectorAll('.inc-section').forEach(function(s) { s.classList.remove('active'); });
+  var sectionMap = { employee:'incEmployee', owner:'incOwner', freelance:'incFreelance' };
+  if (sectionMap[occ]) document.getElementById(sectionMap[occ]).classList.add('active');
+}
+
+// ── Bonus chip toggle ──────────────────────────
+document.querySelectorAll('.chip').forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    var grp = this.closest('.chip-group');
+    if (grp) grp.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+    this.classList.add('on');
+  });
+});
+
+// ── Live totals ──────────────────────────────────
+function liveIncome() {
+  var total = n2('salary') + n2('otherIncome') + n2('bonus') + n2('variable');
+  var el = document.getElementById('liveIncomeVal');
+  if (el) el.textContent = '฿ ' + fmt(total);
+}
+function liveFreelance() {
+  var el = document.getElementById('liveFreelanceVal');
+  if (el) el.textContent = '฿ ' + fmt(n2('freelanceIncome'));
+}
+function liveBiz() {
+  var rev  = n2('bizRevenue');
+  var sh   = n2('shareholding') / 100;
+  var mg   = n2('margin') / 100;
+  var result = rev * sh * mg;
+  var el = document.getElementById('liveBizVal');
+  if (el) el.textContent = '฿ ' + fmt(result);
+  var fEl = document.getElementById('bizFormula');
+  if (fEl && rev > 0) {
+    fEl.textContent = '฿' + fmt(rev) + ' × ' + (sh*100).toFixed(0) + '% × ' + (mg*100).toFixed(0) + '%';
+  }
+}
+function liveDebt() {
+  var total = n2('dMortgage') + n2('dCar') + n2('dPersonal')
+            + n2('dCredit') * 0.10 + n2('dCash') * 0.05;
+  document.getElementById('liveDebtVal').textContent = '฿ ' + fmt(total);
+}
+
+// ── 9-Bank configs (PDF-based criteria) ──────────
+// ci(d)  = countable income based on occupation
+// dsr(ci,occ) = debt service ratio
+// minSal = { employee, owner, freelance } minimum income
+// minMonths  = min work history for employee (months)
+// minBizYrs  = min business age for owner (years)
+// minFreeYrs = min work history for freelance (years)
+var BANKS = [
+  {
+    id:'ttb', name:'TTB ทีเอ็มบีธนชาต', short:'TTB', logo:'images/banks/ttb.svg',
+    minSal:{ employee:15000, owner:0, freelance:0 },
+    minMonths:4, minBizYrs:2, minFreeYrs:2, ageMax:65,
+    rate3yr:2.95, rateAfter:5.95, rateNote:'MRR-0.75%',
+    ci: function(d) {
+      if (d.occ==='employee')  return d.sal + d.oth + d.bon + d.vr; // TTB: all 100%
+      if (d.occ==='owner')     return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      if (occ==='employee') return ci >= 50000 ? 0.80 : 0.70;
+      return 0.70;
+    }
+  },
+  {
+    id:'scb', name:'SCB ไทยพาณิชย์', short:'SCB', logo:'images/banks/scb.svg',
+    minSal:{ employee:15000, owner:0, freelance:0 },
+    minMonths:4, minBizYrs:1, minFreeYrs:2, ageMax:65,
+    rate3yr:2.99, rateAfter:5.50, rateNote:'MRR-1.00%',
+    ci: function(d) {
+      if (d.occ==='employee')
+        return d.sal + d.oth + (d.bFix ? d.bon : d.bon*0.50) + d.vr; // Non-Fixed bonus = 50%
+      if (d.occ==='owner') return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      if (occ==='employee') return ci >= 30000 ? 0.80 : 0.70;
+      return 0.70;
+    }
+  },
+  {
+    id:'kbank', name:'กสิกรไทย KBank', short:'กสิกร', logo:'images/banks/kbank.svg',
+    minSal:{ employee:15000, owner:0, freelance:0 },
+    minMonths:24, minBizYrs:2, minFreeYrs:2, ageMax:65,
+    rate3yr:2.50, rateAfter:5.95, rateNote:'MRR-0.75%',
+    ci: function(d) {
+      if (d.occ==='employee')
+        return d.sal + d.oth + (d.bFix ? d.bon : d.bon*0.50) + d.vr; // Non-Fixed bonus = 50%
+      if (d.occ==='owner') return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      if (occ==='employee') return ci >= 50000 ? 0.80 : 0.70;
+      return 0.70;
+    }
+  },
+  {
+    id:'ktb', name:'กรุงไทย KTB', short:'กรุงไทย', logo:'images/banks/ktb.svg',
+    minSal:{ employee:15000, owner:0, freelance:0 },
+    minMonths:6, minBizYrs:1, minFreeYrs:2, ageMax:70,
+    rate3yr:2.50, rateAfter:5.95, rateNote:'MRR-0.50%',
+    ci: function(d) {
+      if (d.occ==='employee') return d.sal + d.oth + d.bon + d.vr; // all 100%
+      if (d.occ==='owner')    return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      if (occ==='employee') {
+        if (ci >= 100000) return 0.90;
+        if (ci >= 50000)  return 0.80;
+        return 0.70;
+      }
+      return 0.70;
+    }
+  },
+  {
+    id:'ghb', name:'ธอส อาคารสงเคราะห์', short:'ธอส', logo:'images/banks/ghb.svg',
+    minSal:{ employee:0, owner:0, freelance:0 }, // ธอส ไม่กำหนดรายได้ขั้นต่ำ
+    minMonths:3, minBizYrs:2, minFreeYrs:2, ageMax:70,
+    rate3yr:2.00, rateAfter:5.75, rateNote:'สัญญา 1',
+    ci: function(d) {
+      if (d.occ==='employee') return d.sal + d.oth + d.bon + d.vr;
+      if (d.occ==='owner')    return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      // ธอส: พนักงาน 1/2 (50%), เจ้าของกิจการ/อิสระ 1/3 (33%)
+      if (occ==='employee') return 0.50;
+      return 0.333;
+    }
+  },
+  {
+    id:'gsb', name:'ออมสิน ธนาคารออมสิน', short:'ออมสิน', logo:'images/banks/gsb.svg',
+    minSal:{ employee:15000, owner:0, freelance:0 },
+    minMonths:12, minBizYrs:1, minFreeYrs:2, ageMax:70,
+    rate3yr:2.00, rateAfter:5.50, rateNote:'สินเชื่อเคหะ',
+    ci: function(d) {
+      if (d.occ==='employee') return d.sal + d.oth + d.bon + d.vr; // all 100%
+      if (d.occ==='owner')    return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) { return 0.70; }
+  },
+  {
+    id:'bbl', name:'BBL ธนาคารกรุงเทพ', short:'BBL', logo:'images/banks/bbl.svg',
+    minSal:{ employee:15000, owner:0, freelance:0 },
+    minMonths:12, minBizYrs:1, minFreeYrs:2, ageMax:65,
+    rate3yr:3.00, rateAfter:5.90, rateNote:'MLR-0.50%',
+    ci: function(d) {
+      if (d.occ==='employee') {
+        // BBL: Salary 100% + Other 100%
+        // Fixed bonus: คิดได้ แต่ cap ที่ 4 เดือน (เทียบ monthly = min(bon, sal*4/12))
+        // Non-Fixed bonus: 50%
+        var bonCalc = d.bFix ? Math.min(d.bon, d.sal * 4/12) : d.bon * 0.50;
+        return d.sal + d.oth + bonCalc + (d.vr * 0.85);
+      }
+      if (d.occ==='owner') return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      return ci >= 50000 ? 0.80 : 0.70;
+    }
+  },
+  {
+    id:'lh', name:'LH Bank แลนด์แอนด์เฮ้าส์', short:'LH', logo:'images/banks/lh.svg',
+    minSal:{ employee:20000, owner:0, freelance:0 },
+    minMonths:12, minBizYrs:3, minFreeYrs:2, ageMax:70,
+    rate3yr:2.50, rateAfter:6.25, rateNote:'MRR-0.50%',
+    ci: function(d) {
+      if (d.occ==='employee')
+        // LH: Salary 100% + Other 80% + Bonus Fixed 100% / Non-Fixed 50% + Variable 80%
+        return d.sal + (d.oth*0.80) + (d.bFix ? d.bon : d.bon*0.50) + (d.vr*0.80);
+      if (d.occ==='owner') return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) {
+      return ci >= 50000 ? 0.80 : 0.70;
+    }
+  },
+  {
+    id:'uob', name:'UOB ยูโอบี', short:'UOB', logo:'images/banks/uob.svg',
+    minSal:{ employee:40000, owner:0, freelance:40000 },
+    minMonths:24, minBizYrs:3, minFreeYrs:2, ageMax:70,
+    rate3yr:2.75, rateAfter:6.00, rateNote:'MRR-0.70%',
+    ci: function(d) {
+      if (d.occ==='employee') return d.sal + d.oth + d.bon + d.vr; // all 100%
+      if (d.occ==='owner')    return d.bizIncome;
+      return d.freeInc;
+    },
+    dsr: function(ci, occ) { return 0.78; }
+  }
+];
+
+// ── Main calculate ────────────────────────────────
+function calculate() {
+  if (!validate(3)) return;
+
+  var occ  = g('occupation');
+  var bFix = document.getElementById('chipFixed').classList.contains('on');
+
+  // Business owner income = revenue × shareholding × margin
+  var bizIncome = 0;
+  if (occ === 'owner') {
+    bizIncome = n2('bizRevenue') * (n2('shareholding')/100) * (n2('margin')/100);
+  }
+
+  var d = {
+    occ:    occ,
+    age:    +g('age'),
+    bFix:   bFix,
+    // Employee
+    sal:    n2('salary'),
+    oth:    n2('otherIncome'),
+    bon:    n2('bonus'),
+    vr:     n2('variable'),
+    months: n2('workMonths'),
+    // Owner
+    bizIncome: bizIncome,
+    bizYrs:    n2('bizYears'),
+    // Freelance
+    freeInc:   n2('freelanceIncome'),
+    freeYrs:   n2('freelanceYears'),
+    // Debts
+    dMort: n2('dMortgage'), dCar: n2('dCar'), dPers: n2('dPersonal'),
+    dCred: n2('dCredit'),   dCash: n2('dCash')
+  };
+
+  var totalDebt = d.dMort + d.dCar + d.dPers + (d.dCred*0.10) + (d.dCash*0.05);
+
+  // Gross income for display
+  var displayIncome = occ==='employee' ? (d.sal+d.oth+d.bon+d.vr)
+                    : occ==='owner'    ? d.bizIncome
+                    : d.freeInc;
+
+  // Summary strip
+  document.getElementById('summaryStrip').innerHTML = [
+    { l:'รายได้ที่ใช้ประเมิน', v:'฿ '+fmt(displayIncome),                            u:'บาท / เดือน' },
+    { l:'ภาระหนี้รวม',         v:'฿ '+fmt(totalDebt),                               u:'บาท / เดือน' },
+    { l:'คงเหลือสุทธิ',        v:'฿ '+fmt(Math.max(0, displayIncome-totalDebt)),    u:'บาท / เดือน' }
+  ].map(function(c) {
+    return '<div class="rs-card">'
+         + '<div class="rs-label">'+c.l+'</div>'
+         + '<div class="rs-val">'+c.v+'</div>'
+         + '<div class="rs-unit">'+c.u+'</div>'
+         + '</div>';
+  }).join('');
+
+  // Per-bank computation
+  var rows = BANKS.map(function(bk) {
+    var ci    = bk.ci(d);
+    var dsr   = bk.dsr(ci, occ);
+    var maxI  = ci * dsr;
+    var net   = maxI - totalDebt;
+    var loan  = net > 0 ? (net/7000)*1e6 : 0;
+    var fail  = false, warn = false, status = '', cls = '';
+    var reasons = [];
+
+    // ① Min income check
+    var minInc = bk.minSal[occ] || 0;
+    var incomeRef = occ==='employee' ? d.sal : (occ==='owner' ? d.bizIncome : d.freeInc);
+    if (minInc > 0 && incomeRef < minInc) {
+      reasons.push('รายได้ต่ำกว่าเกณฑ์ขั้นต่ำ ฿' + fmt(minInc));
+      fail = true;
+    }
+
+    // ② Work / business history check
+    if (occ==='employee' && d.months < bk.minMonths) {
+      reasons.push('อายุงาน < ' + bk.minMonths + ' เดือน (เกณฑ์ ' + bk.minMonths + ' เดือน)');
+      fail = true;
+    }
+    if (occ==='owner' && d.bizYrs < bk.minBizYrs) {
+      reasons.push('อายุกิจการ < ' + bk.minBizYrs + ' ปี (เกณฑ์ ' + bk.minBizYrs + ' ปี)');
+      fail = true;
+    }
+    if (occ==='freelance' && d.freeYrs < bk.minFreeYrs) {
+      reasons.push('อายุงาน < ' + bk.minFreeYrs + ' ปี (เกณฑ์ ' + bk.minFreeYrs + ' ปี)');
+      fail = true;
+    }
+
+    // ③ Assign status
+    if (fail) {
+      status = reasons[0]; cls = 'badge-no'; loan = 0;
+    } else if (net <= 0) {
+      status = 'ภาระหนี้เกินเกณฑ์ DSR'; cls = 'badge-no'; fail = true; loan = 0;
+    } else if (loan < 1e6) {
+      status = 'วงเงินต่ำ — แนะนำลดหนี้ก่อน'; cls = 'badge-warn'; warn = true;
+    } else {
+      status = 'ผ่านเกณฑ์เบื้องต้น'; cls = 'badge-ok';
+    }
+
+    return { bk:bk, ci:ci, dsr:dsr, net:Math.max(0,net), loan:loan, status:status, cls:cls, fail:fail, warn:warn };
+  });
+
+  rows.sort(function(a,b){ return b.loan - a.loan; });
+  var best    = rows[0].loan > 0 ? rows[0].bk.id : null;
+  var maxLoan = rows[0].loan;
+
+  // Render bank cards
+  var html = '';
+  rows.forEach(function(r, idx) {
+    var pct    = maxLoan > 0 ? Math.round(r.loan/maxLoan*100) : 0;
+    var isBest = r.bk.id === best;
+    var barCls = r.fail ? 'red-bar' : r.warn ? 'orange-bar' : '';
+    var iconCls = r.cls==='badge-ok' ? 'fa-check-circle'
+                : r.cls==='badge-warn' ? 'fa-exclamation-circle'
+                : 'fa-times-circle';
+
+    // Calculate monthly payments for both rate periods
+    var pay3yr   = r.loan > 0 ? calcPayment(r.loan, r.bk.rate3yr,   30) : 0;
+    var payAfter = r.loan > 0 ? calcPayment(r.loan, r.bk.rateAfter, 27) : 0;
+
+    // Rate section (only when bank qualifies)
+    var ratesHtml = '';
+    if (!r.fail && r.loan > 0) {
+      ratesHtml = '<div class="brc-rates">'
+        + '<div class="brc-rate-cell">'
+        + '  <div class="brc-rate-tag promo"><i class="fas fa-tag"></i>3 ปีแรก (พิเศษ)</div>'
+        + '  <div class="brc-rate-num">'+r.bk.rate3yr.toFixed(2)+'%</div>'
+        + '  <div class="brc-rate-pay">฿ '+fmt(Math.round(pay3yr))+'<span class="pay-unit">/เดือน</span></div>'
+        + '</div>'
+        + '<div class="brc-rate-cell">'
+        + '  <div class="brc-rate-tag"><i class="fas fa-calendar-alt"></i>หลัง 3 ปี (ปกติ)</div>'
+        + '  <div class="brc-rate-num">'+r.bk.rateAfter.toFixed(2)+'%<span class="rate-note">'+r.bk.rateNote+'</span></div>'
+        + '  <div class="brc-rate-pay">฿ '+fmt(Math.round(payAfter))+'<span class="pay-unit">/เดือน</span></div>'
+        + '</div>'
+        + '</div>';
+    }
+
+    html += '<div class="bank-result-card'+(isBest?' best-card':'')+'" style="animation-delay:'+(idx*0.07)+'s">'
+          + '<div class="brc-top">'
+          + '  <img class="brc-logo" src="'+r.bk.logo+'" alt="'+r.bk.short+'" loading="lazy" onerror="this.style.display=\'none\'">'
+          + '  <div class="brc-name">'
+          + '    <div class="brc-name-main">'+r.bk.short+(isBest?'<span class="best-tag"><i class="fas fa-star"></i> สูงสุด</span>':'')+'</div>'
+          + '    <div class="brc-name-sub">'+r.bk.name+'</div>'
+          + '  </div>'
+          + '  <div class="brc-loan">'
+          + '    <div class="brc-loan-amt">'+(r.loan>0?fmtM(r.loan):'—')+'</div>'
+          + '    <div class="brc-loan-unit">วงเงินโดยประมาณ</div>'
+          + '  </div>'
+          + '</div>'
+          + '<div class="brc-bar-wrap">'
+          + '  <div class="brc-bar-track"><div class="brc-bar-fill '+barCls+'" data-pct="'+pct+'"></div></div>'
+          + '</div>'
+          + ratesHtml
+          + '<div class="brc-details">'
+          + '  <div class="brc-detail-item"><span class="brc-dl">รายได้ที่คิด (CI)</span><span class="brc-dv">฿ '+fmt(r.ci)+'</span></div>'
+          + '  <div class="brc-detail-item"><span class="brc-dl">DSR</span><span class="brc-dv">'+Math.round(r.dsr*100)+'%</span></div>'
+          + '  <div class="brc-detail-item"><span class="brc-dl">ผ่อนได้สูงสุด</span><span class="brc-dv">฿ '+fmt(r.net)+'/เดือน</span></div>'
+          + '  <div class="brc-detail-item" style="margin-left:auto;">'
+          + '    <span class="brc-badge '+r.cls+'"><i class="fas '+iconCls+'"></i> '+r.status+'</span>'
+          + '  </div>'
+          + '</div>'
+          + '</div>';
+  });
+  document.getElementById('bankCards').innerHTML = html;
+
+  // Animate progress bars
+  setTimeout(function() {
+    document.querySelectorAll('.brc-bar-fill').forEach(function(el) {
+      el.style.width = el.dataset.pct + '%';
+    });
+  }, 120);
+
+  // Show results view
+  document.getElementById('s3').classList.remove('active');
+  document.getElementById('resultsView').classList.add('show');
+  window.scrollTo({ top: document.getElementById('resultsView').offsetTop - 90, behavior:'smooth' });
+}
+
+// ── Reset ────────────────────────────────────────
+function reset() {
+  document.getElementById('resultsView').classList.remove('show');
+  cur = 1;
+  document.getElementById('s1').classList.add('active');
+  syncPill();
+  scrollToCalc();
+}
+</script>
+
+<style>
+@keyframes shakeX {
+  0%,100%{ transform:translateX(0); }
+  20%{ transform:translateX(-8px); }
+  40%{ transform:translateX(8px); }
+  60%{ transform:translateX(-5px); }
+  80%{ transform:translateX(5px); }
+}
+</style>
+</body>
+</html>

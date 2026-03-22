@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>โครงการทั้งหมด | RUNGKIJ — บ้านเดี่ยว ทาวน์โฮม ทั่วกรุงเทพฯ</title>
+  <meta name="description" content="ชมโครงการบ้านจัดสรรทั้งหมดกว่า 35 โครงการ บ้านเดี่ยว ทาวน์โฮม ทำเลดี ราคาเริ่มต้น 2.99 ล้าน — พระราม9, รามอินทรา, รังสิต, รามคำแหง">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .history-table-wrap {
+      overflow-x: auto;
+      margin-top: 56px;
+    }
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Sarabun', 'Inter', sans-serif;
+      font-size: 0.86rem;
+    }
+    .history-table thead tr {
+      background: var(--primary);
+      color: var(--accent);
+    }
+    .history-table thead th {
+      padding: 14px 18px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.72rem;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(185,154,91,0.3);
+      white-space: nowrap;
+    }
+    .history-table tbody tr {
+      border-bottom: 1px solid #ece8e0;
+      transition: background 0.2s;
+    }
+    .history-table tbody tr:hover { background: #f7f3ec; }
+    .history-table tbody td {
+      padding: 13px 18px;
+      color: var(--text-dark);
+      vertical-align: middle;
+    }
+    .history-table .td-year {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+    .history-table .td-name { font-weight: 500; }
+    .history-table .td-units { text-align: center; }
+    .history-table .status-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .badge-ready   { background: #e8f5e9; color: #2e7d32; }
+    .badge-soldout { background: #f5f5f5; color: #757575; }
+    .badge-coming  { background: #fff8e1; color: #f57f17; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .section-label::before, .section-label::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 48px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+  </style>
+  <!-- ═══ SEO / Social Meta ═══ -->
+  <meta name="keywords" content="โครงการบ้าน กรุงเทพ, บ้านจัดสรร, บ้านเดี่ยว พระราม9, ทาวน์โฮม รังสิต, บ้านรามอินทรา, บ้านรามคำแหง, house project Bangkok">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="V.S.K. Estate Company Limited">
+  <link rel="canonical" href="https://www.rungkij.co.th/projects.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="RUNGKIJ — V.S.K. Estate">
+  <meta property="og:locale"      content="th_TH">
+  <meta property="og:url"         content="https://www.rungkij.co.th/projects.html">
+  <meta property="og:title"       content="โครงการทั้งหมด | RUNGKIJ — บ้านเดี่ยว ทาวน์โฮม ทั่วกรุงเทพฯ">
+  <meta property="og:description" content="ชมโครงการบ้านจัดสรรทั้งหมดกว่า 35 โครงการ บ้านเดี่ยว ทาวน์โฮม ทำเลดี ราคาเริ่มต้น 2.99 ล้าน — พระราม9, รามอินทรา, รังสิต, รามคำแหง">
+  <meta property="og:image"       content="https://www.rungkij.co.th/images/og-cover.jpg">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:site"        content="@rungkij_official">
+  <meta name="twitter:title"       content="โครงการทั้งหมด | RUNGKIJ — บ้านเดี่ยว ทาวน์โฮม ทั่วกรุงเทพฯ">
+  <meta name="twitter:description" content="ชมโครงการบ้านจัดสรรทั้งหมดกว่า 35 โครงการ บ้านเดี่ยว ทาวน์โฮม ทำเลดี ราคาเริ่มต้น 2.99 ล้าน — พระราม9, รามอินทรา, รังสิต, รามคำแหง">
+  <meta name="twitter:image"       content="https://www.rungkij.co.th/images/og-cover.jpg">
+  <!-- ═══════════════════════════ -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "หน้าหลัก",
+      "item": "https://www.rungkij.co.th"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "โครงการ",
+      "item": "https://www.rungkij.co.th/projects.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img">
+      </a>
+      <div class="nav-menu" id="navMenu">
+        <a href="index.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="about.html">About Us</a>
+        <a href="news.html">News</a>
+        <a href="financial.html">Financial</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(7,13,36,0.50) 0%, rgba(9,18,52,0.20) 40%, rgba(9,18,52,0.20) 60%, rgba(7,13,36,0.88) 100%), url('images/grand-verona/aerial-2.png'); background-size: cover; background-position: center;">
+    <div class="ph-horizon"></div>
+    <div class="page-header-content">
+      <span class="section-subtitle">Our Portfolio</span>
+      <h1>All Projects</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>Projects</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CURRENT & COMING SOON PROJECTS ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-70 reveal">
+        <span class="section-subtitle">Available Now</span>
+        <h2 class="section-title">Current Projects</h2>
+        <div class="section-divider"></div>
+        <p style="max-width:620px; margin:0 auto;">Carefully selected locations, meticulously designed homes, and vibrant communities — crafted to elevate every family's quality of life.</p>
+      </div>
+
+      <div class="projects-filter reveal">
+        <button class="filter-btn active" onclick="filterProjects('all', this)">ทั้งหมด</button>
+        <button class="filter-btn" onclick="filterProjects('house', this)">บ้านเดี่ยว</button>
+        <button class="filter-btn" onclick="filterProjects('townhome', this)">ทาวน์โฮม</button>
+        <button class="filter-btn" onclick="filterProjects('soldout', this)">Sold Out</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <!-- HAMPTON GROVE — Coming Soon -->
+        <div class="project-card reveal" data-type="house">
+          <div class="project-badge coming-soon">Coming Soon</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/hampton/render-1.png" alt="HAMPTON GROVE">
+            <div class="project-card-overlay">
+              <a href="project-hampton-grove.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Detached House · 89 Units</div>
+            <h3>Hampton Grove</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> มอเตอร์เวย์ — กรุงเทพกรีฑาตัดใหม่</p>
+          </div>
+        </div>
+
+        <!-- GRAND VERONA -->
+        <div class="project-card reveal" data-type="house townhome">
+          <div class="project-badge">Premium</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/grand-verona/maingate.jpg" alt="GRAND VERONA">
+            <div class="project-card-overlay">
+              <a href="project-grand-verona.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Houses &amp; Townhomes · 189 Units</div>
+            <h3>Grand Verona</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> รามคำแหง — ร่มเกล้า</p>
+          </div>
+        </div>
+
+        <!-- OSAKA -->
+        <div class="project-card reveal" data-type="townhome">
+          <div class="project-card-image">
+            <img loading="lazy" src="images/osaka/clubhouse.jpg" alt="OSAKA">
+            <div class="project-card-overlay">
+              <a href="project-osaka.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Townhome · 175 Units</div>
+            <h3>Osaka</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> รามอินทรา — คู้บอน</p>
+          </div>
+        </div>
+
+        <!-- THE HAMPTON -->
+        <div class="project-card reveal" data-type="house">
+          <div class="project-card-image">
+            <img loading="lazy" src="images/hampton/render-1.png" alt="THE HAMPTON">
+            <div class="project-card-overlay">
+              <a href="project-hampton.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Detached House · 82 Units</div>
+            <h3>The Hampton</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> พระราม 9 — กรุงเทพกรีฑา</p>
+          </div>
+        </div>
+
+        <!-- THE NICE (Rangsit) -->
+        <div class="project-card reveal" data-type="townhome">
+          <div class="project-card-image">
+            <img loading="lazy" src="images/the-nice/exterior-1.jpg" alt="THE NICE">
+            <div class="project-card-overlay">
+              <a href="project-the-nice.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Townhome · 257 Units</div>
+            <h3>The Nice</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> รังสิต — คลอง 3</p>
+          </div>
+        </div>
+
+        <!-- THE VERONA VILLAGE -->
+        <div class="project-card reveal" data-type="townhome">
+          <div class="project-card-image">
+            <img loading="lazy" src="images/grand-verona/single-a-1.jpg" alt="THE VERONA VILLAGE">
+            <div class="project-card-overlay">
+              <a href="project-the-verona.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Townhome · 200 Units</div>
+            <h3>The Verona Village</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> พระราม 9 — กรุงเทพกรีฑา</p>
+          </div>
+        </div>
+
+        <!-- THE CORNER -->
+        <div class="project-card reveal" data-type="townhome">
+          <div class="project-card-image">
+            <img loading="lazy" src="images/grand-verona/clubhouse-int-1.jpg" alt="THE CORNER">
+            <div class="project-card-overlay">
+              <a href="project-the-corner.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Home Office · 8 Units</div>
+            <h3>The Corner นิมิตรใหม่</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> ถนนนิมิตรใหม่</p>
+          </div>
+        </div>
+
+        <!-- THE NICE (Ramintra) — Sold Out -->
+        <div class="project-card reveal" data-type="soldout townhome">
+          <div class="project-badge sold-out">Sold Out</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/the-nice/exterior-2.jpg" alt="THE NICE RAMINTRA">
+            <div class="project-card-overlay">
+              <a href="project-the-nice.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Townhome · 260 Units</div>
+            <h3>The Nice (รามอินทรา)</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> รามอินทรา — พระยาสุเรนทร์</p>
+          </div>
+        </div>
+
+        <!-- NEW YORK -->
+        <div class="project-card reveal" data-type="soldout townhome">
+          <div class="project-badge sold-out">Sold Out</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/grand-verona/house-2.jpg" alt="NEW YORK">
+            <div class="project-card-overlay">
+              <a href="project-new-york.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Townhome · 155 Units</div>
+            <h3>New York</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> รังสิต — คลอง 4</p>
+          </div>
+        </div>
+
+        <!-- RK HOME PARK 2 — Sold Out -->
+        <div class="project-card reveal" data-type="soldout house">
+          <div class="project-badge sold-out">Sold Out</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/hampton/photo-1.jpg" alt="RK HOME PARK 2">
+            <div class="project-card-overlay">
+              <a href="#" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Detached House · 110 Units</div>
+            <h3>RK Home Park 2</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> พระราม 9 — วงแหวน</p>
+          </div>
+        </div>
+
+        <!-- HAUS THE HAMBURG -->
+        <div class="project-card reveal" data-type="soldout townhome">
+          <div class="project-badge sold-out">Sold Out</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/grand-verona/house-3.jpg" alt="HAUS THE HAMBURG">
+            <div class="project-card-overlay">
+              <a href="project-hamburg.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Townhome · 196 Units</div>
+            <h3>Haus The Hamburg</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> ถนนหทัยราษฎร์</p>
+          </div>
+        </div>
+
+        <!-- THE REGENT STREET -->
+        <div class="project-card reveal" data-type="soldout townhome">
+          <div class="project-badge sold-out">Sold Out</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/hampton/render-2.png" alt="THE REGENT STREET">
+            <div class="project-card-overlay">
+              <a href="project-regent-street.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Home Office · 146 Units</div>
+            <h3>The Regent Street</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> ถนนพระยาสุเรนทร์</p>
+          </div>
+        </div>
+
+        <!-- BIZ CENTER -->
+        <div class="project-card reveal" data-type="soldout">
+          <div class="project-badge sold-out">Sold Out</div>
+          <div class="project-card-image">
+            <img loading="lazy" src="images/grand-verona/clubhouse-int-1.jpg" alt="RK BIZ CENTER">
+            <div class="project-card-overlay">
+              <a href="project-biz-center.html" class="btn btn-outline">View Details</a>
+            </div>
+          </div>
+          <div class="project-card-info">
+            <div class="project-type">Office + Home Office · 158 Units</div>
+            <h3>RK Biz Center</h3>
+            <p class="project-location"><i class="fas fa-map-marker-alt"></i> ถนนร่มเกล้า</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HISTORICAL PORTFOLIO TABLE ===== -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="text-center mb-70 reveal">
+        <span class="section-subtitle">50+ Years of Development</span>
+        <h2 class="section-title">ประวัติโครงการทั้งหมด</h2>
+        <div class="section-divider"></div>
+        <p style="max-width:620px; margin:0 auto;">รุ่งกิจพัฒนาโครงการมาอย่างต่อเนื่องกว่า 50 ปี สร้างบ้านและชุมชนคุณภาพให้กับครอบครัวไทยมากกว่า 5,000 ครัวเรือน</p>
+      </div>
+      <div class="history-table-wrap reveal">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>ปี (พ.ศ.)</th>
+              <th>ชื่อโครงการ</th>
+              <th>ที่อยู่ / ทำเล</th>
+              <th style="text-align:center;">จำนวนยูนิต</th>
+              <th>ประเภท</th>
+              <th>สถานะ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="td-year">2522</td><td class="td-name">ไทยวันดี (สุขุมวิท 101/1)</td><td>ซอย วชิรธรรมสาธิต 57</td><td class="td-units">182</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2524</td><td class="td-name">ไทยวันดี (ถนนเอกชัย)</td><td>ถ.เอกชัย ตรงข้ามซอยสหนาคาร</td><td class="td-units">70</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2536</td><td class="td-name">รุ่งกิจ วิลล่า 1</td><td>ซอยรามคำแหง 90</td><td class="td-units">127</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2538</td><td class="td-name">รุ่งกิจ วิลล่า 2</td><td>ซอยรามคำแหง 122</td><td class="td-units">125</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2539</td><td class="td-name">รุ่งกิจ วิลล่า 4</td><td>ร่มเกล้า 54</td><td class="td-units">138</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2540</td><td class="td-name">รุ่งกิจ วิลล่า 5</td><td>ร่มเกล้า 56</td><td class="td-units">128</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2542</td><td class="td-name">รุ่งกิจ วิลล่า 7</td><td>ร่มเกล้า 42</td><td class="td-units">376</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2543</td><td class="td-name">รุ่งกิจ วิลล่า 8 (รุ่งกิจการ์เด้นโฮม)</td><td>ร่มเกล้า 21/8</td><td class="td-units">77</td><td>บ้านเดี่ยว</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2545</td><td class="td-name">รุ่งกิจ วิลล่า 9</td><td>ร่มเกล้า 58</td><td class="td-units">369</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2546</td><td class="td-name">รุ่งกิจ วิลล่า 10</td><td>ซอยนิมิตรใหม่ 13</td><td class="td-units">231</td><td>บ้านเดี่ยว+ทาวน์เฮาส์</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2547</td><td class="td-name">รุ่งกิจ วิลล่า 11</td><td>ร่มเกล้า 32</td><td class="td-units">169</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2548</td><td class="td-name">รุ่งกิจแกรนด์วิสต้า</td><td>ระหว่างซอยหทัยราษฎร์ 3-5</td><td class="td-units">318</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2549</td><td class="td-name">รุ่งกิจ วิลล่า 14</td><td>ร่มเกล้า 38</td><td class="td-units">229</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2550</td><td class="td-name">RK Office Park (วงแหวน-ร่มเกล้า)</td><td>ถนนวงแหวน-ร่มเกล้า</td><td class="td-units">86</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2551</td><td class="td-name">RK Office Park (รามอินทรา-รามคำแหง)</td><td>ถนนสุวินทวงศ์</td><td class="td-units">267</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2551</td><td class="td-name">RK Home Park 1 (พระราม 9-วงแหวน)</td><td>ถนนพัฒนาชนบท 3</td><td class="td-units">100</td><td>บ้านเดี่ยว</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2553</td><td class="td-name">RK Biz Center (มอลเดอร์เวย์ – แอร์พอร์ตลิ้งค์)</td><td>ถนนร่มเกล้า 1</td><td class="td-units">158</td><td>อาคารสำนักงาน+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2553</td><td class="td-name">RK Park (รามอินทรา-มีนบุรี)</td><td>ระหว่างซอยหทัยราษฎร์ 31/1 - 31/2</td><td class="td-units">348</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2554</td><td class="td-name">RK Park (รามอินทรา-คู้บอน)</td><td>ระหว่างคลองสาย 26 - 28</td><td class="td-units">195</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2555</td><td class="td-name">Haus The Hamburg</td><td>ถนนหทัยราษฎร์</td><td class="td-units">196</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2556</td><td class="td-name">The Regent Street</td><td>ถนนพระยาสุเรนทร์</td><td class="td-units">146</td><td>โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2557</td><td class="td-name">RK Home Park 2 (พระราม 9-วงแหวน)</td><td>ถนนพัฒนาชนบท 3</td><td class="td-units">110</td><td>บ้านเดี่ยว</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2559</td><td class="td-name">The Nice (รามอินทรา-พระยาสุเรนทร์)</td><td>ถนนพระยาสุเรนทร์</td><td class="td-units">260</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2561</td><td class="td-name">The Nice (รังสิต-คลอง 3)</td><td>ลำลูกกา คลอง 3</td><td class="td-units">257</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-ready">Ready</span></td></tr>
+            <tr><td class="td-year">2561</td><td class="td-name">The Verona Village (พระราม 9-กรุงเทพกรีฑา)</td><td>ถนนพัฒนาชนบท 3</td><td class="td-units">200</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-ready">Ready</span></td></tr>
+            <tr><td class="td-year">2562</td><td class="td-name">New York (รังสิต-คลอง 4)</td><td>ลำลูกกา คลอง 4</td><td class="td-units">155</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-soldout">Sold Out</span></td></tr>
+            <tr><td class="td-year">2562</td><td class="td-name">The Corner นิมิตรใหม่</td><td>ถนนนิมิตรใหม่</td><td class="td-units">8</td><td>โฮมออฟฟิส</td><td><span class="status-badge badge-ready">Ready</span></td></tr>
+            <tr><td class="td-year">2564</td><td class="td-name">The Hampton (พระราม 9-กรุงเทพกรีฑา)</td><td>ถนนพัฒนาชนบท 4</td><td class="td-units">82</td><td>บ้านเดี่ยว</td><td><span class="status-badge badge-ready">Ready</span></td></tr>
+            <tr><td class="td-year">2565</td><td class="td-name">Osaka (รามอินทรา-คู้บอน)</td><td>ถนนเลียบคลองสอง</td><td class="td-units">175</td><td>ทาวน์เฮาส์+โฮมออฟฟิส</td><td><span class="status-badge badge-ready">Ready</span></td></tr>
+            <tr><td class="td-year">2566</td><td class="td-name">Grand Verona (รามคำแหง-ร่มเกล้า)</td><td>ระหว่างซอยร่มเกล้า 20-22</td><td class="td-units">189</td><td>บ้านเดี่ยว+ทาวน์เฮาส์</td><td><span class="status-badge badge-ready">Ready</span></td></tr>
+            <tr><td class="td-year">2569</td><td class="td-name">Hampton Grove (มอเตอร์เวย์-กรุงเทพกรีฑาตัดใหม่)</td><td>ถนนพัฒนาชนบท 4</td><td class="td-units">89</td><td>บ้านเดี่ยว</td><td><span class="status-badge badge-coming">Coming Soon</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container reveal">
+      <span class="section-subtitle">Interested?</span>
+      <h2>Schedule a Private<br>Viewing Today</h2>
+      <p>Our team is ready to welcome you and provide personalized guidance every day.</p>
+      <a href="contact.html" class="btn btn-primary">Book a Visit</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-horizon"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img logo-img-footer">
+          <p>V.S.K. Estate Company Limited. Over 50 years of premium real estate development.</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/rungkijcorp/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rungkij_official" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Line"><i class="fab fa-line"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="financial.html">Financial</a></li>
+            <li><a href="care.html">Care</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Projects</h4>
+          <ul class="footer-links">
+            <li><a href="project-hampton-grove.html">Hampton Grove</a></li>
+            <li><a href="project-grand-verona.html">Grand Verona</a></li>
+            <li><a href="project-osaka.html">Osaka</a></li>
+            <li><a href="project-hampton.html">The Hampton</a></li>
+            <li><a href="project-the-nice.html">The Nice</a></li>
+            <li><a href="project-the-verona.html">The Verona Village</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for the latest project launches and exclusive offers.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" placeholder="Your email address">
+            <button type="submit"><i class="fas fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 V.S.K. Estate Company Limited. All rights reserved.</span>
+        <div>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- ── Floating Sticky Action Bar ── -->
+  <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="ติดต่อเรา">
+    <div class="sticky-bar-inner">
+      <div class="sticky-social">
+        <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Facebook Messenger">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+        <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line">
+          <i class="fab fa-line"></i>
+        </a>
+        <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร 02-540-7999">
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
+      <a href="calculator.html" class="sticky-btn sticky-btn-calc">
+        <i class="fas fa-calculator"></i>
+        <span>คำนวณสินเชื่อ</span>
+      </a>
+      <a href="#" onclick="ChatWidget.open();return false;" class="sticky-btn sticky-btn-ask">
+        <span class="icon-sparkle"><i class="fas fa-bolt"></i></span>
+        <span>ถามมาได้เลย</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="chat-widget.js" defer></script>
+  <script src="main.js" defer></script>
+  <script>
+    function filterProjects(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.project-card').forEach(card => {
+        card.style.display = (type === 'all' || card.dataset.type.includes(type)) ? '' : 'none';
+      });
+    }
+  </script>
+
+  <style>
+    .project-badge.coming-soon {
+      background: linear-gradient(135deg, #f57f17, #ffa000);
+      color: #fff;
+    }
+  </style>
+</body>
+</html>
