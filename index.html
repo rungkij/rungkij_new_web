@@ -206,24 +206,34 @@
 
   <!-- ========== PROJECT SHOWCASE SLIDER ========== -->
   <section class="pss-section">
-    <div class="pss-bg" style="background-image: url('images/grand-verona/aerial-1.png');"></div>
+    <div class="pss-bg" id="pssBg" style="background-image: url('images/grand-verona/aerial-1.png');"></div>
     <div class="pss-inner">
 
       <!-- Left: Headline -->
       <div class="pss-left reveal">
-        <span class="section-subtitle" style="color:var(--accent);">บรรยากาศทำเล</span>
-        <h2 class="pss-headline">ทำเลดี<br>ชีวิตดี<br>ทุกเส้นทาง</h2>
-        <p class="pss-body">แต่ละโครงการคัดสรรทำเลเชิงยุทธศาสตร์ ติดทางด่วน ใกล้รถไฟฟ้า เชื่อมต่อทุกย่านสำคัญของกรุงเทพฯ เดินทางสะดวก ทั้งอยู่เองและลงทุน</p>
-        <a href="projects.html" class="pss-cta">ดูโครงการทั้งหมด <i class="fas fa-arrow-right"></i></a>
-        <div class="pss-left-progress">
-          <div class="pss-left-bar" id="pssBar"></div>
+        <!-- Tab Switch -->
+        <div class="pss-tabs">
+          <button class="pss-tab active" data-tab="location">รวมทำเล</button>
+          <button class="pss-tab" data-tab="lifestyle">ไลฟ์สไตล์</button>
         </div>
+        <h2 class="pss-headline" id="pssHeadline">ตอบทุกโจทย์<br>ความต้องการบ้านใหม่ทุก<br>ทำเล ทั่วไทย</h2>
+        <p class="pss-body" id="pssBody">โครงการแสนสิริมีให้เลือกทุกพื้นที่ ทั้งบ้าน ทำเลศักยภาพ คอนโดใกล้รถไฟฟ้า ทาวน์โฮม ใกล้เมือง ไม่ว่าจะอยู่เองหรือลงทุน แสนสิริพร้อม ตอบรับทุกความต้องการของคุณในทุกทำเล</p>
+        <a href="projects.html" class="pss-cta" id="pssCta">ดูทำเลทั้งหมด <i class="fas fa-arrow-right"></i></a>
       </div>
 
       <!-- Right: Slider -->
       <div class="pss-right">
         <div class="pss-viewport">
           <div class="pss-track" id="pssTrack"></div>
+        </div>
+        <!-- Controls: Arrows + Progress + Counter -->
+        <div class="pss-controls">
+          <button class="pss-arrow" id="pssPrev"><i class="fas fa-chevron-left"></i></button>
+          <button class="pss-arrow" id="pssNext"><i class="fas fa-chevron-right"></i></button>
+          <div class="pss-progress">
+            <div class="pss-bar" id="pssBar"></div>
+          </div>
+          <div class="pss-counter" id="pssCounter"><em>01</em> / 12</div>
         </div>
       </div>
 
@@ -641,93 +651,352 @@
   <script src="chat-widget.js" defer></script>
   <script src="main.js" defer></script>
   <script>
-  // ---- PROJECT SHOWCASE SLIDER — Location Edition ----
-  // 💡 วิธีเพิ่มวีดีโอ: ใส่ path วีดีโอในฟิลด์ video: 'images/locations/ชื่อไฟล์.mp4'
-  // หากมี video จะแสดง <video autoplay muted loop> แทน <img> อัตโนมัติ
+  // ---- PROJECT SHOWCASE SLIDER — Dual Tab (Location + Lifestyle) ----
   (function() {
-    var projects = [
-      {
-        // 📍 พระราม 9 – กรุงเทพกรีฑา
-        video: 'images/locations/location-3.mp4',
-        image: 'images/hampton/photo-6.jpg',
-        name:  'พระราม 9 – กรุงเทพกรีฑา',
-        type:  'ทำเลใจกลางเมือง',
-        desc:  'ติดทางด่วนเฉลิมมหานคร เชื่อมสนามบินสุวรรณภูมิสะดวก',
-        location: 'พระราม 9 – กรุงเทพกรีฑา',
-        href:  'project-hampton.html'
-      },
-      {
-        // 📍 ร่มเกล้า – รามคำแหง
-        video: 'images/locations/location-1.mp4',
-        image: 'images/grand-verona/aerial-1.png',
-        name:  'ร่มเกล้า – รามคำแหง',
-        type:  'ทำเลเชื่อมต่อทุกทิศ',
-        desc:  'ติดทางด่วนฉลองรัช ใกล้ Airport Link และ MRT สะดวกทุกเส้นทาง',
-        location: 'ร่มเกล้า – รามคำแหง',
-        href:  'project-grand-verona.html'
-      },
-      {
-        // 📍 รามอินทรา – คู้บอน
-        video: 'images/locations/location-2.mp4',
-        image: 'images/grand-verona/aerial-2.png',
-        name:  'รามอินทรา – คู้บอน',
-        type:  'ทำเลโซนเหนือกรุงเทพฯ',
-        desc:  'เข้าออกทางด่วนงามวงศ์วาน–รามอินทรา โล่ง ไม่ติดไฟแดง',
-        location: 'รามอินทรา – คู้บอน',
-        href:  'project-osaka.html'
-      },
-      {
-        // 📍 รังสิต – คลอง 3
-        video: 'images/locations/location-1.mp4',
-        image: 'images/the-nice/exterior-1.jpg',
-        name:  'รังสิต – คลอง 3',
-        type:  'ทำเลชานเมืองเงียบสงบ',
-        desc:  'ใกล้ Future Park Rangsit และทางด่วนอุดรรัถยา อากาศดี',
-        location: 'รังสิต – คลอง 3',
-        href:  'project-the-nice.html'
-      }
-    ];
 
-    var track = document.getElementById('pssTrack');
-    var barEl  = document.getElementById('pssBar');
+    // ====== DATA: รวมทำเล ======
+    var locationData = {
+      headline: 'ตอบทุกโจทย์<br>ความต้องการบ้านใหม่ทุก<br>ทำเล ทั่วไทย',
+      body: 'โครงการแสนสิริมีให้เลือกทุกพื้นที่ ทั้งบ้าน ทำเลศักยภาพ คอนโดใกล้รถไฟฟ้า ทาวน์โฮม ใกล้เมือง คอนโดตากอากาศ โครงการใกล้ ที่เรียนชั้นนำ หรือโครงการใกล้โซนที่ทำงาน ไม่ว่าจะอยู่เองหรือลงทุน แสนสิริพร้อม ตอบรับทุกความต้องการของคุณในทุกทำเล',
+      cta: 'ดูทำเลทั้งหมด',
+      bg: 'images/grand-verona/aerial-1.png',
+      cards: [
+        {
+          video: 'images/locations/location-3.mp4',
+          image: 'images/hampton/photo-6.jpg',
+          type:  'คอนโดทองหล่อ - สุขุมวิท',
+          name:  'ทำเลดาวเด่น ย่านธุรกิจและไลฟ์สไตล์คนเมือง',
+          href:  'project-hampton.html'
+        },
+        {
+          video: 'images/locations/location-1.mp4',
+          image: 'images/grand-verona/aerial-1.png',
+          type:  'บ้านเดี่ยวและทาวน์โฮม',
+          name:  'ย่านกรุงเทพกรีฑา - พัฒนาการ - รามคำแหง',
+          desc:  'ศูนย์รวมรถไฟฟ้า 3 สาย เชื่อมต่อหลายเส้นทาง',
+          href:  'project-grand-verona.html'
+        },
+        {
+          video: 'images/locations/location-2.mp4',
+          image: 'images/grand-verona/aerial-2.png',
+          type:  'บ้านและทาวน์โฮม',
+          name:  'ย่านศรีนครินทร์ - บางนา - สุวรรณภูมิ',
+          desc:  'หนึ่งในทำเลฮอตติดอันดับเรื่องที่อยู่อาศัย',
+          href:  'project-the-nice.html'
+        },
+        {
+          image: 'images/osaka/clubhouse.jpg',
+          type:  'บ้านเดี่ยว',
+          name:  'ย่านรามอินทรา - คู้บอน',
+          desc:  'เข้าออกทางด่วนงามวงศ์วาน–รามอินทรา สะดวก',
+          href:  'project-osaka.html'
+        },
+        {
+          image: 'images/hampton/render-1.png',
+          type:  'บ้านเดี่ยวหรู',
+          name:  'ย่านพระราม 9 - กรุงเทพกรีฑา',
+          desc:  'ใจกลาง CBD ติดทางด่วน ใกล้สนามบิน',
+          href:  'project-hampton.html'
+        },
+        {
+          image: 'images/the-nice/exterior-1.jpg',
+          type:  'ทาวน์โฮม',
+          name:  'ย่านรังสิต - คลอง 3',
+          desc:  'ใกล้ Future Park และทางด่วนอุดรรัถยา',
+          href:  'project-the-nice.html'
+        },
+        {
+          image: 'images/grand-verona/house-1.jpg',
+          type:  'บ้านเดี่ยว',
+          name:  'ย่านลาดพร้าว - วังหิน',
+          desc:  'ใกล้ MRT ลาดพร้าว ทำเลทองฝั่งเหนือ',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/grand-verona/town-a-1.jpg',
+          type:  'ทาวน์โฮม',
+          name:  'ย่านบางกะปิ - สุขาภิบาล 3',
+          desc:  'ย่านเงียบสงบ ใกล้ The Mall บางกะปิ',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/hampton/photo-2.jpg',
+          type:  'บ้านเดี่ยวหรู',
+          name:  'ย่านพัฒนาการ - ศรีนครินทร์',
+          desc:  'ทำเลพรีเมียม เชื่อม Airport Rail Link',
+          href:  'project-hampton.html'
+        },
+        {
+          image: 'images/osaka/show-1.png',
+          type:  'บ้านสไตล์ญี่ปุ่น',
+          name:  'ย่านรามคำแหง - มีนบุรี',
+          desc:  'ใกล้รถไฟฟ้าสายสีส้ม ทำเลอนาคต',
+          href:  'project-osaka.html'
+        },
+        {
+          image: 'images/grand-verona/house-3.jpg',
+          type:  'บ้านเดี่ยวและทาวน์โฮม',
+          name:  'ย่านบางนา - กิ่งแก้ว',
+          desc:  'เชื่อมต่อสนามบินสุวรรณภูมิ เพียง 15 นาที',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/the-nice/exterior-3.jpg',
+          type:  'ทาวน์โฮม',
+          name:  'ย่านนวมินทร์ - เกษตรนวมินทร์',
+          desc:  'เชื่อม 3 เส้นทางหลัก ใจกลางฝั่งตะวันออก',
+          href:  'project-the-nice.html'
+        }
+      ]
+    };
+
+    // ====== DATA: ไลฟ์สไตล์ ======
+    var lifestyleData = {
+      headline: 'ตอบทุกโจทย์<br>ทุก ไลฟ์สไตล์<br>การใช้ชีวิต',
+      body: 'บ้านแสนสิริไม่ได้ตอบโจทย์แค่ตัวบ้าน แต่ตอบโจทย์ทุกมิติของชีวิตรอบตัวคุณ',
+      cta: 'ดูโครงการทั้งหมด',
+      bg: 'images/hampton/render-2.png',
+      cards: [
+        {
+          image: 'images/the-nice/exterior-2.jpg',
+          type:  'ทาวน์โฮมราคา',
+          name:  '3 - 5 ล้าน',
+          desc:  'เริ่มต้นชีวิตใหม่ในบ้านคุณภาพ ราคาเข้าถึงได้',
+          href:  'project-the-nice.html'
+        },
+        {
+          image: 'images/osaka/show-2.png',
+          type:  'คอนโดไม่เกิน 3 ล้าน',
+          name:  'ลงตัวทุกตารางเมตร',
+          desc:  'คอนโดใกล้รถไฟฟ้า พร้อมสิ่งอำนวยความสะดวกครบ',
+          href:  'project-osaka.html'
+        },
+        {
+          image: 'images/hampton/photo-4.jpg',
+          type:  'บ้านอบอุ่นครอบครัวใหญ่',
+          name:  'พื้นที่กว้าง ฟังก์ชันครบ',
+          desc:  'สำหรับครอบครัวที่ต้องการพื้นที่ส่วนตัวและพื้นที่รวม',
+          href:  'project-hampton.html'
+        },
+        {
+          image: 'images/grand-verona/maingate.jpg',
+          type:  'บ้านเดี่ยวหรูสไตล์ยุโรป',
+          name:  'ดีไซน์ระดับ Luxury',
+          desc:  'สถาปัตยกรรมยุโรปร่วมสมัย โดดเด่นทุกรายละเอียด',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/the-nice/exterior-4.jpg',
+          type:  'ทาวน์โฮมสไตล์โมเดิร์น',
+          name:  'คอมแพ็ค ครบ สวยงาม',
+          desc:  'ออกแบบให้ทุกตารางนิ้วใช้งานได้จริง',
+          href:  'project-the-nice.html'
+        },
+        {
+          image: 'images/hampton/photo-3.jpg',
+          type:  'บ้านใกล้รถไฟฟ้า',
+          name:  'เดินทางสะดวก ทุกวัน',
+          desc:  'ใกล้สถานีรถไฟฟ้า BTS/MRT ประหยัดเวลาเดินทาง',
+          href:  'project-hampton.html'
+        },
+        {
+          image: 'images/grand-verona/aerial-2.png',
+          type:  'บ้านใกล้ทางด่วน',
+          name:  'เชื่อมต่อทุกเส้นทาง',
+          desc:  'เข้าออกทางด่วนสะดวก ไม่เสียเวลาบนท้องถนน',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/osaka/show-3.png',
+          type:  'บ้านใกล้โรงเรียนชั้นนำ',
+          name:  'เพื่ออนาคตลูกรัก',
+          desc:  'ทำเลใกล้โรงเรียนนานาชาติและสถาบันชั้นนำ',
+          href:  'project-osaka.html'
+        },
+        {
+          image: 'images/the-nice/exterior-5.jpg',
+          type:  'บ้านเริ่มต้นสำหรับคู่รัก',
+          name:  'สร้างครอบครัวใหม่',
+          desc:  'ขนาดพอดี ราคาเข้าถึงได้ พร้อมเริ่มชีวิตคู่',
+          href:  'project-the-nice.html'
+        },
+        {
+          image: 'images/hampton/photo-5.jpg',
+          type:  'บ้านพร้อมสวนส่วนตัว',
+          name:  'ธรรมชาติในบ้านคุณ',
+          desc:  'พื้นที่สีเขียวส่วนตัว ผ่อนคลายทุกวัน',
+          href:  'project-hampton.html'
+        },
+        {
+          image: 'images/the-nice/show-1.png',
+          type:  'ทาวน์โฮมพร้อมอยู่',
+          name:  'ตกแต่งครบ เข้าอยู่ได้เลย',
+          desc:  'บ้านพร้อมเฟอร์นิเจอร์ Built-in ครบทุกฟังก์ชัน',
+          href:  'project-the-nice.html'
+        },
+        {
+          image: 'images/grand-verona/single-a-1.jpg',
+          type:  'บ้านเดี่ยวพื้นที่กว้าง',
+          name:  'กว้างขวาง เป็นส่วนตัว',
+          desc:  'ที่ดินเริ่ม 50 ตร.วา พร้อมที่จอดรถ 2-3 คัน',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/osaka/show-4.png',
+          type:  'บ้านสไตล์ญี่ปุ่น',
+          name:  'มินิมอล สะอาดตา',
+          desc:  'ดีไซน์ญี่ปุ่นร่วมสมัย เน้นความเรียบง่ายลงตัว',
+          href:  'project-osaka.html'
+        },
+        {
+          image: 'images/grand-verona/clubhouse-1.jpg',
+          type:  'คอมมูนิตี้มอลล์ในโครงการ',
+          name:  'ครบจบในโครงการ',
+          desc:  'ร้านค้า คาเฟ่ ฟิตเนส สระว่ายน้ำ ในโครงการ',
+          href:  'project-grand-verona.html'
+        },
+        {
+          image: 'images/hampton/render-3.png',
+          type:  'โฮมออฟฟิศ',
+          name:  'ทำงานจากบ้านอย่างสมบูรณ์',
+          desc:  'พื้นที่ออกแบบสำหรับ Work from Home โดยเฉพาะ',
+          href:  'project-hampton.html'
+        },
+        {
+          image: 'images/grand-verona/aerial-1.png',
+          type:  'บ้านใกล้สนามบิน',
+          name:  'สะดวกทุกการเดินทาง',
+          desc:  'เดินทางถึงสนามบินสุวรรณภูมิภายใน 15-20 นาที',
+          href:  'project-grand-verona.html'
+        }
+      ]
+    };
+
+    // ====== DOM REFS ======
+    var track     = document.getElementById('pssTrack');
+    var barEl     = document.getElementById('pssBar');
+    var counterEl = document.getElementById('pssCounter');
+    var headlineEl= document.getElementById('pssHeadline');
+    var bodyEl    = document.getElementById('pssBody');
+    var ctaEl     = document.getElementById('pssCta');
+    var bgEl      = document.getElementById('pssBg');
+    var prevBtn   = document.getElementById('pssPrev');
+    var nextBtn   = document.getElementById('pssNext');
+    var tabs      = document.querySelectorAll('.pss-tab');
     if (!track) return;
 
-    var total = projects.length;
+    var current   = 0;
+    var total     = 0;
+    var autoTimer = null;
+    var CARD_GAP  = 14;
+    var AUTO_DELAY= 5000;
+    var activeTab = 'location';
 
-    projects.forEach(function(p, i) {
-      var a = document.createElement('a');
-      a.href = p.href;
-      a.className = 'pss-card';
+    // ====== DOM: extra refs for transitions ======
+    var leftPanel  = document.querySelector('.pss-left');
+    var viewport   = document.querySelector('.pss-viewport');
+    var controlsEl = document.querySelector('.pss-controls');
+    var FADE_OUT   = 350;   // ms — fade-out duration
+    var FADE_IN    = 400;   // ms — stagger-in delay
+    var isFirstBuild = true;
 
-      // สร้าง media element: วีดีโอถ้ามี ไม่งั้นใช้รูป
-      // วีดีโอใช้ poster (ภาพ thumbnail) เพื่อแสดงทันที ก่อนวีดีโอโหลด
-      var mediaHtml;
-      if (p.video) {
-        mediaHtml =
-          '<video class="pss-card-video" muted loop playsinline preload="metadata" poster="' + p.image + '">' +
-            '<source src="' + p.video + '" type="video/mp4">' +
-          '</video>';
-      } else {
-        mediaHtml = '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">';
+    // ====== BUILD CARDS (instant — called after fade-out) ======
+    function rebuildContent(data) {
+      current = 0;
+      track.innerHTML = '';
+      total = data.cards.length;
+
+      // Update left panel text
+      headlineEl.innerHTML = data.headline;
+      bodyEl.textContent   = data.body;
+      ctaEl.innerHTML      = data.cta + ' <i class="fas fa-arrow-right"></i>';
+
+      // Build card elements
+      data.cards.forEach(function(p) {
+        var a = document.createElement('a');
+        a.href = p.href;
+        a.className = 'pss-card';
+
+        var mediaHtml;
+        if (p.video) {
+          mediaHtml =
+            '<video class="pss-card-video" muted loop playsinline preload="metadata" poster="' + p.image + '">' +
+              '<source src="' + p.video + '" type="video/mp4">' +
+            '</video>';
+        } else {
+          mediaHtml = '<img src="' + p.image + '" alt="' + p.name + '" loading="lazy">';
+        }
+
+        var descHtml = p.desc ? '<div class="pss-card-desc">' + p.desc + '</div>' : '';
+        a.innerHTML =
+          mediaHtml +
+          '<div class="pss-card-overlay"></div>' +
+          '<div class="pss-card-body">' +
+            '<div class="pss-card-type">' + p.type + '</div>' +
+            '<div class="pss-card-name">' + p.name + '</div>' +
+            descHtml +
+          '</div>';
+        track.appendChild(a);
+      });
+
+      update(false);
+    }
+
+    // ====== BUILD WITH SMOOTH CROSSFADE ======
+    function buildCards(data, animate) {
+      stopAuto();
+
+      // First load: no fade, just build instantly
+      if (isFirstBuild || animate === false) {
+        isFirstBuild = false;
+        rebuildContent(data);
+        // stagger card entrance
+        setTimeout(function() {
+          track.querySelectorAll('.pss-card').forEach(function(c) { c.classList.add('card-visible'); });
+          track.querySelectorAll('.pss-card-video').forEach(function(v) { v.play().catch(function(){}); });
+        }, 50);
+        setTimeout(startAuto, 1200);
+        return;
       }
 
-      a.innerHTML =
-        mediaHtml +
-        '<div class="pss-card-overlay"></div>' +
-        '<div class="pss-card-body">' +
-          '<div class="pss-card-type">' + p.type + '</div>' +
-          '<div class="pss-card-name">' + p.name + '</div>' +
-          '<div class="pss-card-desc">' + p.desc + '</div>' +
-          '<div class="pss-card-loc"><i class="fas fa-map-marker-alt" style="margin-right:5px;opacity:0.65;"></i>' + p.location + '</div>' +
-        '</div>';
-      track.appendChild(a);
-    });
+      // ---- Phase 1: Fade everything out ----
+      leftPanel.classList.add('switching');
+      viewport.classList.add('fade-out');
+      controlsEl.classList.add('fade-out');
+      bgEl.classList.add('fade-out');
 
-    var current = 0;
-    var autoTimer = null;
-    var CARD_GAP = 14;
-    var AUTO_DELAY = 5000;
+      // ---- Phase 2: After fade-out, swap content ----
+      setTimeout(function() {
+        rebuildContent(data);
 
+        // Swap background
+        bgEl.style.backgroundImage = "url('" + data.bg + "')";
+
+        // ---- Phase 3: Fade everything back in ----
+        // Remove switching class → CSS transition fades text back
+        leftPanel.classList.remove('switching');
+        bgEl.classList.remove('fade-out');
+        viewport.classList.remove('fade-out');
+        controlsEl.classList.remove('fade-out');
+
+        // Stagger card entrance
+        var cards = track.querySelectorAll('.pss-card');
+        cards.forEach(function(c, i) {
+          setTimeout(function() {
+            c.classList.add('card-visible');
+          }, i * 80);
+        });
+
+        // Play videos
+        track.querySelectorAll('.pss-card-video').forEach(function(v) {
+          v.play().catch(function(){});
+        });
+
+        setTimeout(startAuto, 1200);
+      }, FADE_OUT);
+    }
+
+    // ====== SLIDER LOGIC ======
     function getCardWidth() {
       var fc = track.querySelector('.pss-card');
       return fc ? fc.getBoundingClientRect().width + CARD_GAP : 324;
@@ -742,27 +1011,42 @@
       }
       track.style.transform = 'translateX(' + (-current * w) + 'px)';
       if (barEl) barEl.style.width = ((current + 1) / total * 100) + '%';
+      if (counterEl) {
+        var num = (current + 1 < 10 ? '0' : '') + (current + 1);
+        counterEl.innerHTML = '<em>' + num + '</em> / ' + total;
+      }
     }
 
     function goNext() { current = (current + 1) % total; update(); }
     function goPrev() { current = (current - 1 + total) % total; update(); }
 
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(goNext, AUTO_DELAY);
-    }
-    function stopAuto() {
-      if (autoTimer) { clearInterval(autoTimer); autoTimer = null; }
-    }
+    function startAuto() { stopAuto(); autoTimer = setInterval(goNext, AUTO_DELAY); }
+    function stopAuto() { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
 
-    // Pause on hover
+    // ====== NAV BUTTONS ======
+    if (prevBtn) prevBtn.addEventListener('click', function() { stopAuto(); goPrev(); startAuto(); });
+    if (nextBtn) nextBtn.addEventListener('click', function() { stopAuto(); goNext(); startAuto(); });
+
+    // ====== TAB SWITCH ======
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var newTab = this.getAttribute('data-tab');
+        if (newTab === activeTab) return;
+        activeTab = newTab;
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        this.classList.add('active');
+        buildCards(activeTab === 'location' ? locationData : lifestyleData, true);
+      });
+    });
+
+    // ====== HOVER PAUSE ======
     var pssSection = document.querySelector('.pss-section');
     if (pssSection) {
       pssSection.addEventListener('mouseenter', stopAuto);
       pssSection.addEventListener('mouseleave', startAuto);
     }
 
-    // Touch / swipe support
+    // ====== TOUCH / SWIPE ======
     var startX = 0;
     track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; stopAuto(); }, { passive: true });
     track.addEventListener('touchend', function(e) {
@@ -771,28 +1055,8 @@
       startAuto();
     }, { passive: true });
 
-    // IntersectionObserver: card entrance + เริ่มเล่นวีดีโอเมื่อ scroll มาถึง
-    var sectionVisible = false;
-    var io = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !sectionVisible) {
-          sectionVisible = true;
-          // Card entrance animation
-          track.querySelectorAll('.pss-card').forEach(function(c) {
-            c.classList.add('card-visible');
-          });
-          // เริ่มเล่นวีดีโอทุกใบ (browser จะจัดการ buffer เอง)
-          track.querySelectorAll('.pss-card-video').forEach(function(v) {
-            v.play().catch(function(){});
-          });
-          io.disconnect();
-        }
-      });
-    }, { threshold: 0.15 });
-    io.observe(document.querySelector('.pss-section'));
-
-    update(false);
-    setTimeout(startAuto, 1200);
+    // ====== INIT ======
+    buildCards(locationData, false);
   })();
   </script>
 </body>

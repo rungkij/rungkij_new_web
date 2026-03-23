@@ -1514,6 +1514,37 @@ p {
   filter: grayscale(10%) sepia(25%);
   animation: pss-bg-drift 22s ease-in-out infinite;
   transform-origin: center center;
+  transition: opacity 0.6s ease;
+}
+.pss-bg.fade-out { opacity: 0; }
+
+/* Smooth tab-switch transitions for left panel content */
+.pss-headline,
+.pss-body,
+.pss-cta {
+  transition: opacity 0.4s ease, transform 0.5s ease;
+}
+.pss-left.switching .pss-headline,
+.pss-left.switching .pss-body,
+.pss-left.switching .pss-cta {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Viewport crossfade for cards */
+.pss-viewport {
+  transition: opacity 0.35s ease;
+}
+.pss-viewport.fade-out {
+  opacity: 0;
+}
+
+/* Controls crossfade */
+.pss-controls {
+  transition: opacity 0.3s ease;
+}
+.pss-controls.fade-out {
+  opacity: 0;
 }
 /* Multi-layer dark + golden-hour vignette */
 .pss-section::before {
@@ -1567,7 +1598,41 @@ p {
   margin: 0 auto;
   padding: 100px 60px;
 }
-.pss-left { flex: 0 0 300px; color: #fff; }
+.pss-left { flex: 0 0 340px; color: #fff; }
+
+/* Tab switch buttons */
+.pss-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 28px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 30px;
+  padding: 3px;
+  width: fit-content;
+  backdrop-filter: blur(6px);
+}
+.pss-tab {
+  padding: 8px 22px;
+  border: none;
+  border-radius: 26px;
+  background: transparent;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.pss-tab:hover {
+  color: rgba(255,255,255,0.85);
+}
+.pss-tab.active {
+  background: rgba(255,255,255,0.92);
+  color: var(--primary);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
 .pss-headline {
   font-family: 'Noto Sans Thai', 'Noto Sans Thai', 'Noto Sans', sans-serif;
   font-size: clamp(2rem, 3vw, 3rem);
@@ -1597,7 +1662,7 @@ p {
   text-transform: uppercase;
   padding: 11px 24px;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 999px;
   transition: background 0.25s, color 0.25s, border-color 0.25s;
 }
 .pss-cta:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
