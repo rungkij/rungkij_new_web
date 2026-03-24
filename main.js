@@ -102,7 +102,7 @@ const CROSSFADE_MS    = 2400;   // crossfade overlap
 function initVideoSlider() {
   if (videoSlides.length === 0) return;
 
-  // Set progress animation duration
+  // Set progress animation duration for slides 2+
   document.querySelectorAll('.slider-nav-fill').forEach(fill => {
     fill.style.animationDuration = SLIDE_DURATION + 'ms';
   });
@@ -113,17 +113,40 @@ function initVideoSlider() {
     first.muted = true;
     first.currentTime = 0;
     first.play().catch(() => {});
+
+    // ---- HSB: Slide up after 5 seconds of video playback ----
+    var hsbRevealed = false;
+    first.addEventListener('timeupdate', function hsbReveal() {
+      if (!hsbRevealed && first.currentTime >= 5) {
+        hsbRevealed = true;
+        first.removeEventListener('timeupdate', hsbReveal);
+        var hsb = document.querySelector('.hsb');
+        if (hsb) hsb.classList.add('hsb--visible');
+      }
+    });
   }
 
-  // Lazy-load slides 2+ — inject <source> from data-src only when needed
-  // (saves bandwidth on mobile; slides load on-demand ~3s before display)
+  // Slide 0: wait for video to finish naturally (ended event handles it).
+  // No fixed timer here — let the video play to completion.
+  // Safety fallback: advance after 3 minutes max in case ended never fires.
+  videoSliderTimer = setTimeout(nextVideoSlide, 180000);
 
-  startVideoSliderTimer();
-
-  // Kick off first progress bar
+  // Kick off first progress bar — animate over actual video duration once metadata loads
   if (navItems[0]) {
     const fill = navItems[0].querySelector('.slider-nav-fill');
-    if (fill) fill.style.animation = `sliderProgress ${SLIDE_DURATION}ms linear forwards`;
+    if (fill && first) {
+      const setFillAnim = () => {
+        const dur = (first.duration && isFinite(first.duration))
+          ? first.duration * 1000
+          : SLIDE_DURATION;
+        fill.style.animation = `sliderProgress ${dur}ms linear forwards`;
+      };
+      if (first.readyState >= 1) {
+        setFillAnim();
+      } else {
+        first.addEventListener('loadedmetadata', setFillAnim, { once: true });
+      }
+    }
   }
 }
 
@@ -227,13 +250,14 @@ function nextVideoSlide() {
 }
 
 
-// Auto-advance when video naturally ends
+// Auto-advance when video naturally ends (primary trigger for slide 0)
 videoSlides.forEach((slide, i) => {
   const v = slide.querySelector('video');
   if (v) {
     v.addEventListener('ended', () => {
       if (i === currentVideoSlide) {
-        clearTimeout(videoSliderTimer);
+        clearTimeout(videoSliderTimer);   // cancel any running timer
+        clearTimeout(preloadTimer);
         nextVideoSlide();
       }
     });
@@ -511,3 +535,134 @@ window.addEventListener('scroll', () => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
+
+
+// ============================================
+// ---- HERO SEARCH BAR  (Live Search) ----
+// ============================================
+(function () {
+  var input   = document.getElementById('hsbInput');
+  var btn     = document.getElementById('hsbSearchBtn');
+  var results = document.getElementById('hsbResults');
+  if (!input || !btn || !results) return;
+
+  // Debounce helper
+  var debounceTimer;
+  function debounce(fn, ms) {
+    return function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(fn, ms);
+    };
+  }
+
+  // Normalize Thai text for search (remove spaces, lowercase)
+  function norm(str) {
+    return (str || '').toLowerCase().replace(/\s+/g, '');
+  }
+
+  // Search projects from projects-data.js
+  function searchProjects(query) {
+    if (typeof RK_PROJECTS === 'undefined') return [];
+    var q = norm(query);
+    if (!q) return [];
+
+    return RK_PROJECTS.filter(function (p) {
+      if (p.status === 'sold') return false; // เฉพาะเปิดขาย
+      // match: name, type, location, district, nearby[]
+      if (norm(p.name).indexOf(q) !== -1) return true;
+      if (norm(p.type).indexOf(q) !== -1) return true;
+      if (norm(p.location).indexOf(q) !== -1) return true;
+      if (norm(p.district).indexOf(q) !== -1) return true;
+      for (var i = 0; i < p.nearby.length; i++) {
+        if (norm(p.nearby[i]).indexOf(q) !== -1) return true;
+      }
+      return false;
+    });
+  }
+
+  // Render results
+  function renderResults(items) {
+    if (items.length === 0) {
+      results.innerHTML = '<div class="hsb-result-empty">ไม่พบโครงการที่ตรงกัน</div>';
+      results.classList.add('active');
+      return;
+    }
+
+    var html = '';
+    items.forEach(function (p) {
+      var badgeHtml = p.badge
+        ? '<span class="hsb-result-badge">' + p.badge + '</span>'
+        : '';
+      html += ''
+        + '<a href="' + p.url + '" class="hsb-result-item">'
+        +   '<img class="hsb-result-thumb" src="' + p.image + '" alt="' + p.name + '">'
+        +   '<div class="hsb-result-info">'
+        +     '<p class="hsb-result-name">' + p.name + badgeHtml + '</p>'
+        +     '<p class="hsb-result-loc"><i class="fas fa-map-marker-alt"></i>' + p.location + '</p>'
+        +     '<div class="hsb-result-meta">'
+        +       '<span class="hsb-result-type">' + p.type + '</span>'
+        +       '<span class="hsb-result-price">' + p.price + '</span>'
+        +     '</div>'
+        +   '</div>'
+        + '</a>';
+    });
+
+    results.innerHTML = html;
+    results.classList.add('active');
+  }
+
+  // Hide results
+  function hideResults() {
+    results.classList.remove('active');
+  }
+
+  // Live search on input
+  var onInput = debounce(function () {
+    var q = input.value.trim();
+    if (q.length === 0) {
+      hideResults();
+      return;
+    }
+    var items = searchProjects(q);
+    renderResults(items);
+  }, 200);
+
+  input.addEventListener('input', onInput);
+
+  // Enter → go to projects page
+  function doSearch() {
+    var q = input.value.trim();
+    if (q.length > 0) {
+      window.location.href = 'projects.html?q=' + encodeURIComponent(q);
+    }
+  }
+  btn.addEventListener('click', doSearch);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') doSearch();
+  });
+
+  // Click outside → close
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.hsb-search')) {
+      hideResults();
+    }
+  });
+
+  // Re-show on focus if has text
+  input.addEventListener('focus', function () {
+    if (input.value.trim().length > 0) {
+      onInput();
+    }
+  });
+
+  // AI Chat button
+  var aiBtn = document.getElementById('hsbAiBtn');
+  if (aiBtn) {
+    aiBtn.addEventListener('click', function () {
+      if (typeof AiChat !== 'undefined') {
+        AiChat.open();
+      }
+    });
+  }
+})();
+

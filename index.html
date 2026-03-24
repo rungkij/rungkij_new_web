@@ -153,18 +153,6 @@
         </video>
         <div class="hero-video-overlay"></div>
       </div>
-      <!-- Video Slide 2 — defer until needed -->
-      <div class="hero-video-slide" data-index="1">
-        <video class="hero-video" muted playsinline preload="none" data-src="video-2.mp4">
-        </video>
-        <div class="hero-video-overlay"></div>
-      </div>
-      <!-- Video Slide 3 — defer until needed -->
-      <div class="hero-video-slide" data-index="2">
-        <video class="hero-video" muted playsinline preload="none" data-src="video-3.mp4">
-        </video>
-        <div class="hero-video-overlay"></div>
-      </div>
     </div>
 
     <!-- Hero Content -->
@@ -178,31 +166,44 @@
     <div class="hero-scroll-indicator">
       <span></span>
     </div>
+
+    <!-- ========== HERO SEARCH BAR ========== -->
+    <div class="hsb">
+      <div class="hsb-inner">
+        <!-- Filter pills -->
+        <div class="hsb-pills">
+          <a href="projects.html?tag=hotdeal" class="hsb-pill hsb-pill--hot">
+            บ้านเดี่ยวใกล้สนามบิน
+          </a>
+          <a href="projects.html?tag=location" class="hsb-pill">
+            ทำเลน่าสนใจ
+          </a>
+          <a href="projects.html?tag=promo" class="hsb-pill hsb-pill--promo">
+            PAY DAY DEAL🌟
+          </a>
+        </div>
+
+        <!-- Search box -->
+        <div class="hsb-search">
+          <input type="text" class="hsb-input" id="hsbInput" placeholder="พิมพ์ชื่อโครงการ หรือทำเลที่คุณสนใจ" autocomplete="off">
+          <button class="hsb-search-btn" id="hsbSearchBtn" aria-label="ค้นหา">
+            <i class="fas fa-search"></i>
+          </button>
+          <!-- Live search results -->
+          <div class="hsb-results" id="hsbResults"></div>
+        </div>
+
+        <!-- AI assistant button -->
+        <button type="button" class="hsb-ai" id="hsbAiBtn">
+          <i class="fas fa-sparkles"></i> ผู้ช่วยค้นหาโครงการ
+        </button>
+      </div>
+    </div>
+    <!-- ========== /HERO SEARCH BAR ========== -->
+
   </section>
 
   <!-- ========== STATS BAR ========== -->
-  <section class="stats-bar">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item reveal">
-          <span class="stat-number" data-target="50">50+</span>
-          <span class="stat-label">Years of Excellence</span>
-        </div>
-        <div class="stat-item reveal">
-          <span class="stat-number" data-target="15">15+</span>
-          <span class="stat-label">Projects Developed</span>
-        </div>
-        <div class="stat-item reveal">
-          <span class="stat-number" data-target="3000">3,000+</span>
-          <span class="stat-label">Families Trusted</span>
-        </div>
-        <div class="stat-item reveal">
-          <span class="stat-number" data-target="5">5+</span>
-          <span class="stat-label">Billion THB Value</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ========== PROJECT SHOWCASE SLIDER ========== -->
   <section class="pss-section">
@@ -375,12 +376,12 @@
 
   <!-- ========== CTA BANNER ========== -->
 
-  <section class="cta-banner">
+  <section class="cta-banner-light">
     <div class="container reveal">
       <span class="section-subtitle">Live The Next Level</span>
       <h2>Ready to Elevate<br>Your Lifestyle?</h2>
       <p>Register now for exclusive privileges and early-bird offers on our newest developments.</p>
-      <a href="contact.html" class="btn btn-primary">Register Your Interest</a>
+      <a href="contact.html" class="btn btn-outline">Register Your Interest</a>
     </div>
   </section>
 
@@ -437,21 +438,21 @@
   <style>
     .join-section {
       background:
-        radial-gradient(ellipse 80% 60% at 50% 50%, rgba(185,154,91,0.16) 0%, rgba(160,120,50,0.08) 50%, transparent 75%),
-        radial-gradient(ellipse 45% 40% at 15% 50%, rgba(201,168,94,0.10) 0%, transparent 65%),
-        radial-gradient(ellipse 45% 40% at 85% 50%, rgba(201,168,94,0.10) 0%, transparent 65%),
-        linear-gradient(180deg, #081530 0%, #0d1d40 40%, #102248 70%, #0d1c3e 100%);
+        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,94,0.10) 0%, rgba(185,154,91,0.05) 55%, transparent 80%),
+        linear-gradient(160deg, #fdf8f0 0%, #fffef9 40%, #fdf6ec 100%);
       position: relative; overflow: hidden;
+      border-top: 1.5px solid rgba(185,154,91,0.25);
+      border-bottom: 1.5px solid rgba(185,154,91,0.20);
     }
     .join-section::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 100% 80% at 50% 50%, rgba(185,154,91,0.10) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,94,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .join-gold-rule-top, .join-gold-rule-bot {
-      position: absolute; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(185,154,91,0.5) 30%, rgba(201,168,94,0.9) 50%, rgba(185,154,91,0.5) 70%, transparent 100%);
+      position: absolute; left: 0; right: 0; height: 1.5px;
+      background: linear-gradient(90deg, transparent 0%, rgba(185,154,91,0.35) 30%, rgba(201,168,94,0.65) 50%, rgba(185,154,91,0.35) 70%, transparent 100%);
     }
     .join-gold-rule-top { top: 0; }
     .join-gold-rule-bot { bottom: 0; }
@@ -465,13 +466,13 @@
       font-size: 0.68rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(185,154,91,0.65);
+      color: rgba(160,120,50,0.75);
     }
     .join-header h3 {
       font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif;
       font-size: 1.75rem;
       font-weight: 400;
-      color: #fff;
+      color: #0d1c3e;
       margin: 10px 0 0;
       letter-spacing: 0.04em;
     }
@@ -484,9 +485,9 @@
       transition: background 0.35s;
       position: relative;
     }
-    .join-card:hover { background: rgba(185,154,91,0.06); }
+    .join-card:hover { background: rgba(185,154,91,0.09); }
     .join-card + .join-card {
-      border-left: 1px solid rgba(185,154,91,0.18);
+      border-left: 1px solid rgba(185,154,91,0.22);
     }
     .join-icon-wrap {
       width: 62px; height: 62px;
@@ -506,7 +507,7 @@
       font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif;
       font-size: 1.15rem;
       font-weight: 500;
-      color: #f0e8d8;
+      color: #0d1c3e;
       margin: 0 0 6px;
       text-align: center;
       letter-spacing: 0.02em;
@@ -516,12 +517,12 @@
       font-size: 0.68rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(185,154,91,0.55);
+      color: rgba(140,100,35,0.65);
       margin: 0 0 18px;
     }
     .join-arrow {
       font-size: 0.70rem;
-      color: rgba(185,154,91,0.38);
+      color: rgba(160,120,50,0.45);
       transition: color 0.3s, transform 0.3s;
       display: inline-block;
     }
@@ -649,6 +650,8 @@
   </div>
 
   <script src="chat-widget.js" defer></script>
+  <script src="projects-data.js" defer></script>
+  <script src="ai-chat.js" defer></script>
   <script src="main.js" defer></script>
   <script>
   // ---- PROJECT SHOWCASE SLIDER — Dual Tab (Location + Lifestyle) ----

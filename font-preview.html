@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Font Options — Rungkij VSK Estate</title>
+
+<!-- Option 1: Haute Couture — Cormorant Garamond + Sarabun -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&family=Sarabun:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=Kanit:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@300;400;500&family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --navy:   #091736;
+    --gold:   #b99a5b;
+    --cream:  #fdf8f0;
+    --cream2: #fffef9;
+    --off:    #f5f4f0;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #e8e4dc;
+    color: var(--navy);
+    font-size: 16px;
+    padding: 0;
+  }
+
+  /* ─── TOP HEADER ─────────────────────────────── */
+  .page-header {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 52px 32px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(185,154,91,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-header-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(185,154,91,0.80);
+    display: block;
+    margin-bottom: 14px;
+  }
+  .page-header h1 {
+    font-family: 'Jost', sans-serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  .page-header h1 span {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .page-header p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.50);
+    margin-top: 12px;
+    letter-spacing: 0.04em;
+    position: relative;
+    z-index: 1;
+  }
+  .gold-line {
+    width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 18px auto 0;
+    position: relative; z-index: 1;
+  }
+
+  /* ─── LAYOUT ──────────────────────────────────── */
+  .options-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* ─── OPTION CARD ─────────────────────────────── */
+  .option {
+    background: var(--cream);
+    border-right: 1px solid rgba(185,154,91,0.20);
+    display: flex;
+    flex-direction: column;
+  }
+  .option:last-child { border-right: none; }
+
+  /* Option badge / label */
+  .option-badge {
+    background: var(--navy);
+    color: rgba(255,255,255,0.90);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    padding: 12px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid;
+  }
+  .option-badge em {
+    font-style: normal;
+    font-size: 0.60rem;
+    color: rgba(185,154,91,0.70);
+    letter-spacing: 0.15em;
+  }
+  .opt-1 .option-badge { border-color: #c8a05a; }
+  .opt-2 .option-badge { border-color: #8a6030; }
+  .opt-3 .option-badge { border-color: #b99a5b; }
+
+  /* Font info strip */
+  .font-info {
+    background: #f0ebe0;
+    padding: 18px 28px;
+    border-bottom: 1px solid rgba(185,154,91,0.15);
+  }
+  .font-info-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .font-info-row:last-child { margin-bottom: 0; }
+  .font-tag {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.60rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(9,23,54,0.40);
+    min-width: 52px;
+  }
+  .font-name {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.80rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+  .font-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    color: var(--gold);
+  }
+
+  /* Preview section */
+  .preview-area {
+    padding: 48px 32px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    border-bottom: 1px solid rgba(185,154,91,0.15);
+  }
+
+  /* Block: Hero-style */
+  .block-hero {
+    text-align: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(185,154,91,0.12);
+  }
+  .block-eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .block-h1 {
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 14px;
+  }
+  .block-body {
+    line-height: 1.85;
+    color: rgba(9,23,54,0.62);
+    max-width: 320px;
+    margin: 0 auto 22px;
+  }
+  .block-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 1px solid rgba(185,154,91,0.50);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+
+  /* Block: Card-style */
+  .block-card {
+    background: #fff;
+    border: 1px solid rgba(185,154,91,0.18);
+    border-radius: 12px;
+    padding: 24px 22px;
+    box-shadow: 0 2px 12px rgba(185,154,91,0.07);
+  }
+  .card-label {
+    font-size: 0.60rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgba(185,154,91,0.75);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .card-h2 {
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .card-price {
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .card-desc {
+    color: rgba(9,23,54,0.55);
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+
+  /* Block: Navigation */
+  .block-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: var(--navy);
+    border-radius: 8px;
+  }
+  .nav-brand {
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+  }
+  .nav-link {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.62);
+  }
+
+  /* Block: Number stat */
+  .block-stats {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1px;
+    background: rgba(185,154,91,0.15);
+    border: 1px solid rgba(185,154,91,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .stat-item {
+    background: var(--cream);
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .stat-num {
+    display: block;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .stat-lbl {
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(9,23,54,0.40);
+  }
+
+  /* Bottom verdict */
+  .verdict {
+    padding: 24px 28px;
+    background: #f0ebe0;
+  }
+  .verdict-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .verdict-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: rgba(9,23,54,0.65);
+  }
+  .verdict-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .kw {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.60rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(185,154,91,0.30);
+    color: rgba(9,23,54,0.60);
+  }
+
+  /* ─── OPTION 1: Haute Couture ─────────────────── */
+  .opt-1 .block-eyebrow,
+  .opt-1 .card-label    { font-family: 'Jost', sans-serif; }
+  .opt-1 .block-h1      { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; }
+  .opt-1 .block-body,
+  .opt-1 .card-desc     { font-family: 'Sarabun', sans-serif; font-size: 0.88rem; }
+  .opt-1 .card-h2       { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 500; }
+  .opt-1 .card-price    { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; }
+  .opt-1 .block-btn     { font-family: 'Jost', sans-serif; }
+  .opt-1 .nav-brand     { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 400; letter-spacing: 0.30em; }
+  .opt-1 .nav-link      { font-family: 'Jost', sans-serif; }
+  .opt-1 .stat-num      { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; }
+  .opt-1 .stat-lbl      { font-family: 'Sarabun', sans-serif; }
+
+  /* ─── OPTION 2: Editorial Power ──────────────── */
+  .opt-2 .block-eyebrow,
+  .opt-2 .card-label    { font-family: 'DM Sans', sans-serif; }
+  .opt-2 .block-h1      { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; font-style: italic; }
+  .opt-2 .block-body,
+  .opt-2 .card-desc     { font-family: 'Kanit', sans-serif; font-size: 0.85rem; font-weight: 300; }
+  .opt-2 .card-h2       { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; }
+  .opt-2 .card-price    { font-family: 'Playfair Display', serif; font-size: 1.10rem; font-style: italic; }
+  .opt-2 .block-btn     { font-family: 'DM Sans', sans-serif; }
+  .opt-2 .nav-brand     { font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.18em; font-style: italic; }
+  .opt-2 .nav-link      { font-family: 'DM Sans', sans-serif; }
+  .opt-2 .stat-num      { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 700; }
+  .opt-2 .stat-lbl      { font-family: 'Kanit', sans-serif; font-weight: 300; }
+
+  /* ─── OPTION 3: Modern Dynasty ───────────────── */
+  .opt-3 .block-eyebrow,
+  .opt-3 .card-label    { font-family: 'Montserrat', sans-serif; }
+  .opt-3 .block-h1      { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; }
+  .opt-3 .block-body,
+  .opt-3 .card-desc     { font-family: 'Prompt', sans-serif; font-size: 0.86rem; font-weight: 300; }
+  .opt-3 .card-h2       { font-family: 'Montserrat', sans-serif; font-size: 1.2rem; font-weight: 600; }
+  .opt-3 .card-price    { font-family: 'Raleway', sans-serif; font-size: 1.05rem; font-weight: 300; letter-spacing: 0.06em; }
+  .opt-3 .block-btn     { font-family: 'Raleway', sans-serif; }
+  .opt-3 .nav-brand     { font-family: 'Montserrat', sans-serif; font-size: 0.80rem; font-weight: 700; letter-spacing: 0.30em; }
+  .opt-3 .nav-link      { font-family: 'Raleway', sans-serif; }
+  .opt-3 .stat-num      { font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 700; }
+  .opt-3 .stat-lbl      { font-family: 'Prompt', sans-serif; font-weight: 300; }
+
+  /* ─── FOOTER BAR ──────────────────────────────── */
+  .page-footer {
+    background: var(--navy);
+    text-align: center;
+    padding: 20px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    color: rgba(255,255,255,0.30);
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .options-wrapper { grid-template-columns: 1fr; }
+    .option { border-right: none; border-bottom: 1px solid rgba(185,154,91,0.20); }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="page-header-eyebrow">Rungkij VSK Estate — Font Selection</span>
+  <h1>เลือกฟอนต์สำหรับ<span>เว็บไซต์</span></h1>
+  <p>3 ตัวเลือก — แต่ละแบบมีบุคลิกต่างกัน ทุก option รองรับทั้งภาษาไทยและอังกฤษ</p>
+  <div class="gold-line"></div>
+</div>
+
+<div class="options-wrapper">
+
+  <!-- ═══════════════════════════════════════════
+       OPTION 1 — Haute Couture
+       Cormorant Garamond + Jost + Sarabun
+       ═══════════════════════════════════════════ -->
+  <div class="option opt-1">
+    <div class="option-badge">
+      Option 1 — Haute Couture
+      <em>Classic · Timeless</em>
+    </div>
+
+    <div class="font-info">
+      <div class="font-info-row">
+        <span class="font-tag">Heading</span>
+        <span class="font-name">Cormorant Garamond</span>
+        <span class="font-sub">EN Serif</span>
+      </div>
+      <div class="font-info-row">
+        <span class="font-tag">Body</span>
+        <span class="font-name">Jost</span>
+        <span class="font-sub">EN Sans</span>
+      </div>
+      <div class="font-info-row">
+        <span class="font-tag">ไทย</span>
+        <span class="font-name">Sarabun</span>
+        <span class="font-sub">TH Sans</span>
+      </div>
+    </div>
+
+    <div class="preview-area">
+
+      <!-- Nav -->
+      <div class="block-nav">
+        <span class="nav-brand">Rungkij Estate</span>
+        <div class="nav-links">
+          <span class="nav-link">Projects</span>
+          <span class="nav-link">โครงการ</span>
+          <span class="nav-link">Contact</span>
+        </div>
+      </div>
+
+      <!-- Hero text -->
+      <div class="block-hero">
+        <span class="block-eyebrow">Luxury Living · ลาดกระบัง</span>
+        <h2 class="block-h1">Building Homes,<br>Building Lives</h2>
+        <p class="block-body">เราสร้างบ้านที่ตอบทุกความต้องการของชีวิต ด้วยมาตรฐานระดับสากล ในทำเลที่ดีที่สุด</p>
+        <a class="block-btn" href="#">Discover More</a>
+      </div>
+
+      <!-- Project card -->
+      <div class="block-card">
+        <span class="card-label">บ้านเดี่ยว · ลาดกระบัง</span>
+        <h3 class="card-h2">Grand Verona<br>Ladkrabang</h3>
+        <p class="card-price">เริ่มต้น 4.9 ล้านบาท</p>
+        <p class="card-desc">ที่พักอาศัยระดับพรีเมียม ใกล้สนามบินสุวรรณภูมิ พร้อมสิ่งอำนวยความสะดวกครบครัน</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="block-stats">
+        <div class="stat-item">
+          <span class="stat-num">18+</span>
+          <span class="stat-lbl">โครงการ</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2,400</span>
+          <span class="stat-lbl">ยูนิต</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">25 ปี</span>
+          <span class="stat-lbl">ประสบการณ์</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-title">บุคลิกของฟอนต์</p>
+      <p class="verdict-text">เส้นบาง สง่า เหมือนแบรนด์ Couture ฝรั่งเศส ให้ความรู้สึก <strong>Timeless Luxury</strong> คล้าย Vogue หรือ Raimon Land ตัวหนังสือดูมีน้ำหนักน้อยแต่ทรงพลัง</p>
+      <div class="verdict-keywords">
+        <span class="kw">Elegant</span>
+        <span class="kw">Old Money</span>
+        <span class="kw">High Fashion</span>
+        <span class="kw">สง่างาม</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       OPTION 2 — Editorial Power
+       Playfair Display + DM Sans + Kanit
+       ═══════════════════════════════════════════ -->
+  <div class="option opt-2">
+    <div class="option-badge">
+      Option 2 — Editorial Power
+      <em>Dramatic · Bold</em>
+    </div>
+
+    <div class="font-info">
+      <div class="font-info-row">
+        <span class="font-tag">Heading</span>
+        <span class="font-name">Playfair Display</span>
+        <span class="font-sub">EN Serif</span>
+      </div>
+      <div class="font-info-row">
+        <span class="font-tag">Body</span>
+        <span class="font-name">DM Sans</span>
+        <span class="font-sub">EN Sans</span>
+      </div>
+      <div class="font-info-row">
+        <span class="font-tag">ไทย</span>
+        <span class="font-name">Kanit</span>
+        <span class="font-sub">TH Geometric</span>
+      </div>
+    </div>
+
+    <div class="preview-area">
+
+      <!-- Nav -->
+      <div class="block-nav">
+        <span class="nav-brand">Rungkij Estate</span>
+        <div class="nav-links">
+          <span class="nav-link">Projects</span>
+          <span class="nav-link">โครงการ</span>
+          <span class="nav-link">Contact</span>
+        </div>
+      </div>
+
+      <!-- Hero text -->
+      <div class="block-hero">
+        <span class="block-eyebrow">Luxury Living · ลาดกระบัง</span>
+        <h2 class="block-h1">Building Homes,<br>Building Lives</h2>
+        <p class="block-body">เราสร้างบ้านที่ตอบทุกความต้องการของชีวิต ด้วยมาตรฐานระดับสากล ในทำเลที่ดีที่สุด</p>
+        <a class="block-btn" href="#">Discover More</a>
+      </div>
+
+      <!-- Project card -->
+      <div class="block-card">
+        <span class="card-label">บ้านเดี่ยว · ลาดกระบัง</span>
+        <h3 class="card-h2">Grand Verona<br>Ladkrabang</h3>
+        <p class="card-price">เริ่มต้น 4.9 ล้านบาท</p>
+        <p class="card-desc">ที่พักอาศัยระดับพรีเมียม ใกล้สนามบินสุวรรณภูมิ พร้อมสิ่งอำนวยความสะดวกครบครัน</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="block-stats">
+        <div class="stat-item">
+          <span class="stat-num">18+</span>
+          <span class="stat-lbl">โครงการ</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2,400</span>
+          <span class="stat-lbl">ยูนิต</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">25 ปี</span>
+          <span class="stat-lbl">ประสบการณ์</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-title">บุคลิกของฟอนต์</p>
+      <p class="verdict-text">ตัว heading เอียง contrast สูง ดูดราม่า ทรงพลัง เหมือน <strong>Architectural Digest</strong> หรือนิตยสารสถาปัตยกรรมระดับโลก ให้ความรู้สึกมั่นใจและน่าเชื่อถือสูง</p>
+      <div class="verdict-keywords">
+        <span class="kw">Dramatic</span>
+        <span class="kw">Editorial</span>
+        <span class="kw">Bold Luxury</span>
+        <span class="kw">ทรงพลัง</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       OPTION 3 — Modern Dynasty
+       Montserrat + Raleway + Prompt
+       ═══════════════════════════════════════════ -->
+  <div class="option opt-3">
+    <div class="option-badge">
+      Option 3 — Modern Dynasty
+      <em>Clean · Premium</em>
+    </div>
+
+    <div class="font-info">
+      <div class="font-info-row">
+        <span class="font-tag">Heading</span>
+        <span class="font-name">Montserrat</span>
+        <span class="font-sub">EN Geometric</span>
+      </div>
+      <div class="font-info-row">
+        <span class="font-tag">Body</span>
+        <span class="font-name">Raleway</span>
+        <span class="font-sub">EN Elegant</span>
+      </div>
+      <div class="font-info-row">
+        <span class="font-tag">ไทย</span>
+        <span class="font-name">Prompt</span>
+        <span class="font-sub">TH Modern</span>
+      </div>
+    </div>
+
+    <div class="preview-area">
+
+      <!-- Nav -->
+      <div class="block-nav">
+        <span class="nav-brand">RUNGKIJ ESTATE</span>
+        <div class="nav-links">
+          <span class="nav-link">Projects</span>
+          <span class="nav-link">โครงการ</span>
+          <span class="nav-link">Contact</span>
+        </div>
+      </div>
+
+      <!-- Hero text -->
+      <div class="block-hero">
+        <span class="block-eyebrow">Luxury Living · ลาดกระบัง</span>
+        <h2 class="block-h1">Building Homes,<br>Building Lives</h2>
+        <p class="block-body">เราสร้างบ้านที่ตอบทุกความต้องการของชีวิต ด้วยมาตรฐานระดับสากล ในทำเลที่ดีที่สุด</p>
+        <a class="block-btn" href="#">Discover More</a>
+      </div>
+
+      <!-- Project card -->
+      <div class="block-card">
+        <span class="card-label">บ้านเดี่ยว · ลาดกระบัง</span>
+        <h3 class="card-h2">Grand Verona<br>Ladkrabang</h3>
+        <p class="card-price">เริ่มต้น 4.9 ล้านบาท</p>
+        <p class="card-desc">ที่พักอาศัยระดับพรีเมียม ใกล้สนามบินสุวรรณภูมิ พร้อมสิ่งอำนวยความสะดวกครบครัน</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="block-stats">
+        <div class="stat-item">
+          <span class="stat-num">18+</span>
+          <span class="stat-lbl">โครงการ</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">2,400</span>
+          <span class="stat-lbl">ยูนิต</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">25 ปี</span>
+          <span class="stat-lbl">ประสบการณ์</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="verdict">
+      <p class="verdict-title">บุคลิกของฟอนต์</p>
+      <p class="verdict-text">เรขาคณิตเพรียว สะอาด ทันสมัย ให้ความรู้สึกแบบ <strong>Apple หรือ Tesla</strong> — เทคโนโลยีพบกับความหรูหรา เหมาะกับกลุ่มลูกค้าอายุน้อยถึงกลาง</p>
+      <div class="verdict-keywords">
+        <span class="kw">Modern</span>
+        <span class="kw">Premium Tech</span>
+        <span class="kw">Clean</span>
+        <span class="kw">ทันสมัย</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end options-wrapper -->
+
+<div class="page-footer">
+  Rungkij VSK Estate · Font Preview · All fonts via Google Fonts (free, web-safe)
+</div>
+
+</body>
+</html>
