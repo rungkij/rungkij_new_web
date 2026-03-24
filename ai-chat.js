@@ -9,11 +9,7 @@
   /* ── CONFIG ─────────────────────────────────────────────── */
   // ⚠️ ใส่ API Key ของ Google Gemini ที่นี่
   // รับ API Key ได้ที่: https://aistudio.google.com/app/apikey
-  var GEMINI_API_KEY = 'AIzaSyD7mIkOB0SxWNZfft9siYQixCuu55Zb9aE';
-  var GEMINI_MODEL   = 'gemini-2.0-flash';
-  var GEMINI_URL     = 'https://generativelanguage.googleapis.com/v1beta/models/'
-                     + GEMINI_MODEL + ':generateContent?key=' + GEMINI_API_KEY;
-
+  
   /* ── PROJECT DATA (from projects-data.js) ──────────────── */
   function getProjectContext() {
     if (typeof RK_PROJECTS === 'undefined') return '';
