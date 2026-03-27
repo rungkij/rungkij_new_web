@@ -4,134 +4,174 @@
 
   <!-- ── Core pages ── -->
   <url>
-    <loc>https://www.rungkij.co.th/</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/projects.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/projects.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/about.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/about.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/financial.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/financial.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/care.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/care.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/news.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/news.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/contact.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/contact.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- ── Active projects ── -->
   <url>
-    <loc>https://www.rungkij.co.th/project-grand-verona.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-grand-verona.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-hampton.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-grand-verona-house.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-the-verona.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-grand-verona-townhome.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-the-nice.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-hampton.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-osaka.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-the-verona.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-the-corner.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-the-nice.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rungkij.com/project-osaka.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.rungkij.com/project-the-corner.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-hampton-grove.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-hampton-grove.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- ── Sold-out / archived projects (lower priority) ── -->
   <url>
-    <loc>https://www.rungkij.co.th/project-regent-street.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-regent-street.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-hamburg.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-hamburg.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-new-york.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-new-york.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/project-biz-center.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/project-biz-center.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
 
+  <!-- ── Blog ── -->
+  <url>
+    <loc>https://www.rungkij.com/blog.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rungkij.com/blog-post.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ── Tools & Promotions ── -->
+  <url>
+    <loc>https://www.rungkij.com/calculator.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.rungkij.com/promotion.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- ── Utility pages ── -->
   <url>
-    <loc>https://www.rungkij.co.th/sell-land.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/sell-land.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/contractor.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/contractor.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.rungkij.co.th/job-application.html</loc>
-    <lastmod>2026-03-21</lastmod>
+    <loc>https://www.rungkij.com/job-application.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

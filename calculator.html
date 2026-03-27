@@ -2,14 +2,19 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_web.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logo_web.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_web.png">
+  <meta name="msapplication-TileImage" content="images/logo_web.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>คำนวณวงเงินสินเชื่อบ้าน | RUNGKIJ — Clinic Financial</title>
   <meta name="description" content="ประเมินวงเงินกู้ซื้อบ้านเบื้องต้น เปรียบเทียบ 9 ธนาคารชั้นนำ TTB, SCB, กสิกร, กรุงไทย, ธอส, ออมสิน, LH, BBL, UOB แยกตามประเภทอาชีพ พนักงานประจำ เจ้าของกิจการ อาชีพอิสระ">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.rungkij.co.th/calculator.html">
+  <link rel="canonical" href="https://www.rungkij.com/calculator.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 
@@ -88,23 +93,24 @@
   flex-wrap: wrap;
 }
 .hero-bank-pill {
-  display: block;
-  width: 66px; height: 34px;
-  border-radius: 9px;
-  overflow: hidden;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.28);
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: all 0.22s cubic-bezier(0.25,0.46,0.45,0.94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px; height: 120px;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 0.22s cubic-bezier(0.25,0.46,0.45,0.94);
   flex-shrink: 0;
 }
 .hero-bank-pill:hover {
   transform: translateY(-3px) scale(1.06);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.38), 0 0 0 1.5px rgba(201,168,76,0.55);
-  border-color: rgba(201,168,76,0.45);
 }
 .hero-bank-pill img {
   width: 100%; height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
 }
 .hero-banks-label {
@@ -860,8 +866,8 @@
   .cp-step span { display: none; }
   .cp-step    { padding: 10px 16px; }
   .sc-title   { font-size: 1.35rem; }
-  .hero-bank-pill { width: 54px; height: 28px; border-radius: 7px; }
-  .hero-banks { gap: 5px; margin-top: 20px; }
+  .hero-bank-pill { width: 80px; height: 80px; }
+  .hero-banks { gap: 8px; margin-top: 20px; }
   .occ-grid   { grid-template-columns: 1fr; gap: 10px; }
   .occ-card   { flex-direction: row; text-align: left; padding: 16px 18px; gap: 14px; }
   .occ-card-icon { flex-shrink: 0; width: 44px; height: 44px; font-size: 1.15rem; }
@@ -869,6 +875,38 @@
   .biz-result-value { font-size: 1.45rem; }
 }
 </style>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.rungkij.com/calculator.html">
+  <meta property="og:title" content="คำนวณวงเงินสินเชื่อบ้าน | RUNGKIJ — Clinic Financial">
+  <meta property="og:description" content="ประเมินวงเงินกู้ซื้อบ้านเบื้องต้น เปรียบเทียบ 9 ธนาคารชั้นนำ แยกตามประเภทอาชีพ">
+  <meta property="og:image" content="https://www.rungkij.com/images/logo_web.png">
+  <meta property="og:site_name" content="RUNGKIJ V.S.K. Estate">
+  <meta property="og:locale" content="th_TH">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="คำนวณวงเงินสินเชื่อบ้าน | RUNGKIJ — Clinic Financial">
+  <meta name="twitter:description" content="ประเมินวงเงินกู้ซื้อบ้านเบื้องต้น เปรียบเทียบ 9 ธนาคารชั้นนำ แยกตามประเภทอาชีพ">
+  <meta name="twitter:image" content="https://www.rungkij.com/images/logo_web.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "คำนวณวงเงินสินเชื่อบ้าน | RUNGKIJ — Clinic Financial",
+    "description": "ประเมินวงเงินกู้ซื้อบ้านเบื้องต้น เปรียบเทียบ 9 ธนาคารชั้นนำ แยกตามประเภทอาชีพ",
+    "url": "https://www.rungkij.com/calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web Browser",
+    "provider": {
+      "@type": "Organization",
+      "name": "RUNGKIJ V.S.K. Estate",
+      "logo": { "@type": "ImageObject", "url": "https://www.rungkij.com/images/logo.png" }
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -878,27 +916,26 @@
     <a href="index.html" class="logo">
       <img src="images/logo.png" alt="RUNGKIJ" class="logo-img" loading="eager">
     </a>
-    <div class="nav-menu" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About Us</a>
-      <a href="news.html">News</a>
-      <a href="financial.html" class="active">Financial</a>
-      <a href="care.html">Care</a>
-      <a href="contact.html">Contact</a>
+    <div class="nav-menu" id="navMenu">        <a href="projects.html">Projects</a>
+        <a href="promotion.html">Promotion</a>
+        <a href="financial.html" class="active">Financial</a>
+        <a href="blog.html">Blog</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
     </div>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
 <!-- PAGE HEADER -->
-<section class="page-header" style="position:relative; background-image:linear-gradient(rgba(4,8,22,0.60),rgba(6,12,36,0.85)),url('images/hampton/photo-6.jpg'); background-size:cover; background-position:center;">
-  <div class="ph-horizon"></div>
+<section class="page-header" style="position:relative; background-image:linear-gradient(rgba(248,247,242,0.60), rgba(248,247,242,0.48)),url('images/hampton/photo-6.jpg'); background-size:cover; background-position:center;">
+  <div class="ph-shimmer"></div>
+    <div class="ph-horizon"></div>
   <div class="page-header-content">
     <span class="section-subtitle">Rungkij Clinic Financial</span>
     <h1>คำนวณวงเงินสินเชื่อ</h1>
-    <div class="breadcrumb">
-      <a href="index.html">Home</a><span>/</span>
+    <div class="breadcrumb"><span>/</span>
       <a href="financial.html">Clinic Financial</a><span>/</span>
       <span>คำนวณสินเชื่อ</span>
     </div>
@@ -1307,53 +1344,71 @@
 </div><!-- /.calc-bg -->
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-horizon"></div>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img logo-img-footer">
-        <p>V.S.K. Estate Company Limited. Over 50 years of premium real estate development.</p>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/rungkijcorp/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/rungkij_official" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="Line"><i class="fab fa-line"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-horizon"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img loading="eager" src="images/logo.png" alt="RUNGKIJ — V.S.K. Estate บ้านจัดสรร กรุงเทพ" class="logo-img logo-img-footer">
+          <p>บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate) ผู้พัฒนาอสังหาริมทรัพย์คุณภาพกว่า 50 ปี บ้านเดี่ยว ทาวน์โฮม ทาวน์เฮาส์ โฮมออฟฟิศ ทั่วกรุงเทพฯ และปริมณฑล</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+            <a href="https://www.tiktok.com/@rungkij_official" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@rungkijofficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>เมนูหลัก</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="projects.html">โครงการทั้งหมด</a></li>
+            <li><a href="promotion.html">โปรโมชั่น</a></li>
+            <li><a href="blog.html">บล็อก</a></li>
+            <li><a href="financial.html">สินเชื่อที่อยู่อาศัย</a></li>
+            <li><a href="care.html">บริการหลังการขาย</a></li>
+            <li><a href="calculator.html">คำนวณสินเชื่อ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>โครงการของเรา</h4>
+          <ul class="footer-links">
+            <li><a href="project-grand-verona-house.html">Grand Verona บ้านเดี่ยว</a></li>
+            <li><a href="project-grand-verona-townhome.html">Grand Verona ทาวน์โฮม</a></li>
+            <li><a href="project-osaka.html">Osaka — คู้บอน</a></li>
+            <li><a href="project-hampton.html">The Hampton — พระราม 9</a></li>
+            <li><a href="project-the-nice.html">The Nice — รังสิต</a></li>
+            <li><a href="project-the-verona.html">The Verona Village</a></li>
+            <li><a href="project-hampton-grove.html">Hampton Grove</a></li>
+            <li><a href="project-the-corner.html">The Corner</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>ติดต่อเรา</h4>
+          <ul class="footer-links footer-contact-list">
+            <li><i class="fas fa-phone-alt"></i>&nbsp;<a href="tel:+6625407999">02-540-7999</a></li>
+            <li><i class="fab fa-line"></i>&nbsp;<a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener">Line: @rungkij</a></li>
+            <li><i class="fab fa-facebook-f"></i>&nbsp;<a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener">Facebook Rungkij</a></li>
+            <li><i class="fab fa-instagram"></i>&nbsp;<a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener">@rungkij_official</a></li>
+
+          </ul>
+          <p class="footer-seo-kw">บ้านจัดสรร กรุงเทพ &middot; ทาวน์โฮม ราคาถูก &middot; บ้านเดี่ยว ใกล้สนามบิน &middot; บ้านใกล้รถไฟฟ้า &middot; บ้านมือหนึ่ง กรุงเทพ</p>
         </div>
       </div>
-      <div>
-        <h4>Navigation</h4>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="financial.html">Clinic Financial</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Projects</h4>
-        <ul class="footer-links">
-          <li><a href="project-grand-verona.html">Grand Verona</a></li>
-          <li><a href="project-hampton.html">The Hampton</a></li>
-          <li><a href="project-the-nice.html">The Nice</a></li>
-          <li><a href="project-osaka.html">Osaka</a></li>
-        </ul>
-      </div>
-      <div class="footer-newsletter">
-        <h4>Stay Updated</h4>
-        <p>Subscribe for the latest project launches and exclusive offers.</p>
-        <form class="newsletter-form" onsubmit="event.preventDefault();">
-          <input type="email" placeholder="Your email address">
-          <button type="submit"><i class="fas fa-arrow-right"></i></button>
-        </form>
+      <div class="footer-bottom">
+        <span>&copy; 2026 บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate Co., Ltd.) สงวนลิขสิทธิ์ทุกประการ</span>
+        <div>
+          <a href="#">นโยบายความเป็นส่วนตัว</a>
+          <a href="#">เงื่อนไขการใช้งาน</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 V.S.K. Estate Company Limited. All rights reserved.</span>
-      <div><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 <!-- Floating Sticky Bar -->
 <div class="sticky-bar" id="stickyBar">

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_web.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logo_web.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_web.png">
+  <meta name="msapplication-TileImage" content="images/logo_web.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">บทความ | RUNGKIJ V.S.K. Estate</title>
+  <meta name="description" id="page-desc" content="บทความจากทีมผู้เชี่ยวชาญ V.S.K. Estate">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+  /* ══════════════════════════════════════════════
+     BLOG POST PAGE — Article Detail
+  ══════════════════════════════════════════════ */
+
+  /* Reading Progress Bar */
+  .read-progress-bar {
+    position: fixed; top: 0; left: 0; z-index: 9999;
+    height: 3px; width: 0%;
+    background: linear-gradient(90deg, var(--accent) 0%, #f0ca50 100%);
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(185,154,91,0.50);
+  }
+
+  /* Post Hero */
+  .post-hero {
+    position: relative; width: 100%;
+    height: clamp(320px, 55vh, 560px);
+    overflow: hidden; background: var(--primary);
+  }
+  .post-hero-img {
+    width:100%; height:100%; object-fit:cover;
+    transform: scale(1.04);
+    transition: transform 6s ease;
+  }
+  .post-hero-img.loaded { transform: scale(1); }
+  .post-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(9,23,54,0.15) 0%,
+      rgba(9,23,54,0.20) 40%,
+      rgba(9,23,54,0.78) 100%
+    );
+  }
+  .post-hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 48px 0 44px;
+  }
+  .post-hero-content .container { max-width: 860px; }
+
+  /* Breadcrumb */
+  .post-breadcrumb {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.75rem; color: rgba(255,255,255,0.55);
+    margin-bottom: 18px;
+  }
+  .post-breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .post-breadcrumb a:hover { color: var(--accent); }
+  .post-breadcrumb span { color: rgba(255,255,255,0.35); }
+
+  .post-category-badge {
+    display: inline-block; padding: 4px 14px; border-radius: 4px;
+    font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .post-category-badge.project { background: rgba(185,154,91,0.88); color: #fff; }
+  .post-category-badge.guide   { background: rgba(39,174,96,0.88);  color: #fff; }
+  .post-category-badge.market  { background: rgba(52,152,219,0.88); color: #fff; }
+  .post-category-badge.news    { background: rgba(155,89,182,0.88); color: #fff; }
+
+  .post-hero h1 {
+    color: #fff; font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+    font-weight: 800; line-height: 1.25; letter-spacing: -0.02em;
+    margin-bottom: 18px; text-shadow: 0 2px 12px rgba(0,0,0,0.30);
+  }
+  .post-hero-meta {
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+  }
+  .post-hero-meta span {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.82rem; color: rgba(255,255,255,0.65);
+  }
+  .post-hero-meta i { font-size: 0.75rem; color: var(--accent); }
+
+  /* ── Article Layout ── */
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    padding: 60px 0 80px;
+    align-items: start;
+    background: #f8f7f4;
+  }
+
+  /* ── Article Body ── */
+  .article-body-wrap {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(9,23,54,0.06);
+  }
+  .article-content {
+    padding: 48px 52px;
+  }
+  .article-content h2 {
+    font-size: 1.40rem; font-weight: 800; color: var(--primary);
+    line-height: 1.30; letter-spacing: -0.018em;
+    margin: 32px 0 16px; padding-top: 8px;
+    border-top: 2px solid rgba(185,154,91,0.15);
+  }
+  .article-content h2:first-child { border-top: none; margin-top: 0; }
+  .article-content h3 {
+    font-size: 1.10rem; font-weight: 700; color: var(--primary);
+    margin: 26px 0 12px; display: flex; align-items: center; gap: 8px;
+  }
+  .article-content h3::before {
+    content: ''; display: block; width: 4px; height: 18px;
+    border-radius: 2px; background: var(--accent); flex-shrink: 0;
+  }
+  .article-content p {
+    font-size: 1.02rem; color: rgba(9,23,54,0.70);
+    line-height: 1.88; margin-bottom: 18px;
+  }
+  .article-content strong { color: var(--primary); font-weight: 700; }
+  .article-content em { color: rgba(9,23,54,0.65); font-style: italic; }
+  .article-content ul, .article-content ol {
+    padding-left: 24px; margin-bottom: 20px;
+  }
+  .article-content li {
+    font-size: 1.00rem; color: rgba(9,23,54,0.68);
+    line-height: 1.80; margin-bottom: 8px;
+  }
+  .article-content ul li::marker { color: var(--accent); font-size: 1.1em; }
+  .article-content blockquote {
+    border-left: 4px solid var(--accent);
+    background: rgba(185,154,91,0.06);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 22px; margin: 24px 0;
+    font-style: italic; color: rgba(9,23,54,0.65);
+    font-size: 1.02rem; line-height: 1.78;
+  }
+
+  /* ── Video Section ── */
+  .post-video-section {
+    padding: 0 52px 40px;
+  }
+  .post-video-label {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 14px; display: flex; align-items: center; gap: 7px;
+  }
+  .post-video-wrap {
+    position: relative; padding-top: 56.25%;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(9,23,54,0.12);
+  }
+  .post-video-wrap iframe,
+  .post-video-wrap video {
+    position: absolute; inset: 0; width: 100%; height: 100%; border: none;
+  }
+
+  /* ── Image Gallery ── */
+  .post-gallery-section {
+    padding: 0 52px 48px;
+  }
+  .post-gallery-label {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 7px;
+  }
+  .post-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .post-gallery-grid .gallery-item {
+    aspect-ratio: 4/3; overflow: hidden; border-radius: 10px;
+    cursor: pointer; position: relative;
+  }
+  .post-gallery-grid .gallery-item:first-child {
+    grid-column: span 2; aspect-ratio: 16/9;
+  }
+  .post-gallery-grid .gallery-item img {
+    width:100%; height:100%; object-fit:cover;
+    transition: transform 0.4s ease;
+  }
+  .post-gallery-grid .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-item-overlay {
+    position: absolute; inset: 0;
+    background: rgba(9,23,54,0.28);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.25s;
+    color: #fff; font-size: 1.4rem;
+  }
+  .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+  .gallery-show-more {
+    grid-column: span 1;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(185,154,91,0.10);
+    border: 1.5px dashed rgba(185,154,91,0.35);
+    border-radius: 10px; aspect-ratio: 4/3;
+    cursor: pointer; font-size: 0.85rem; font-weight: 600;
+    color: var(--accent); flex-direction: column; gap: 6px;
+    transition: background 0.2s;
+  }
+  .gallery-show-more:hover { background: rgba(185,154,91,0.18); }
+
+  /* ── Hashtag Section ── */
+  .post-tags-section {
+    padding: 0 52px 28px;
+    border-top: 1px solid rgba(185,154,91,0.12);
+    margin-top: 8px; padding-top: 24px;
+  }
+  .post-tags-label {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.10em;
+    text-transform: uppercase; color: rgba(9,23,54,0.40);
+    margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+  }
+  .post-tags-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .post-tag-chip {
+    padding: 6px 14px; border-radius: 100px;
+    border: 1.5px solid rgba(185,154,91,0.25);
+    font-size: 0.80rem; font-weight: 500; color: rgba(9,23,54,0.60);
+    text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  }
+  .post-tag-chip:hover {
+    border-color: var(--accent); color: var(--accent);
+    background: rgba(185,154,91,0.08);
+  }
+
+  /* ── Backlinks Section ── */
+  .post-backlinks-section {
+    padding: 28px 52px 36px;
+    background: linear-gradient(135deg, #fdf8f0 0%, #fff9ee 100%);
+    border-top: 2px solid rgba(185,154,91,0.12);
+  }
+  .post-backlinks-label {
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.10em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 7px;
+  }
+  .post-backlinks-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  .post-backlink-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 16px; border-radius: 10px;
+    background: #fff; border: 1.5px solid rgba(185,154,91,0.15);
+    text-decoration: none; color: var(--primary);
+    font-size: 0.86rem; font-weight: 600;
+    transition: all 0.22s ease;
+    box-shadow: 0 2px 8px rgba(9,23,54,0.04);
+  }
+  .post-backlink-item:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(185,154,91,0.15);
+    transform: translateY(-2px);
+  }
+  .post-backlink-item i {
+    color: var(--accent); font-size: 0.85rem; flex-shrink: 0;
+  }
+
+  /* ── Author Card ── */
+  .post-author-card {
+    padding: 32px 52px;
+    border-top: 1px solid rgba(185,154,91,0.12);
+    display: flex; align-items: center; gap: 20px;
+  }
+  .post-author-avatar {
+    width: 56px; height: 56px; border-radius: 50%; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--accent), #a8893e);
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 1rem; font-weight: 800;
+    box-shadow: 0 4px 12px rgba(185,154,91,0.30);
+  }
+  .post-author-info h4 { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 3px; }
+  .post-author-info p { font-size: 0.83rem; color: rgba(9,23,54,0.45); line-height: 1.5; margin: 0; }
+
+  /* ── Share Bar ── */
+  .post-share-bar {
+    padding: 22px 52px;
+    border-top: 1px solid rgba(185,154,91,0.10);
+    background: var(--primary);
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+  }
+  .post-share-label { font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.70); }
+  .post-share-btns { display: flex; gap: 10px; }
+  .share-btn {
+    width: 38px; height: 38px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem; text-decoration: none; transition: all 0.22s;
+    border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.70);
+    background: rgba(255,255,255,0.06); cursor: pointer;
+  }
+  .share-btn:hover { background: rgba(255,255,255,0.14); color: #fff; border-color: rgba(255,255,255,0.25); }
+  .share-btn.facebook:hover { background: #1877f2; border-color: #1877f2; }
+  .share-btn.line:hover     { background: #00B900; border-color: #00B900; }
+  .share-btn.twitter:hover  { background: #1da1f2; border-color: #1da1f2; }
+  .share-btn.copy { position: relative; }
+
+  /* ── Sidebar ── */
+  .post-sidebar { display: flex; flex-direction: column; gap: 24px; }
+  .post-widget {
+    background: #fff; border-radius: 14px; padding: 26px 22px;
+    box-shadow: 0 2px 12px rgba(9,23,54,0.05);
+  }
+  .post-widget h3 {
+    font-size: 0.85rem; font-weight: 800; color: var(--primary);
+    letter-spacing: 0.07em; text-transform: uppercase;
+    margin-bottom: 18px; padding-bottom: 12px;
+    border-bottom: 2px solid rgba(185,154,91,0.18);
+  }
+
+  /* TOC */
+  .post-toc { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .post-toc li a {
+    display: block; padding: 8px 12px; border-radius: 7px;
+    text-decoration: none; font-size: 0.85rem; color: rgba(9,23,54,0.60);
+    font-weight: 500; transition: all 0.2s; line-height: 1.4;
+    border-left: 2px solid transparent;
+  }
+  .post-toc li a:hover,
+  .post-toc li a.active {
+    background: rgba(185,154,91,0.08); color: var(--accent);
+    border-left-color: var(--accent);
+  }
+
+  /* Related posts */
+  .related-list { display: flex; flex-direction: column; gap: 14px; }
+  .related-item {
+    display: flex; gap: 12px; text-decoration: none;
+    padding: 10px; border-radius: 10px;
+    transition: background 0.2s;
+  }
+  .related-item:hover { background: rgba(185,154,91,0.06); }
+  .related-thumb {
+    width: 68px; height: 52px; border-radius: 7px; overflow: hidden; flex-shrink: 0;
+  }
+  .related-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .related-text h4 { font-size: 0.84rem; font-weight: 600; color: var(--primary); line-height: 1.38; margin-bottom: 4px; }
+  .related-text span { font-size: 0.74rem; color: rgba(9,23,54,0.40); }
+
+  /* Sticky CTA */
+  .sidebar-sticky-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, #122155 100%);
+    border-radius: 14px; padding: 28px 22px; text-align: center;
+    box-shadow: 0 8px 28px rgba(9,23,54,0.18);
+  }
+  .sidebar-sticky-cta h3 {
+    color: #fff; font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;
+  }
+  .sidebar-sticky-cta p {
+    color: rgba(255,255,255,0.55); font-size: 0.84rem; line-height: 1.65; margin-bottom: 20px;
+  }
+  .sidebar-sticky-cta .btn-tel {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px 20px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), #a8893e);
+    color: #fff; font-size: 0.92rem; font-weight: 700;
+    text-decoration: none; margin-bottom: 10px;
+    transition: opacity 0.2s; box-shadow: 0 4px 14px rgba(185,154,91,0.30);
+  }
+  .sidebar-sticky-cta .btn-tel:hover { opacity: 0.88; }
+  .sidebar-sticky-cta .btn-line {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 10px 20px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.70); font-size: 0.85rem; font-weight: 600;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .sidebar-sticky-cta .btn-line:hover { background: rgba(255,255,255,0.14); }
+
+  /* ── Related Posts Section (below article) ── */
+  .related-section {
+    background: #fff; padding: 72px 0;
+    border-top: 1px solid rgba(185,154,91,0.12);
+  }
+  .related-section .section-subtitle { display: block; text-align: center; }
+  .related-section .section-title { text-align: center; }
+  .related-section .section-divider { margin: 0 auto 48px; }
+  .related-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .related-card {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(9,23,54,0.05);
+    text-decoration: none; display: flex; flex-direction: column;
+    transition: transform 0.26s ease, box-shadow 0.26s ease;
+    border: 1.5px solid rgba(185,154,91,0.10);
+  }
+  .related-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(9,23,54,0.11); }
+  .rc-img { height: 190px; overflow: hidden; position: relative; }
+  .rc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s ease; }
+  .related-card:hover .rc-img img { transform: scale(1.06); }
+  .rc-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+  .rc-tag {
+    font-size: 0.66rem; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 3px; display: inline-block; margin-bottom: 10px;
+    background: rgba(185,154,91,0.10); color: var(--accent);
+  }
+  .rc-tag.guide  { background: rgba(39,174,96,0.10); color: #27ae60; }
+  .rc-tag.market { background: rgba(52,152,219,0.10); color: #2980b9; }
+  .rc-tag.news   { background: rgba(155,89,182,0.10); color: #8e44ad; }
+  .rc-body h3 { font-size: 0.98rem; font-weight: 700; color: var(--primary); line-height: 1.38; margin-bottom: 10px; flex: 1; }
+  .rc-meta { font-size: 0.78rem; color: rgba(9,23,54,0.40); }
+
+  /* ── Lightbox ── */
+  .lb-overlay {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(0,0,0,0.93); backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .lb-overlay.open { display: flex; }
+  .lb-img-wrap { position: relative; max-width: 90vw; max-height: 85vh; }
+  .lb-img-wrap img { max-width: 100%; max-height: 85vh; border-radius: 10px; display: block; }
+  .lb-close {
+    position: fixed; top: 20px; right: 24px;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: rgba(255,255,255,0.12); border: none;
+    color: #fff; font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .lb-close:hover { background: rgba(255,255,255,0.22); }
+  .lb-nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.10); border: none;
+    color: #fff; font-size: 1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .lb-nav:hover { background: rgba(255,255,255,0.22); }
+  .lb-prev { left: 16px; }
+  .lb-next { right: 16px; }
+  .lb-counter {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.55); font-size: 0.82rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .article-layout { grid-template-columns: 1fr; }
+    .post-sidebar { display: grid; grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 768px) {
+    .article-content { padding: 28px 22px; }
+    .post-video-section,
+    .post-gallery-section,
+    .post-tags-section,
+    .post-backlinks-section { padding-left: 22px; padding-right: 22px; }
+    .post-author-card { padding: 24px 22px; }
+    .post-share-bar { padding: 18px 22px; }
+    .post-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .post-gallery-grid .gallery-item:first-child { grid-column: span 2; }
+    .post-backlinks-grid { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+    .post-sidebar { grid-template-columns: 1fr; }
+  }
+  </style>
+  <link rel="canonical" href="https://www.rungkij.com/blog-post.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.rungkij.com/blog-post.html">
+  <meta property="og:title" content="บทความ | RUNGKIJ V.S.K. Estate">
+  <meta property="og:description" content="บทความจากทีมผู้เชี่ยวชาญ V.S.K. Estate ข่าวสารอสังหาริมทรัพย์ เทรนด์การอยู่อาศัย">
+  <meta property="og:image" content="https://www.rungkij.com/images/logo_web.png">
+  <meta property="og:site_name" content="RUNGKIJ V.S.K. Estate">
+  <meta property="og:locale" content="th_TH">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="บทความ | RUNGKIJ V.S.K. Estate">
+  <meta name="twitter:description" content="บทความจากทีมผู้เชี่ยวชาญ V.S.K. Estate ข่าวสารอสังหาริมทรัพย์ เทรนด์การอยู่อาศัย">
+  <meta name="twitter:image" content="https://www.rungkij.com/images/logo_web.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "บทความ | RUNGKIJ V.S.K. Estate",
+    "description": "บทความจากทีมผู้เชี่ยวชาญ V.S.K. Estate ข่าวสารอสังหาริมทรัพย์ เทรนด์การอยู่อาศัย",
+    "url": "https://www.rungkij.com/blog-post.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "RUNGKIJ V.S.K. Estate",
+      "logo": { "@type": "ImageObject", "url": "https://www.rungkij.com/images/logo.png" }
+    },
+    "datePublished": "2026-03-27",
+    "dateModified": "2026-03-27"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div class="read-progress-bar" id="readProgressBar"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img">
+      </a>
+      <div class="nav-menu" id="navMenu">
+        <a href="projects.html">Projects</a>
+        <a href="promotion.html">Promotion</a>
+        <a href="financial.html">Financial</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- POST HERO (จะถูก inject ด้วย JS) -->
+  <div id="postHero"></div>
+
+  <!-- ARTICLE LAYOUT -->
+  <div class="container article-layout">
+
+    <!-- LEFT: Article Body -->
+    <main>
+      <div class="article-body-wrap" id="articleBodyWrap">
+        <!-- inject by JS -->
+      </div>
+    </main>
+
+    <!-- RIGHT: Sidebar -->
+    <aside class="post-sidebar" id="postSidebar">
+      <!-- inject by JS -->
+    </aside>
+
+  </div>
+
+  <!-- RELATED POSTS -->
+  <section class="related-section" id="relatedSection" style="display:none;">
+    <div class="container">
+      <span class="section-subtitle">อ่านเพิ่มเติม</span>
+      <h2 class="section-title">บทความที่เกี่ยวข้อง</h2>
+      <div class="section-divider"></div>
+      <div class="related-grid" id="relatedGrid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-horizon"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img loading="eager" src="images/logo.png" alt="RUNGKIJ — V.S.K. Estate บ้านจัดสรร กรุงเทพ" class="logo-img logo-img-footer">
+          <p>บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate) ผู้พัฒนาอสังหาริมทรัพย์คุณภาพกว่า 50 ปี บ้านเดี่ยว ทาวน์โฮม ทาวน์เฮาส์ โฮมออฟฟิศ ทั่วกรุงเทพฯ และปริมณฑล</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+            <a href="https://www.tiktok.com/@rungkij_official" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@rungkijofficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>เมนูหลัก</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="projects.html">โครงการทั้งหมด</a></li>
+            <li><a href="promotion.html">โปรโมชั่น</a></li>
+            <li><a href="blog.html">บล็อก</a></li>
+            <li><a href="financial.html">สินเชื่อที่อยู่อาศัย</a></li>
+            <li><a href="care.html">บริการหลังการขาย</a></li>
+            <li><a href="calculator.html">คำนวณสินเชื่อ</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>โครงการของเรา</h4>
+          <ul class="footer-links">
+            <li><a href="project-grand-verona-house.html">Grand Verona บ้านเดี่ยว</a></li>
+            <li><a href="project-grand-verona-townhome.html">Grand Verona ทาวน์โฮม</a></li>
+            <li><a href="project-osaka.html">Osaka — คู้บอน</a></li>
+            <li><a href="project-hampton.html">The Hampton — พระราม 9</a></li>
+            <li><a href="project-the-nice.html">The Nice — รังสิต</a></li>
+            <li><a href="project-the-verona.html">The Verona Village</a></li>
+            <li><a href="project-hampton-grove.html">Hampton Grove</a></li>
+            <li><a href="project-the-corner.html">The Corner</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>ติดต่อเรา</h4>
+          <ul class="footer-links footer-contact-list">
+            <li><i class="fas fa-phone-alt"></i>&nbsp;<a href="tel:+6625407999">02-540-7999</a></li>
+            <li><i class="fab fa-line"></i>&nbsp;<a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener">Line: @rungkij</a></li>
+            <li><i class="fab fa-facebook-f"></i>&nbsp;<a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener">Facebook Rungkij</a></li>
+            <li><i class="fab fa-instagram"></i>&nbsp;<a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener">@rungkij_official</a></li>
+
+          </ul>
+          <p class="footer-seo-kw">บ้านจัดสรร กรุงเทพ &middot; ทาวน์โฮม ราคาถูก &middot; บ้านเดี่ยว ใกล้สนามบิน &middot; บ้านใกล้รถไฟฟ้า &middot; บ้านมือหนึ่ง กรุงเทพ</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate Co., Ltd.) สงวนลิขสิทธิ์ทุกประการ</span>
+        <div>
+          <a href="#">นโยบายความเป็นส่วนตัว</a>
+          <a href="#">เงื่อนไขการใช้งาน</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lb-overlay" id="lbOverlay">
+    <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+    <button class="lb-nav lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
+    <div class="lb-img-wrap"><img id="lbImg" src="" alt=""></div>
+    <button class="lb-nav lb-next" id="lbNext"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+
+  <!-- DATA + MAIN JS -->
+  <script src="posts-data.js"></script>
+  <script src="main.js"></script>
+  <script>
+  /* ═══════════════════════════════════════════════════
+     BLOG POST PAGE — Dynamic Renderer
+  ═══════════════════════════════════════════════════ */
+
+  const catColors = {
+    project: ['rgba(185,154,91,0.88)', '#fff'],
+    guide:   ['rgba(39,174,96,0.88)',  '#fff'],
+    market:  ['rgba(52,152,219,0.88)', '#fff'],
+    news:    ['rgba(155,89,182,0.88)', '#fff']
+  };
+
+  /* ── Get slug from URL ── */
+  const params  = new URLSearchParams(window.location.search);
+  const slug    = params.get('slug');
+  const post    = slug ? getPostBySlug(slug) : null;
+
+  if (!post) {
+    // 404 fallback
+    document.getElementById('postHero').innerHTML = `
+      <div style="padding:120px 0;text-align:center;background:#091736;">
+        <div class="container">
+          <p style="color:rgba(255,255,255,0.40);font-size:0.9rem;">404</p>
+          <h1 style="color:#fff;font-size:2rem;margin:12px 0;">ไม่พบบทความที่คุณต้องการ</h1>
+          <a href="blog.html" class="btn btn-primary" style="margin-top:24px;display:inline-flex;">
+            <i class="fas fa-arrow-left" style="margin-right:8px;"></i>กลับหน้าบทความ
+          </a>
+        </div>
+      </div>`;
+  } else {
+
+    /* ── Update <head> meta ── */
+    document.getElementById('page-title').textContent = post.title + ' | RUNGKIJ V.S.K. Estate';
+    document.getElementById('page-desc').content = post.excerpt;
+
+    /* ── Render Hero ── */
+    document.getElementById('postHero').innerHTML = `
+      <section class="post-hero">
+        <img class="post-hero-img" id="heroImg" src="${post.cover}" alt="${post.title}">
+        <div class="post-hero-overlay"></div>
+        <div class="post-hero-content">
+          <div class="container">
+            <nav class="post-breadcrumb" aria-label="breadcrumb">
+              <a href="index.html">หน้าหลัก</a><span>/</span>
+              <a href="blog.html">บทความ</a><span>/</span>
+              <span style="color:rgba(255,255,255,0.70);">${post.categoryLabel}</span>
+            </nav>
+            <div class="post-category-badge ${post.category}">${post.categoryLabel}</div>
+            <h1>${post.title}</h1>
+            <div class="post-hero-meta">
+              <span><i class="fas fa-calendar-alt"></i> ${post.dateLabel}</span>
+              <span><i class="fas fa-clock"></i> อ่าน ${post.readTime} นาที</span>
+              <span><i class="fas fa-user"></i> ${post.author.name}</span>
+            </div>
+          </div>
+        </div>
+      </section>`;
+
+    /* parallax hero img */
+    setTimeout(() => {
+      const hi = document.getElementById('heroImg');
+      if (hi) { hi.onload = () => hi.classList.add('loaded'); if (hi.complete) hi.classList.add('loaded'); }
+    }, 50);
+
+    /* ── Build TOC from headings in content ── */
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = post.content;
+    const headings = [...tempDiv.querySelectorAll('h2,h3')];
+    let tocHTML = '';
+    headings.forEach((h, i) => {
+      h.id = 'section-' + i;
+      const indent = h.tagName === 'H3' ? 'padding-left:16px;' : '';
+      tocHTML += `<li style="${indent}"><a href="#section-${i}">${h.textContent}</a></li>`;
+    });
+
+    /* ── Render Article Body ── */
+    let videoHTML = '';
+    if (post.video) {
+      if (post.video.type === 'youtube') {
+        videoHTML = `
+          <div class="post-video-section">
+            <div class="post-video-label"><i class="fas fa-play-circle"></i> วิดีโอประกอบบทความ</div>
+            <div class="post-video-wrap">
+              <iframe src="https://www.youtube.com/embed/${post.video.id}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>`;
+      } else if (post.video.type === 'local') {
+        videoHTML = `
+          <div class="post-video-section">
+            <div class="post-video-label"><i class="fas fa-play-circle"></i> วิดีโอประกอบบทความ</div>
+            <div class="post-video-wrap">
+              <video controls poster="${post.video.poster || ''}">
+                <source src="${post.video.src}" type="video/mp4">
+              </video>
+            </div>
+          </div>`;
+      }
+    }
+
+    /* gallery */
+    let galleryHTML = '';
+    if (post.images && post.images.length > 1) {
+      const shown = post.images.slice(0, 5);
+      const extra = post.images.length - 5;
+      let items = shown.map((src, i) => `
+        <div class="gallery-item" onclick="openLightbox(${i})" data-index="${i}">
+          <img loading="lazy" src="${src}" alt="รูปประกอบ ${i+1}">
+          <div class="gallery-item-overlay"><i class="fas fa-expand"></i></div>
+        </div>`).join('');
+      if (extra > 0) {
+        items += `<div class="gallery-show-more" onclick="openLightbox(5)">
+          <i class="fas fa-images" style="font-size:1.4rem;"></i>
+          <span>+${extra} รูปเพิ่มเติม</span>
+        </div>`;
+      }
+      galleryHTML = `
+        <div class="post-gallery-section">
+          <div class="post-gallery-label"><i class="fas fa-images"></i> แกลเลอรี่ภาพ</div>
+          <div class="post-gallery-grid" id="galleryGrid">${items}</div>
+        </div>`;
+    }
+
+    /* tags */
+    const tagsHTML = post.tags.length ? `
+      <div class="post-tags-section">
+        <div class="post-tags-label"><i class="fas fa-hashtag"></i> แท็ก</div>
+        <div class="post-tags-list">
+          ${post.tags.map(t => `<a href="blog.html?tag=${encodeURIComponent(t)}" class="post-tag-chip">#${t}</a>`).join('')}
+        </div>
+      </div>` : '';
+
+    /* backlinks */
+    const backlinksHTML = post.backlinks.length ? `
+      <div class="post-backlinks-section">
+        <div class="post-backlinks-label"><i class="fas fa-link"></i> ลิงก์ที่เกี่ยวข้อง</div>
+        <div class="post-backlinks-grid">
+          ${post.backlinks.map(b => `
+            <a href="${b.url}" class="post-backlink-item">
+              <i class="fas fa-arrow-right"></i>
+              <span>${b.text}</span>
+            </a>`).join('')}
+        </div>
+      </div>` : '';
+
+    /* share bar */
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(post.title);
+    const shareHTML = `
+      <div class="post-share-bar">
+        <span class="post-share-label"><i class="fas fa-share-alt" style="margin-right:7px;"></i>แชร์บทความนี้</span>
+        <div class="post-share-btns">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${pageUrl}" target="_blank" class="share-btn facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://social-plugins.line.me/lineit/share?url=${pageUrl}" target="_blank" class="share-btn line" title="LINE"><i class="fab fa-line"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=${pageUrl}&text=${pageTitle}" target="_blank" class="share-btn twitter" title="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+          <button class="share-btn copy" title="คัดลอกลิงก์" onclick="copyLink(this)"><i class="fas fa-link"></i></button>
+        </div>
+      </div>`;
+
+    document.getElementById('articleBodyWrap').innerHTML = `
+      <div class="article-content" id="articleContent">${tempDiv.innerHTML}</div>
+      ${videoHTML}
+      ${galleryHTML}
+      ${tagsHTML}
+      ${backlinksHTML}
+      <div class="post-author-card">
+        <div class="post-author-avatar">${post.author.initials}</div>
+        <div class="post-author-info">
+          <h4>${post.author.name}</h4>
+          <p>${post.author.role}</p>
+        </div>
+      </div>
+      ${shareHTML}`;
+
+    /* ── Render Sidebar ── */
+    const related = getRelatedPosts(post.id, 3);
+    const relatedSideHTML = related.length ? `
+      <div class="post-widget">
+        <h3>บทความใกล้เคียง</h3>
+        <div class="related-list">
+          ${related.map(r => `
+            <a href="blog-post.html?slug=${r.slug}" class="related-item">
+              <div class="related-thumb"><img loading="lazy" src="${r.cover}" alt="${r.title}"></div>
+              <div class="related-text">
+                <h4>${r.title}</h4>
+                <span>${r.dateLabel} · ${r.readTime} นาที</span>
+              </div>
+            </a>`).join('')}
+        </div>
+      </div>` : '';
+
+    document.getElementById('postSidebar').innerHTML = `
+      ${tocHTML ? `<div class="post-widget" style="position:sticky;top:80px;">
+        <h3>สารบัญ</h3>
+        <ul class="post-toc" id="postToc">${tocHTML}</ul>
+      </div>` : ''}
+      ${relatedSideHTML}
+      <div class="sidebar-sticky-cta">
+        <h3>ปรึกษาผู้เชี่ยวชาญฟรี</h3>
+        <p>ทีมรุ่งกิจพร้อมให้คำปรึกษาทุกขั้นตอน ตั้งแต่เลือกโครงการจนถึงวันโอน</p>
+        <a href="tel:+6625407999" class="btn-tel"><i class="fas fa-phone-alt"></i> 02-540-7999</a>
+        <a href="https://line.me/R/ti/p/@rungkij" target="_blank" class="btn-line"><i class="fab fa-line" style="color:#00B900;"></i> Line: @rungkij</a>
+      </div>`;
+
+    /* ── Render Related Posts (bottom) ── */
+    if (related.length) {
+      document.getElementById('relatedSection').style.display = '';
+      document.getElementById('relatedGrid').innerHTML = related.map(r => `
+        <a href="blog-post.html?slug=${r.slug}" class="related-card reveal">
+          <div class="rc-img"><img loading="lazy" src="${r.cover}" alt="${r.title}"></div>
+          <div class="rc-body">
+            <span class="rc-tag ${r.category}">${r.categoryLabel}</span>
+            <h3>${r.title}</h3>
+            <span class="rc-meta">${r.dateLabel} · อ่าน ${r.readTime} นาที</span>
+          </div>
+        </a>`).join('');
+    }
+
+    /* ── Reading Progress Bar ── */
+    window.addEventListener('scroll', () => {
+      const el = document.getElementById('articleContent');
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const total = el.offsetHeight - window.innerHeight;
+      const scrolled = Math.max(0, -rect.top);
+      const pct = Math.min(100, (scrolled / total) * 100);
+      document.getElementById('readProgressBar').style.width = pct + '%';
+    });
+
+    /* ── TOC Active Highlight ── */
+    const tocLinks = document.querySelectorAll('.post-toc a');
+    const sectionEls = [...document.querySelectorAll('#articleContent [id^="section-"]')];
+    window.addEventListener('scroll', () => {
+      let active = 0;
+      sectionEls.forEach((s, i) => {
+        if (s.getBoundingClientRect().top < 120) active = i;
+      });
+      tocLinks.forEach((l, i) => l.classList.toggle('active', i === active));
+    });
+  }
+
+  /* ── Lightbox ── */
+  let lbImages = post ? post.images : [];
+  let lbIndex = 0;
+
+  function openLightbox(idx) {
+    lbIndex = Math.min(idx, lbImages.length - 1);
+    updateLb();
+    document.getElementById('lbOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lbOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function updateLb() {
+    document.getElementById('lbImg').src = lbImages[lbIndex];
+    document.getElementById('lbCounter').textContent = `${lbIndex + 1} / ${lbImages.length}`;
+  }
+  document.getElementById('lbClose').onclick = closeLightbox;
+  document.getElementById('lbPrev').onclick = () => { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; updateLb(); };
+  document.getElementById('lbNext').onclick = () => { lbIndex = (lbIndex + 1) % lbImages.length; updateLb(); };
+  document.getElementById('lbOverlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lbOverlay').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length; updateLb(); }
+    if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbImages.length; updateLb(); }
+  });
+
+  /* ── Copy link ── */
+  function copyLink(btn) {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      const icon = btn.querySelector('i');
+      icon.className = 'fas fa-check';
+      btn.style.background = 'rgba(39,174,96,0.25)';
+      btn.style.borderColor = '#27ae60';
+      setTimeout(() => { icon.className = 'fas fa-link'; btn.style.background = ''; btn.style.borderColor = ''; }, 2000);
+    });
+  }
+
+  /* ── Reveal animation ── */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); revealObs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+  </script>
+</body>
+</html>

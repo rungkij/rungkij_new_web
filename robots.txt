@@ -1,5 +1,5 @@
 # robots.txt — RUNGKIJ V.S.K. Estate
-# https://www.rungkij.co.th
+# https://www.rungkij.com
 
 User-agent: *
 Allow: /
@@ -10,7 +10,7 @@ Disallow: /.git/
 Disallow: /uploads/
 
 # Sitemap
-Sitemap: https://www.rungkij.co.th/sitemap.xml
+Sitemap: https://www.rungkij.com/sitemap.xml
 
 # ── AI Search Crawlers ──────────────────────────────────────
 # Allow all AI crawlers to index the site

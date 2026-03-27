@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <!-- =====================================================
+    PROJECT DETAIL PAGE TEMPLATE — RUNGKIJ V.S.K. Estate
+    -------------------------------------------------------
+    HOW TO CUSTOMISE THIS TEMPLATE
+    ───────────────────────────────
+    Search for the token  <!--[EDIT: ...]-->  to jump to every
+    configurable value. Key tokens:
+      [PROJECT_SLUG]    e.g. "grand-verona-house"
+      [PROJECT_TYPE]    e.g. "Premium Townhome" / "บ้านเดี่ยว"
+      [PROJECT_NAME]    e.g. "Grand Verona บ้านเดี่ยว"
+      [PROJECT_PRICE]   e.g. "8.29"
+      [PROJECT_IMG_*]   paths relative to images/
+      [MAPS_EMBED_URL]  Google Maps embed src
+    ===================================================== -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo_web.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logo_web.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/logo_web.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--[EDIT: page title + meta] -->
+  <title>Grand Verona บ้านเดี่ยว — Detached House รามคำแหง | RUNGKIJ</title>
+  <meta name="description" content="Grand Verona บ้านเดี่ยวพรีเมียม ทำเลรามคำแหง–ร่มเกล้า เริ่มต้น 8.29 ล้านบาท">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.rungkij.com/project-grand-verona-house.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:site_name"   content="RUNGKIJ — V.S.K. Estate">
+  <meta property="og:locale"      content="th_TH">
+  <!--[EDIT: og:url, og:title, og:description, og:image] -->
+  <meta property="og:url"         content="https://www.rungkij.com/project-grand-verona-house.html">
+  <meta property="og:title"       content="Grand Verona บ้านเดี่ยว | RUNGKIJ">
+  <meta property="og:description" content="บ้านเดี่ยวพรีเมียมเริ่มต้น 8.29 ล้าน ทำเลรามคำแหง">
+  <meta property="og:image"       content="https://www.rungkij.com/images/og-cover.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Swiper CSS (facilities slider) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <!-- Site-wide styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============================================================
+    TEMPLATE-SPECIFIC STYLES
+    All class names are prefixed with  pd-  (project detail)
+    to avoid collisions with site-wide style.css
+  ============================================================ -->
+  <style>
+
+    /* ── 0. DESIGN TOKENS (mirrors style.css, here for reference) ──
+       Override any token per-project by redefining it on :root        */
+    :root {
+      --pd-accent:      #b99a5b;
+      --pd-accent-h:    #a3863e;
+      --pd-primary:     #091736;
+      --pd-text:        #1a1a1a;
+      --pd-text-muted:  #757575;
+      --pd-bg:          #fafafa;
+      --pd-bg-alt:      #f5f4f0;
+      --pd-border:      rgba(185,154,91,0.22);
+      --pd-radius:      2px;   /* Rungkij uses near-zero radius for luxury feel */
+      --pd-transition:  all 0.40s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    /* ── 1. HERO ────────────────────────────────────────────────── */
+    .pd-hero {
+      position: relative;
+      height: 100vh; min-height: 600px; max-height: 860px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      /*[EDIT: hero background image] */
+      background-image: url('images/grand-verona/house-1.jpg');
+      background-size: cover;
+      background-position: center;
+      animation: pdHeroPan 24s ease-out both;
+    }
+    @keyframes pdHeroPan {
+      0%   { background-position: 54% 52%; }
+      100% { background-position: 46% 48%; }
+    }
+    /* dark cinematic overlay */
+    .pd-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(9,23,54,0.35) 0%,
+          rgba(9,23,54,0.55) 50%,
+          rgba(9,23,54,0.80) 100%);
+      pointer-events: none;
+    }
+    /* shimmer sweep on load */
+    .pd-hero-shimmer {
+      position: absolute; inset: 0; z-index: 2; pointer-events: none;
+      background: linear-gradient(105deg,
+        transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+      animation: pdShimmer 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;
+    }
+    @keyframes pdShimmer {
+      0%   { transform: translateX(-110%); opacity: 1; }
+      80%  { transform: translateX(110%);  opacity: 1; }
+      100% { transform: translateX(110%);  opacity: 0; }
+    }
+    /* gold horizon line */
+    .pd-hero-horizon {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; z-index: 3;
+      background: linear-gradient(90deg,
+        transparent 0%, var(--pd-accent) 30%,
+        var(--pd-accent) 70%, transparent 100%);
+      opacity: 0.55;
+    }
+    .pd-hero-content {
+      position: relative; z-index: 4;
+      padding: 0 clamp(20px,5vw,80px);
+      max-width: 860px;
+    }
+    .pd-hero-category {
+      display: inline-block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pd-accent);
+      border: 1px solid rgba(185,154,91,0.5);
+      padding: 6px 18px;
+      margin-bottom: 22px;
+      animation: pdFadeUp 0.7s ease 0.2s both;
+    }
+    .pd-hero h1 {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', sans-serif;
+      font-size: clamp(2rem, 5.5vw, 4.2rem);
+      font-weight: 700; line-height: 1.15;
+      color: #fff; margin-bottom: 16px;
+      animation: pdFadeUp 0.75s ease 0.36s both;
+    }
+    .pd-hero-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.80);
+      margin-bottom: 36px;
+      animation: pdFadeUp 0.7s ease 0.50s both;
+    }
+    .pd-hero-price strong {
+      color: #fff; font-size: 1.25em;
+    }
+    .pd-hero-cta {
+      display: inline-block;
+      background: var(--pd-accent);
+      color: #fff;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.90rem; font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 15px 42px;
+      text-decoration: none;
+      transition: var(--pd-transition);
+      animation: pdFadeUp 0.7s ease 0.62s both;
+    }
+    .pd-hero-cta:hover {
+      background: var(--pd-accent-h);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(185,154,91,0.38);
+    }
+    .pd-hero-scroll {
+      position: absolute; bottom: 28px; left: 50%;
+      transform: translateX(-50%); z-index: 4;
+      display: flex; flex-direction: column; align-items: center;
+      gap: 6px; opacity: 0.5;
+      animation: pdBounce 2s ease-in-out 1.5s infinite;
+    }
+    .pd-hero-scroll span {
+      font-size: 0.65rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #fff;
+    }
+    @keyframes pdBounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+    @keyframes pdFadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── 2. STICKY PROJECT NAV ──────────────────────────────────── */
+    .pd-sticky-nav {
+      position: sticky; top: 0; z-index: 90;
+      background: #fff;
+      border-bottom: 1px solid var(--pd-border);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .pd-sticky-inner {
+      max-width: 1640px; margin: 0 auto;
+      padding: 0 clamp(16px,2.5vw,40px);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      height: 56px; gap: 8px;
+    }
+    .pd-sticky-links {
+      display: flex; gap: 0; overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .pd-sticky-links::-webkit-scrollbar { display: none; }
+    .pd-sticky-links a {
+      padding: 0 20px; height: 56px;
+      display: flex; align-items: center;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--pd-text-muted);
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .pd-sticky-links a:hover,
+    .pd-sticky-links a.active {
+      color: var(--pd-accent);
+      border-bottom-color: var(--pd-accent);
+    }
+    .pd-sticky-register {
+      flex-shrink: 0;
+      display: inline-block;
+      border: 1px solid var(--pd-accent);
+      color: var(--pd-accent);
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 8px 22px; white-space: nowrap;
+      text-decoration: none;
+      transition: var(--pd-transition);
+    }
+    .pd-sticky-register:hover {
+      background: var(--pd-accent); color: #fff;
+    }
+
+    /* ── 3. SECTION COMMONS ─────────────────────────────────────── */
+    .pd-section {
+      padding: clamp(56px, 8vw, 100px) 0;
+    }
+    .pd-section-alt {
+      background: var(--pd-bg-alt);
+    }
+    .pd-section-dark {
+      background: var(--pd-primary);
+      color: #fff;
+    }
+    .pd-container {
+      max-width: 1640px; margin: 0 auto;
+      padding: 0 clamp(16px, 2.5vw, 40px);
+    }
+    .pd-heading-block {
+      text-align: center; margin-bottom: clamp(40px, 6vw, 72px);
+    }
+    .pd-eyebrow {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--pd-accent); margin-bottom: 12px;
+    }
+    .pd-heading-block h2 {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Thai', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 700; color: var(--pd-text);
+      line-height: 1.25; margin-bottom: 18px;
+    }
+    .pd-section-dark .pd-heading-block h2 { color: #fff; }
+    .pd-divider {
+      width: 40px; height: 1px;
+      background: var(--pd-accent);
+      margin: 0 auto;
+    }
+    /* Reveal animation (IntersectionObserver in main.js handles .reveal) */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── 4. CONCEPT & HIGHLIGHTS ────────────────────────────────── */
+    .pd-concept-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      align-items: start;
+    }
+    .pd-concept-text h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700; margin-bottom: 20px;
+      color: var(--pd-text);
+    }
+    .pd-concept-text p {
+      font-size: 0.95rem; color: var(--pd-text-muted);
+      line-height: 1.9; margin-bottom: 16px;
+    }
+    /* 3-column selling points grid */
+    .pd-selling-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--pd-border);
+      border: 1px solid var(--pd-border);
+      margin-top: clamp(40px, 5vw, 64px);
+    }
+    .pd-sp-item {
+      background: #fff;
+      padding: 28px 22px;
+      text-align: center;
+    }
+    .pd-section-alt .pd-sp-item { background: var(--pd-bg-alt); }
+    .pd-sp-icon {
+      width: 48px; height: 48px;
+      border: 1px solid var(--pd-border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 1.1rem; color: var(--pd-accent);
+    }
+    .pd-sp-item h4 {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--pd-text); margin-bottom: 6px;
+    }
+    .pd-sp-item p {
+      font-size: 0.78rem; color: var(--pd-text-muted);
+      line-height: 1.6;
+    }
+    /* Stats row */
+    .pd-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--pd-border);
+      border: 1px solid var(--pd-border);
+      margin-top: 32px;
+    }
+    .pd-stat {
+      background: #fff; padding: 28px 16px; text-align: center;
+    }
+    .pd-stat-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700; color: var(--pd-accent);
+      line-height: 1; display: block; margin-bottom: 8px;
+    }
+    .pd-stat-label {
+      font-size: 0.78rem; color: var(--pd-text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── 5. UNIT TYPES / TAB SYSTEM ─────────────────────────────── */
+    .pd-tabs-nav {
+      display: flex; border-bottom: 1px solid var(--pd-border);
+      margin-bottom: 40px; overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .pd-tabs-nav::-webkit-scrollbar { display: none; }
+    .pd-tab-btn {
+      padding: 14px 28px;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.84rem; font-weight: 500;
+      color: var(--pd-text-muted); background: none; border: none;
+      border-bottom: 2px solid transparent; cursor: pointer;
+      white-space: nowrap; flex-shrink: 0;
+      transition: color 0.25s, border-color 0.25s;
+      margin-bottom: -1px;
+    }
+    .pd-tab-btn:hover { color: var(--pd-accent); }
+    .pd-tab-btn.active {
+      color: var(--pd-accent);
+      border-bottom-color: var(--pd-accent);
+      font-weight: 600;
+    }
+    .pd-tab-panel { display: none; }
+    .pd-tab-panel.active { display: grid; }
+    .pd-unit-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px);
+      align-items: start;
+    }
+    .pd-unit-img-wrap {
+      position: relative; overflow: hidden;
+      background: var(--pd-bg-alt);
+    }
+    .pd-unit-img-wrap img {
+      width: 100%; aspect-ratio: 4/3;
+      object-fit: cover; display: block;
+      transition: transform 0.7s ease;
+    }
+    .pd-unit-img-wrap:hover img { transform: scale(1.04); }
+    .pd-unit-badge {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--pd-accent); color: #fff;
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 4px 12px;
+    }
+    .pd-unit-info { padding: 8px 0; }
+    .pd-unit-info h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 700; margin-bottom: 6px;
+    }
+    .pd-unit-subtitle {
+      font-size: 0.85rem; color: var(--pd-text-muted);
+      margin-bottom: 24px;
+    }
+    .pd-unit-specs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--pd-border);
+      border: 1px solid var(--pd-border);
+      margin-bottom: 28px;
+    }
+    .pd-unit-spec {
+      background: #fff; padding: 16px 10px; text-align: center;
+    }
+    .pd-section-alt .pd-unit-spec { background: var(--pd-bg-alt); }
+    .pd-unit-spec i {
+      font-size: 1rem; color: var(--pd-accent); margin-bottom: 6px; display: block;
+    }
+    .pd-unit-spec-val {
+      display: block;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--pd-text);
+    }
+    .pd-unit-spec-label {
+      font-size: 0.7rem; color: var(--pd-text-muted);
+      letter-spacing: 0.06em;
+    }
+    .pd-unit-desc {
+      font-size: 0.90rem; color: var(--pd-text-muted);
+      line-height: 1.8; margin-bottom: 28px;
+    }
+    .pd-unit-price-row {
+      display: flex; align-items: baseline; gap: 8px;
+      margin-bottom: 28px;
+    }
+    .pd-unit-price-label { font-size: 0.78rem; color: var(--pd-text-muted); }
+    .pd-unit-price-val {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--pd-accent);
+    }
+    .pd-unit-price-note { font-size: 0.72rem; color: var(--pd-text-muted); }
+    .pd-btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    /* Outline button */
+    .pd-btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--pd-accent); color: var(--pd-accent);
+      background: transparent;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.80rem; font-weight: 600;
+      letter-spacing: 0.08em; padding: 12px 28px;
+      text-decoration: none; cursor: pointer;
+      transition: var(--pd-transition);
+    }
+    .pd-btn-outline:hover { background: var(--pd-accent); color: #fff; }
+    /* Solid button */
+    .pd-btn-solid {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--pd-accent); color: #fff;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.80rem; font-weight: 600;
+      letter-spacing: 0.08em; padding: 12px 28px;
+      text-decoration: none; cursor: pointer; border: none;
+      transition: var(--pd-transition);
+    }
+    .pd-btn-solid:hover { background: var(--pd-accent-h); transform: translateY(-1px); }
+    /* Dark outline button */
+    .pd-btn-dark {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--pd-text); color: var(--pd-text);
+      background: transparent;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.80rem; font-weight: 600;
+      letter-spacing: 0.08em; padding: 12px 28px;
+      text-decoration: none; cursor: pointer;
+      transition: var(--pd-transition);
+    }
+    .pd-btn-dark:hover { background: var(--pd-text); color: #fff; }
+
+    /* ── 6. FACILITIES SWIPER ───────────────────────────────────── */
+    .pd-facilities-swiper {
+      width: 100%; overflow: hidden;
+      position: relative;
+    }
+    .pd-fac-slide {
+      position: relative;
+    }
+    .pd-fac-slide img {
+      width: 100%;
+      aspect-ratio: 21/9;   /* cinematic widescreen — change to 16/9 for more height */
+      object-fit: cover; display: block;
+    }
+    .pd-fac-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 14px 24px;
+      background: linear-gradient(to top, rgba(9,23,54,0.75) 0%, transparent 100%);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.80rem; letter-spacing: 0.08em;
+    }
+    /* Swiper custom controls */
+    .pd-fac-btn-prev,
+    .pd-fac-btn-next {
+      position: absolute; top: 50%; z-index: 10;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,0.5);
+      background: rgba(9,23,54,0.40);
+      color: #fff; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: var(--pd-transition);
+    }
+    .pd-fac-btn-prev { left: 20px; }
+    .pd-fac-btn-next { right: 20px; }
+    .pd-fac-btn-prev:hover,
+    .pd-fac-btn-next:hover { background: var(--pd-accent); border-color: var(--pd-accent); }
+    .pd-fac-pagination {
+      position: absolute; bottom: 14px; left: 50%;
+      transform: translateX(-50%); z-index: 10;
+    }
+    .pd-fac-pagination .swiper-pagination-bullet {
+      background: rgba(255,255,255,0.5); opacity: 1;
+    }
+    .pd-fac-pagination .swiper-pagination-bullet-active {
+      background: var(--pd-accent);
+    }
+    /* Facility icons grid below slider */
+    .pd-fac-icons {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1px; background: var(--pd-border);
+      border: 1px solid var(--pd-border);
+      margin-top: 32px;
+    }
+    .pd-fac-icon-item {
+      background: #fff; padding: 24px 16px; text-align: center;
+    }
+    .pd-section-alt .pd-fac-icon-item { background: var(--pd-bg-alt); }
+    .pd-fac-icon-item i {
+      font-size: 1.4rem; color: var(--pd-accent);
+      margin-bottom: 10px; display: block;
+    }
+    .pd-fac-icon-item span {
+      font-size: 0.78rem; color: var(--pd-text-muted);
+      line-height: 1.5; display: block;
+    }
+
+    /* ── 7. LOCATION ────────────────────────────────────────────── */
+    .pd-location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: start;
+    }
+    .pd-map-wrap {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--pd-bg-alt);
+    }
+    .pd-map-wrap iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    /* fallback placeholder before iframe loads */
+    .pd-map-wrap::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--pd-bg-alt);
+      z-index: 0;
+    }
+    .pd-location-info h3 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700; margin-bottom: 8px; color: var(--pd-text);
+    }
+    .pd-location-info > p {
+      font-size: 0.90rem; color: var(--pd-text-muted);
+      line-height: 1.8; margin-bottom: 28px;
+    }
+    .pd-landmarks {
+      list-style: none; display: flex; flex-direction: column; gap: 12px;
+    }
+    .pd-landmark {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 18px;
+      background: #fff; border: 1px solid var(--pd-border);
+      transition: border-color 0.25s;
+    }
+    .pd-section-alt .pd-landmark { background: var(--pd-bg-alt); }
+    .pd-landmark:hover { border-color: var(--pd-accent); }
+    .pd-landmark-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border: 1px solid var(--pd-border); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.80rem; color: var(--pd-accent);
+    }
+    .pd-landmark-text { flex: 1; }
+    .pd-landmark-name {
+      font-size: 0.85rem; font-weight: 600; color: var(--pd-text);
+      display: block; margin-bottom: 2px;
+    }
+    .pd-landmark-dist {
+      font-size: 0.75rem; color: var(--pd-text-muted);
+    }
+
+    /* ── 8. LEAD FORM ───────────────────────────────────────────── */
+    .pd-form-wrap {
+      max-width: 680px; margin: 0 auto;
+    }
+    .pd-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 24px;
+    }
+    .pd-form-group {
+      display: flex; flex-direction: column; margin-bottom: 24px;
+    }
+    .pd-form-group label {
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--pd-text-muted); margin-bottom: 8px;
+    }
+    .pd-form-group input,
+    .pd-form-group select,
+    .pd-form-group textarea {
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background: transparent;
+      padding: 12px 0;
+      font-family: 'Noto Sans Thai','Plus Jakarta Sans', sans-serif;
+      font-size: 0.90rem; color: var(--pd-text);
+      outline: none; transition: border-color 0.25s;
+    }
+    .pd-form-group input:focus,
+    .pd-form-group select:focus,
+    .pd-form-group textarea:focus {
+      border-bottom-color: var(--pd-accent);
+    }
+    .pd-form-group textarea { min-height: 80px; resize: vertical; }
+    .pd-form-group select { cursor: pointer; }
+    .pd-form-privacy {
+      font-size: 0.78rem; color: var(--pd-text-muted);
+      margin-bottom: 32px; display: flex; gap: 10px; align-items: flex-start;
+    }
+    .pd-form-privacy input[type="checkbox"] {
+      flex-shrink: 0; margin-top: 2px; accent-color: var(--pd-accent);
+    }
+    .pd-form-submit { text-align: center; }
+
+    /* ── 9. FLOATING MOBILE CTA ─────────────────────────────────── */
+    .pd-float-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: var(--pd-primary);
+      border-top: 1px solid rgba(185,154,91,0.30);
+      height: 60px;
+    }
+    .pd-float-bar-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+    .pd-float-phone {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px;
+      border-right: 1px solid rgba(185,154,91,0.25);
+      color: rgba(255,255,255,0.80);
+      font-size: 0.82rem; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .pd-float-phone:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .pd-float-phone i { color: var(--pd-accent); }
+    .pd-float-register {
+      display: flex; align-items: center; justify-content: center;
+      gap: 8px;
+      background: var(--pd-accent); color: #fff;
+      font-size: 0.82rem; font-weight: 600;
+      text-decoration: none;
+      transition: background 0.25s;
+    }
+    .pd-float-register:hover { background: var(--pd-accent-h); }
+
+    /* ── 10. RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .pd-concept-grid      { grid-template-columns: 1fr; }
+      .pd-selling-points    { grid-template-columns: repeat(3, 1fr); }
+      .pd-stats             { grid-template-columns: repeat(2, 1fr); }
+      .pd-unit-grid         { grid-template-columns: 1fr; }
+      .pd-location-grid     { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .pd-selling-points    { grid-template-columns: 1fr; }
+      .pd-unit-specs        { grid-template-columns: repeat(2, 1fr); }
+      .pd-form-row          { grid-template-columns: 1fr; }
+      .pd-sticky-links a    { padding: 0 14px; font-size: 0.78rem; }
+      .pd-sticky-register   { padding: 6px 14px; font-size: 0.72rem; }
+      .pd-fac-slide img     { aspect-ratio: 16/9; }
+      .pd-float-bar         { display: block; }
+      /* push footer above float bar on mobile */
+      body { padding-bottom: 60px; }
+    }
+    @media (max-width: 480px) {
+      .pd-stats             { grid-template-columns: repeat(2, 1fr); }
+      .pd-fac-icons         { grid-template-columns: repeat(2, 1fr); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+    NAVBAR (shared across all pages)
+  ══════════════════════════════════════ -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img">
+      </a>
+      <div class="nav-menu" id="navMenu">
+        <a href="projects.html" class="active">Projects</a>
+        <a href="promotion.html">Promotion</a>
+        <a href="financial.html">Financial</a>
+        <a href="blog.html">Blog</a>
+        <a href="care.html">Care</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 1 — HERO
+    ──────────────────────────────────────
+    [EDIT: data-project-img] → hero background
+    [EDIT: project type, name, price]
+  ══════════════════════════════════════ -->
+  <section class="pd-hero"
+    <!--[EDIT: hero background image in CSS or override inline below] -->
+    style="background-image: url('images/grand-verona/house-1.jpg');">
+    <div class="pd-hero-shimmer"></div>
+    <div class="pd-hero-horizon"></div>
+    <div class="pd-hero-content">
+      <!--[EDIT: category label] -->
+      <span class="pd-hero-category">Premium Detached House</span>
+      <!--[EDIT: project name] -->
+      <h1>Grand Verona<br>บ้านเดี่ยว รามคำแหง</h1>
+      <!--[EDIT: starting price] -->
+      <p class="pd-hero-price">
+        เริ่มต้น <strong>8.29 ล้านบาท*</strong>
+      </p>
+      <!--[EDIT: CTA link] -->
+      <a href="#pd-form" class="pd-hero-cta">ลงทะเบียนรับสิทธิพิเศษ</a>
+    </div>
+    <div class="pd-hero-scroll">
+      <span>Scroll</span>
+      <i class="fas fa-chevron-down" style="color:#fff; font-size:0.7rem;"></i>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 2 — STICKY PROJECT NAV
+    ──────────────────────────────────────
+    Links smooth-scroll to section IDs.
+    Active state is set by scroll spy JS below.
+  ══════════════════════════════════════ -->
+  <nav class="pd-sticky-nav" id="pdStickyNav" aria-label="Project navigation">
+    <div class="pd-sticky-inner">
+      <div class="pd-sticky-links" id="pdStickyLinks">
+        <a href="#pd-concept"    class="active">Concept</a>
+        <a href="#pd-units">แบบบ้าน</a>
+        <a href="#pd-facilities">ส่วนกลาง</a>
+        <a href="#pd-location">ทำเล</a>
+        <a href="#pd-form">ลงทะเบียน</a>
+      </div>
+      <a href="#pd-form" class="pd-sticky-register">ลงทะเบียน</a>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 3 — CONCEPT & HIGHLIGHTS
+    id="pd-concept"
+  ══════════════════════════════════════ -->
+  <section class="pd-section" id="pd-concept">
+    <div class="pd-container">
+
+      <!-- Concept text + stats -->
+      <div class="pd-concept-grid reveal">
+        <div class="pd-concept-text">
+          <!--[EDIT: concept heading + body copy] -->
+          <span class="pd-eyebrow">Design Concept</span>
+          <h3>European Luxury<br>บนทำเลยุทธศาสตร์กรุงเทพฯ</h3>
+          <p>Grand Verona บ้านเดี่ยว ออกแบบด้วยแรงบันดาลใจจากสถาปัตยกรรมเมดิเตอร์เรเนียน ผสมผสานกับฟังก์ชันการใช้งานที่ตอบโจทย์ครอบครัวไทยยุคใหม่ ทุกหลังถูกสร้างด้วยวัสดุนำเข้าคุณภาพสูง</p>
+          <p>ตั้งอยู่บนทำเลทอง รามคำแหง–ร่มเกล้า เชื่อมต่อมอเตอร์เวย์ ทางด่วน และสนามบินสุวรรณภูมิอย่างสะดวก พร้อมสิ่งอำนวยความสะดวกระดับ Resort Lifestyle ครบครัน</p>
+          <div class="pd-btn-row" style="margin-top:32px;">
+            <a href="contact.html" class="pd-btn-solid">
+              <i class="fas fa-calendar-check"></i>นัดชม Show Unit
+            </a>
+            <a href="contact.html" class="pd-btn-outline">
+              <i class="fas fa-download"></i>รับ E-Brochure
+            </a>
+          </div>
+        </div>
+
+        <!-- Stats block -->
+        <div>
+          <div class="pd-stats reveal">
+            <!--[EDIT: stats values] -->
+            <div class="pd-stat">
+              <span class="pd-stat-num">8.29</span>
+              <span class="pd-stat-label">ราคาเริ่มต้น (ล้าน)</span>
+            </div>
+            <div class="pd-stat">
+              <span class="pd-stat-num">280+</span>
+              <span class="pd-stat-label">ตร.ม. พื้นที่ใช้สอย</span>
+            </div>
+            <div class="pd-stat">
+              <span class="pd-stat-num">4–5</span>
+              <span class="pd-stat-label">ห้องนอน</span>
+            </div>
+            <div class="pd-stat">
+              <span class="pd-stat-num">100+</span>
+              <span class="pd-stat-label">ยูนิตทั้งหมด</span>
+            </div>
+          </div>
+          <!--[EDIT: secondary image] -->
+          <img src="images/grand-verona/house-2.jpg"
+            alt="Grand Verona exterior"
+            style="width:100%; margin-top:2px; display:block; aspect-ratio:4/3; object-fit:cover;"
+            loading="lazy">
+        </div>
+      </div>
+
+      <!-- 3-column selling points -->
+      <div class="pd-selling-points" style="margin-top:clamp(40px,6vw,72px);">
+        <!--[EDIT: selling points] -->
+        <div class="pd-sp-item reveal">
+          <div class="pd-sp-icon"><i class="fas fa-shield-alt"></i></div>
+          <h4>ระบบรักษาความปลอดภัย 24 ชม.</h4>
+          <p>Guard House, CCTV ทุกจุด, Smart Card Access ระบบปิดสมบูรณ์</p>
+        </div>
+        <div class="pd-sp-item reveal">
+          <div class="pd-sp-icon"><i class="fas fa-swimming-pool"></i></div>
+          <h4>คลับเฮาส์ & สระว่ายน้ำ</h4>
+          <p>สระ Olympic, Fitness, ห้องฟังก์ชัน, สวนส่วนกลางออกแบบพิเศษ</p>
+        </div>
+        <div class="pd-sp-item reveal">
+          <div class="pd-sp-icon"><i class="fas fa-wifi"></i></div>
+          <h4>Smart Home Pre-wiring</h4>
+          <p>ทุกหลังพร้อมเดินสายรองรับระบบ Smart Home ตามต้องการ</p>
+        </div>
+        <div class="pd-sp-item reveal">
+          <div class="pd-sp-icon"><i class="fas fa-plane"></i></div>
+          <h4>ใกล้สนามบินสุวรรณภูมิ</h4>
+          <p>ขับรถเพียง 15 นาที เหมาะสำหรับครอบครัวที่เดินทางบ่อย</p>
+        </div>
+        <div class="pd-sp-item reveal">
+          <div class="pd-sp-icon"><i class="fas fa-graduation-cap"></i></div>
+          <h4>โรงเรียนนานาชาติใกล้บ้าน</h4>
+          <p>สารสาสน์วิเทศร่มเกล้า, เตรียมอุดมพัฒนาการสุวรรณภูมิ ภายใน 5 กม.</p>
+        </div>
+        <div class="pd-sp-item reveal">
+          <div class="pd-sp-icon"><i class="fas fa-leaf"></i></div>
+          <h4>สวนส่วนกลาง Landscape</h4>
+          <p>พื้นที่สีเขียวและสวนน้ำตกออกแบบโดยนักออกแบบภูมิทัศน์มืออาชีพ</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 4 — UNIT TYPES (TAB SYSTEM)
+    id="pd-units"
+    ──────────────────────────────────────
+    To add a tab: duplicate a .pd-tab-btn and
+    .pd-tab-panel block, give them matching
+    data-tab / id attributes.
+  ══════════════════════════════════════ -->
+  <section class="pd-section pd-section-alt" id="pd-units">
+    <div class="pd-container">
+      <div class="pd-heading-block reveal">
+        <span class="pd-eyebrow">Floor Plans</span>
+        <!--[EDIT: section heading] -->
+        <h2>แบบบ้านเดี่ยว</h2>
+        <div class="pd-divider"></div>
+      </div>
+
+      <!-- Tab navigation -->
+      <nav class="pd-tabs-nav" role="tablist" aria-label="Unit types">
+        <!--[EDIT: tab labels] -->
+        <button class="pd-tab-btn active" role="tab"
+          data-tab="unit-a" aria-selected="true">
+          Type A — Verona
+        </button>
+        <button class="pd-tab-btn" role="tab"
+          data-tab="unit-b" aria-selected="false">
+          Type B — Grand
+        </button>
+        <!-- Add more tabs here -->
+      </nav>
+
+      <!-- ── TAB A ── -->
+      <div class="pd-tab-panel active pd-unit-grid" id="tab-unit-a" role="tabpanel">
+        <div class="pd-unit-img-wrap reveal">
+          <!--[EDIT: unit image] -->
+          <img src="images/grand-verona/single-a-1.jpg"
+            alt="Grand Verona Type A Verona" loading="lazy">
+          <span class="pd-unit-badge">Type A</span>
+        </div>
+        <div class="pd-unit-info reveal">
+          <!--[EDIT: unit name, subtitle, specs, desc, price] -->
+          <h3>Type A — Verona</h3>
+          <p class="pd-unit-subtitle">บ้านเดี่ยว 2 ชั้น | พื้นที่ใช้สอย 280–350 ตร.ม. | ที่ดิน 54–80 ตร.วา</p>
+          <div class="pd-unit-specs">
+            <div class="pd-unit-spec">
+              <i class="fas fa-bed"></i>
+              <span class="pd-unit-spec-val">4</span>
+              <span class="pd-unit-spec-label">ห้องนอน</span>
+            </div>
+            <div class="pd-unit-spec">
+              <i class="fas fa-bath"></i>
+              <span class="pd-unit-spec-val">4</span>
+              <span class="pd-unit-spec-label">ห้องน้ำ</span>
+            </div>
+            <div class="pd-unit-spec">
+              <i class="fas fa-car"></i>
+              <span class="pd-unit-spec-val">2</span>
+              <span class="pd-unit-spec-label">ที่จอดรถ</span>
+            </div>
+            <div class="pd-unit-spec">
+              <i class="fas fa-ruler-combined"></i>
+              <span class="pd-unit-spec-val">280+</span>
+              <span class="pd-unit-spec-label">ตร.ม.</span>
+            </div>
+          </div>
+          <p class="pd-unit-desc">
+            ห้องนั่งเล่นและรับประทานอาหารเพดานสูงสองชั้น สร้างบรรยากาศโอ่อ่า
+            พร้อม Master Bedroom Suite ขนาด Jumbo บน ชั้น 2 และสวนส่วนตัวหน้าบ้าน
+          </p>
+          <div class="pd-unit-price-row">
+            <span class="pd-unit-price-label">ราคาเริ่มต้น</span>
+            <span class="pd-unit-price-val">8.29 ล้าน</span>
+            <span class="pd-unit-price-note">*ราคาอาจเปลี่ยนแปลงตามโปรโมชั่น</span>
+          </div>
+          <div class="pd-btn-row">
+            <!--[EDIT: floor plan link] -->
+            <a href="#pd-form" class="pd-btn-solid">
+              <i class="fas fa-drafting-compass"></i>ดู Floor Plan
+            </a>
+            <a href="#pd-form" class="pd-btn-outline">
+              <i class="fas fa-phone"></i>สอบถามราคา
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB B ── -->
+      <div class="pd-tab-panel pd-unit-grid" id="tab-unit-b" role="tabpanel">
+        <div class="pd-unit-img-wrap reveal">
+          <!--[EDIT: unit image] -->
+          <img src="images/grand-verona/single-d-1.jpg"
+            alt="Grand Verona Type D Grand" loading="lazy">
+          <span class="pd-unit-badge">Type B</span>
+        </div>
+        <div class="pd-unit-info reveal">
+          <h3>Type B — Grand</h3>
+          <p class="pd-unit-subtitle">บ้านเดี่ยว 2 ชั้น | พื้นที่ใช้สอย 380–450 ตร.ม. | ที่ดิน 70–100 ตร.วา</p>
+          <div class="pd-unit-specs">
+            <div class="pd-unit-spec">
+              <i class="fas fa-bed"></i>
+              <span class="pd-unit-spec-val">5</span>
+              <span class="pd-unit-spec-label">ห้องนอน</span>
+            </div>
+            <div class="pd-unit-spec">
+              <i class="fas fa-bath"></i>
+              <span class="pd-unit-spec-val">5</span>
+              <span class="pd-unit-spec-label">ห้องน้ำ</span>
+            </div>
+            <div class="pd-unit-spec">
+              <i class="fas fa-car"></i>
+              <span class="pd-unit-spec-val">3</span>
+              <span class="pd-unit-spec-label">ที่จอดรถ</span>
+            </div>
+            <div class="pd-unit-spec">
+              <i class="fas fa-ruler-combined"></i>
+              <span class="pd-unit-spec-val">380+</span>
+              <span class="pd-unit-spec-label">ตร.ม.</span>
+            </div>
+          </div>
+          <p class="pd-unit-desc">
+            แบบบ้านไฮเอนด์ที่สุดในโครงการ ห้องรับแขกโอ่อ่า สวนส่วนตัว เดคสำหรับจัดเลี้ยง
+            วัสดุนำเข้าพรีเมียมทุกส่วน Master Suite พร้อม Walk-in Closet
+          </p>
+          <div class="pd-unit-price-row">
+            <span class="pd-unit-price-label">ราคาเริ่มต้น</span>
+            <span class="pd-unit-price-val">12.50 ล้าน</span>
+            <span class="pd-unit-price-note">*ราคาอาจเปลี่ยนแปลงตามโปรโมชั่น</span>
+          </div>
+          <div class="pd-btn-row">
+            <a href="#pd-form" class="pd-btn-solid">
+              <i class="fas fa-drafting-compass"></i>ดู Floor Plan
+            </a>
+            <a href="#pd-form" class="pd-btn-outline">
+              <i class="fas fa-phone"></i>สอบถามราคา
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 5 — FACILITIES SWIPER
+    id="pd-facilities"
+  ══════════════════════════════════════ -->
+  <section class="pd-section" id="pd-facilities">
+    <div class="pd-container">
+      <div class="pd-heading-block reveal">
+        <span class="pd-eyebrow">Amenities</span>
+        <!--[EDIT: section heading] -->
+        <h2>สิ่งอำนวยความสะดวก</h2>
+        <div class="pd-divider"></div>
+      </div>
+    </div>
+
+    <!-- Full-bleed Swiper (outside container for cinematic width) -->
+    <div class="pd-facilities-swiper swiper" id="pdFacSwiper">
+      <div class="swiper-wrapper">
+        <!--[EDIT: facility slides — add/remove as needed] -->
+        <div class="swiper-slide pd-fac-slide">
+          <img src="images/grand-verona/clubhouse-1.jpg"
+            alt="Clubhouse" loading="lazy">
+          <div class="pd-fac-caption">Clubhouse & Recreation Area</div>
+        </div>
+        <div class="swiper-slide pd-fac-slide">
+          <img src="images/grand-verona/clubhouse-2.jpg"
+            alt="Swimming Pool" loading="lazy">
+          <div class="pd-fac-caption">สระว่ายน้ำ Olympic</div>
+        </div>
+        <div class="swiper-slide pd-fac-slide">
+          <img src="images/grand-verona/clubhouse-int-1.jpg"
+            alt="Club Lounge" loading="lazy">
+          <div class="pd-fac-caption">Club Lounge & Function Room</div>
+        </div>
+        <div class="swiper-slide pd-fac-slide">
+          <img src="images/grand-verona/clubhouse-3.jpg"
+            alt="Park" loading="lazy">
+          <div class="pd-fac-caption">สวนส่วนกลาง Landscape</div>
+        </div>
+      </div>
+      <button class="pd-fac-btn-prev" aria-label="Previous">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="pd-fac-btn-next" aria-label="Next">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+      <div class="pd-fac-pagination swiper-pagination"></div>
+    </div>
+
+    <!-- Facility icons row -->
+    <div class="pd-container" style="margin-top:0;">
+      <div class="pd-fac-icons reveal">
+        <!--[EDIT: facility icon items] -->
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-swimming-pool"></i>
+          <span>สระว่ายน้ำ Olympic</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-dumbbell"></i>
+          <span>Fitness Centre</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-shield-alt"></i>
+          <span>รปภ. 24 ชม.</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-tree"></i>
+          <span>สวนส่วนกลาง</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-child"></i>
+          <span>สนามเด็กเล่น</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-parking"></i>
+          <span>ที่จอดรถส่วนกลาง</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-camera"></i>
+          <span>CCTV ทุกจุด</span>
+        </div>
+        <div class="pd-fac-icon-item">
+          <i class="fas fa-home"></i>
+          <span>Smart Card Access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 6 — LOCATION MAP
+    id="pd-location"
+  ══════════════════════════════════════ -->
+  <section class="pd-section pd-section-alt" id="pd-location">
+    <div class="pd-container">
+      <div class="pd-heading-block reveal">
+        <span class="pd-eyebrow">Connectivity</span>
+        <!--[EDIT: location heading] -->
+        <h2>ทำเลเด่น — รามคำแหง–ร่มเกล้า</h2>
+        <div class="pd-divider"></div>
+      </div>
+
+      <div class="pd-location-grid">
+        <!-- Map -->
+        <div class="pd-map-wrap reveal">
+          <!--[EDIT: MAPS_EMBED_URL — get from Google Maps > Share > Embed] -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15502.2!2d100.730!3d13.758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDQ1JzI4LjgiTiAxMDDCsDQzJzQ4LjAiRQ!5e0!3m2!1sth!2sth!4v1700000000000"
+            allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Grand Verona location map">
+          </iframe>
+        </div>
+
+        <!-- Landmarks list -->
+        <div class="reveal">
+          <!--[EDIT: location name + description] -->
+          <h3>รามคำแหง — ร่มเกล้า</h3>
+          <p>ทำเลกลยุทธ์เชื่อมต่อทุกเส้นทางในกรุงเทพฯ ทั้งทางด่วน มอเตอร์เวย์ และสนามบินสุวรรณภูมิ</p>
+          <!--[EDIT: landmarks — icon + name + distance] -->
+          <ul class="pd-landmarks">
+            <li class="pd-landmark">
+              <span class="pd-landmark-icon"><i class="fas fa-plane"></i></span>
+              <span class="pd-landmark-text">
+                <span class="pd-landmark-name">สนามบินสุวรรณภูมิ</span>
+                <span class="pd-landmark-dist">ขับรถ 15 นาที</span>
+              </span>
+            </li>
+            <li class="pd-landmark">
+              <span class="pd-landmark-icon"><i class="fas fa-road"></i></span>
+              <span class="pd-landmark-text">
+                <span class="pd-landmark-name">มอเตอร์เวย์บางปะอิน–บางนา</span>
+                <span class="pd-landmark-dist">5 นาที</span>
+              </span>
+            </li>
+            <li class="pd-landmark">
+              <span class="pd-landmark-icon"><i class="fas fa-train"></i></span>
+              <span class="pd-landmark-text">
+                <span class="pd-landmark-name">Airport Rail Link & รถไฟฟ้าสายสีส้ม</span>
+                <span class="pd-landmark-dist">10 นาที</span>
+              </span>
+            </li>
+            <li class="pd-landmark">
+              <span class="pd-landmark-icon"><i class="fas fa-graduation-cap"></i></span>
+              <span class="pd-landmark-text">
+                <span class="pd-landmark-name">สารสาสน์วิเทศร่มเกล้า</span>
+                <span class="pd-landmark-dist">3 กม.</span>
+              </span>
+            </li>
+            <li class="pd-landmark">
+              <span class="pd-landmark-icon"><i class="fas fa-shopping-bag"></i></span>
+              <span class="pd-landmark-text">
+                <span class="pd-landmark-name">Big C ร่มเกล้า / The Mall บางกะปิ</span>
+                <span class="pd-landmark-dist">8 นาที</span>
+              </span>
+            </li>
+            <li class="pd-landmark">
+              <span class="pd-landmark-icon"><i class="fas fa-hospital"></i></span>
+              <span class="pd-landmark-text">
+                <span class="pd-landmark-name">โรงพยาบาลรามคำแหง</span>
+                <span class="pd-landmark-dist">12 นาที</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 7 — LEAD FORM
+    id="pd-form"
+  ══════════════════════════════════════ -->
+  <section class="pd-section" id="pd-form">
+    <div class="pd-container">
+      <div class="pd-heading-block reveal">
+        <span class="pd-eyebrow">ลงทะเบียน</span>
+        <!--[EDIT: form heading] -->
+        <h2>รับสิทธิพิเศษก่อนใคร</h2>
+        <div class="pd-divider"></div>
+        <p style="margin-top:16px; font-size:0.90rem; color:var(--pd-text-muted);">
+          กรอกข้อมูลด้านล่าง ทีมงานจะติดต่อกลับภายใน 1 วันทำการ
+        </p>
+      </div>
+
+      <div class="pd-form-wrap">
+        <form
+          id="pdLeadForm"
+          onsubmit="pdSubmitForm(event)">
+
+          <div class="pd-form-row">
+            <div class="pd-form-group reveal">
+              <label for="pd-name">ชื่อ – นามสกุล *</label>
+              <input type="text" id="pd-name" name="name"
+                placeholder="กรุณากรอกชื่อ" required autocomplete="name">
+            </div>
+            <div class="pd-form-group reveal">
+              <label for="pd-phone">เบอร์โทรศัพท์ *</label>
+              <input type="tel" id="pd-phone" name="phone"
+                placeholder="08X-XXX-XXXX" required autocomplete="tel">
+            </div>
+          </div>
+
+          <div class="pd-form-row">
+            <div class="pd-form-group reveal">
+              <label for="pd-line">LINE ID</label>
+              <input type="text" id="pd-line" name="line"
+                placeholder="@yourid">
+            </div>
+            <div class="pd-form-group reveal">
+              <label for="pd-interest">สนใจแบบบ้าน</label>
+              <select id="pd-interest" name="interest">
+                <option value="">-- เลือกแบบบ้าน --</option>
+                <!--[EDIT: unit type options] -->
+                <option value="type-a">Type A — Verona (เริ่ม 8.29 ล้าน)</option>
+                <option value="type-b">Type B — Grand (เริ่ม 12.50 ล้าน)</option>
+                <option value="undecided">ยังไม่แน่ใจ / ต้องการข้อมูลเพิ่มเติม</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pd-form-group reveal">
+            <label for="pd-note">ข้อความเพิ่มเติม (ไม่บังคับ)</label>
+            <textarea id="pd-note" name="note"
+              placeholder="เช่น ต้องการนัดชม, ต้องการ e-Brochure, มีคำถามเพิ่มเติม..."></textarea>
+          </div>
+
+          <div class="pd-form-privacy reveal">
+            <input type="checkbox" id="pd-consent" name="consent" required>
+            <label for="pd-consent">
+              ฉันยินยอมให้ V.S.K. Estate เก็บรวบรวมข้อมูลส่วนบุคคลของฉันเพื่อดำเนินการตามคำขอนี้
+              ตามนโยบายความเป็นส่วนตัว
+            </label>
+          </div>
+
+          <div class="pd-form-submit reveal">
+            <button type="submit" class="pd-btn-solid"
+              style="padding:15px 56px; font-size:0.95rem;">
+              <i class="fas fa-paper-plane"></i>ส่งข้อมูล
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+    FOOTER (shared — copy from other pages)
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-horizon"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img loading="eager" src="images/logo.png" alt="RUNGKIJ — V.S.K. Estate" class="logo-img logo-img-footer">
+          <p>บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate) ผู้พัฒนาอสังหาริมทรัพย์คุณภาพกว่า 50 ปี</p>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+            <a href="https://www.tiktok.com/@rungkij_official" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@rungkijofficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>เมนูหลัก</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="projects.html">โครงการทั้งหมด</a></li>
+            <li><a href="promotion.html">โปรโมชั่น</a></li>
+            <li><a href="financial.html">สินเชื่อที่อยู่อาศัย</a></li>
+            <li><a href="care.html">บริการหลังการขาย</a></li>
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="about.html">เกี่ยวกับเรา</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>โครงการของเรา</h4>
+          <ul class="footer-links">
+            <li><a href="project-grand-verona-house.html">Grand Verona บ้านเดี่ยว</a></li>
+            <li><a href="project-grand-verona-townhome.html">Grand Verona ทาวน์โฮม</a></li>
+            <li><a href="project-osaka.html">Osaka — คู้บอน</a></li>
+            <li><a href="project-hampton.html">The Hampton — พระราม 9</a></li>
+            <li><a href="project-the-nice.html">The Nice — รังสิต</a></li>
+            <li><a href="project-the-verona.html">The Verona Village</a></li>
+            <li><a href="project-hampton-grove.html">Hampton Grove</a></li>
+            <li><a href="project-the-corner.html">The Corner</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>ติดต่อเรา</h4>
+          <ul class="footer-links footer-contact-list">
+            <li><i class="fas fa-phone-alt"></i>&nbsp;<a href="tel:+6625407999">02-540-7999</a></li>
+            <li><i class="fab fa-line"></i>&nbsp;<a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener">Line: @rungkij</a></li>
+            <li><i class="fab fa-facebook-f"></i>&nbsp;<a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener">Facebook Rungkij</a></li>
+          </ul>
+          <p class="footer-seo-kw">บ้านจัดสรร กรุงเทพ &middot; ทาวน์โฮม ราคาถูก &middot; บ้านเดี่ยว ใกล้สนามบิน</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 บริษัท วี.เอส.เค. เอสเตท จำกัด สงวนลิขสิทธิ์ทุกประการ</span>
+        <div>
+          <a href="#">นโยบายความเป็นส่วนตัว</a>
+          <a href="#">เงื่อนไขการใช้งาน</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════
+    SECTION 8 — FLOATING MOBILE CTA BAR
+    (visible only on mobile via CSS)
+  ══════════════════════════════════════ -->
+  <div class="pd-float-bar" id="pdFloatBar" role="complementary"
+    aria-label="ติดต่อเรา">
+    <div class="pd-float-bar-inner">
+      <!--[EDIT: phone number] -->
+      <a href="tel:+6625407999" class="pd-float-phone">
+        <i class="fas fa-phone"></i>โทรหาเรา
+      </a>
+      <a href="#pd-form" class="pd-float-register">
+        <i class="fas fa-pencil-alt"></i>ลงทะเบียน
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+    SHARED STICKY ACTION BAR
+    (desktop floating widget from main.js)
+  ══════════════════════════════════════ -->
+  <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="ติดต่อเรา">
+    <div class="sticky-bar-inner">
+      <div class="sticky-social">
+        <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Facebook Messenger">
+          <i class="fab fa-facebook-messenger"></i>
+        </a>
+        <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line">
+          <i class="fab fa-line"></i>
+        </a>
+        <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร 02-540-7999">
+          <i class="fas fa-phone"></i>
+        </a>
+      </div>
+      <a href="calculator.html" class="sticky-btn sticky-btn-calc">
+        <i class="fas fa-calculator"></i>
+        <span>คำนวณสินเชื่อ</span>
+      </a>
+      <a href="#" onclick="ChatWidget.open();return false;" class="sticky-btn sticky-btn-ask">
+        <span class="icon-sparkle"><i class="fas fa-bolt"></i></span>
+        <span>ถามมาได้เลย</span>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+    SCRIPTS
+  ══════════════════════════════════════ -->
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Site-wide JS (navbar, reveal, chat widget) -->
+  <script src="chat-widget.js" defer></script>
+  <script src="main.js" defer></script>
+
+  <script>
+  /* ─────────────────────────────────────────
+    PAGE-SPECIFIC SCRIPTS
+    All self-contained, no framework needed.
+  ───────────────────────────────────────── */
+
+  /* 1 — Facilities Swiper ───────────────── */
+  (function () {
+    if (typeof Swiper === 'undefined') return;
+    new Swiper('#pdFacSwiper', {
+      loop: true,
+      speed: 900,
+      grabCursor: true,
+      simulateTouch: true,
+      autoplay: { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true },
+      pagination: { el: '.pd-fac-pagination', clickable: true },
+      navigation: { prevEl: '.pd-fac-btn-prev', nextEl: '.pd-fac-btn-next' }
+    });
+  })();
+
+  /* 2 — Unit Type Tab System ─────────────── */
+  (function () {
+    var btns   = document.querySelectorAll('.pd-tab-btn');
+    var panels = document.querySelectorAll('.pd-tab-panel');
+
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var target = btn.getAttribute('data-tab');
+
+        btns.forEach(function (b) {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        panels.forEach(function (p) { p.classList.remove('active'); });
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        var panel = document.getElementById('tab-' + target);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  })();
+
+  /* 3 — Sticky Nav Scroll Spy ───────────── */
+  (function () {
+    var sections = ['pd-concept','pd-units','pd-facilities','pd-location','pd-form'];
+    var links    = document.querySelectorAll('#pdStickyLinks a');
+
+    function onScroll() {
+      var scrollY = window.scrollY || window.pageYOffset;
+      var active  = sections[0];
+      sections.forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top + scrollY - 120 <= scrollY) {
+          active = id;
+        }
+      });
+      links.forEach(function (a) {
+        var href = a.getAttribute('href').replace('#','');
+        a.classList.toggle('active', href === active);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  /* 4 — Reveal Animations (fallback if main.js not loaded) ─ */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+
+  /* 5 — Lead Form Submit ─────────────────── */
+  function pdSubmitForm(e) {
+    e.preventDefault();
+    var btn = e.target.querySelector('[type="submit"]');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> กำลังส่ง…';
+    btn.disabled = true;
+
+    // [EDIT: replace with real form submission / API call]
+    setTimeout(function () {
+      btn.innerHTML = '<i class="fas fa-check"></i> ส่งสำเร็จแล้ว!';
+      btn.style.background = '#2d7a47';
+      setTimeout(function () {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+        btn.disabled = false;
+        document.getElementById('pdLeadForm').reset();
+      }, 3500);
+    }, 1000);
+  }
+
+  /* 6 — Hide native sticky-bar on mobile so pd-float-bar shows ─ */
+  (function () {
+    function toggleBars() {
+      var native = document.getElementById('stickyBar');
+      if (!native) return;
+      native.style.display = window.innerWidth < 768 ? 'none' : '';
+    }
+    window.addEventListener('resize', toggleBars);
+    toggleBars();
+  })();
+
+  </script>
+
+</body>
+</html>
