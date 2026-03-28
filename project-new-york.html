@@ -57,7 +57,6 @@
   }
   </script>
   <link rel="preload" href="style.css" as="style">
-
 <style>
 /* =====================================================
    GRAND VERONA HOUSE — PROJECT DETAIL v2
@@ -1309,7 +1308,6 @@
 }
 </style>
 </head>
-<body>
 
   <!-- NAVBAR -->
   <nav class="navbar scrolled" id="navbar">
@@ -1330,6 +1328,7 @@
       </div>
     </div>
   </nav>
+    <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- PAGE HEADER -->
   <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.55), rgba(248,247,242,0.42)), url('images/grand-verona/house-2.webp'); background-size: cover; background-position: center;">
@@ -1489,7 +1488,6 @@
 
   <!-- FOOTER -->
   
-<!-- ══ 12. LOAN CALCULATOR ════════════════════════════════════ -->
 <section class="gv-calc-section gv-section" id="calculator">
   <div class="gv-container">
     <div class="gv-calc-wrap">
@@ -1604,100 +1602,94 @@
     </div>
   </div>
 </section>
-
-<!-- ══ FOOTER ═════════════════════════════════════════════════ -->
-
+<!-- ── Floating Sticky Action Bar ── -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-inner">
+    <div class="sticky-social">
+      <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Facebook Messenger"><i class="fab fa-facebook-messenger"></i></a>
+      <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+      <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร"><i class="fas fa-phone"></i></a>
+    </div>
+    <a href="#calculator" class="sticky-btn sticky-btn-calc"><i class="fas fa-calculator" style="margin-right:6px"></i>คำนวณสินเชื่อ</a>
+    <a href="#register" class="sticky-btn sticky-btn-register"><i class="fas fa-calendar-check" style="margin-right:6px"></i>สนใจชมโครงการ</a>
+  </div>
+</div>
 <footer class="footer">
-    <div class="footer-horizon"></div>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img loading="eager" src="images/logo.png" alt="RUNGKIJ — V.S.K. Estate บ้านจัดสรร กรุงเทพ" class="logo-img logo-img-footer">
-          <p>บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate) ผู้พัฒนาอสังหาริมทรัพย์คุณภาพกว่า 50 ปี บ้านเดี่ยว ทาวน์โฮม ทาวน์เฮาส์ โฮมออฟฟิศ ทั่วกรุงเทพฯ และปริมณฑล</p>
-          <div class="footer-social">
-            <a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
-            <a href="https://www.tiktok.com/@rungkij_official" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@rungkijofficial" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <div>
-          <h4>เมนูหลัก</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">หน้าหลัก</a></li>
-            <li><a href="projects.html">โครงการทั้งหมด</a></li>
-            <li><a href="promotion.html">โปรโมชั่น</a></li>
-            <li><a href="blog.html">บล็อก</a></li>
-            <li><a href="financial.html">สินเชื่อที่อยู่อาศัย</a></li>
-            <li><a href="care.html">บริการหลังการขาย</a></li>
-            <li><a href="calculator.html">คำนวณสินเชื่อ</a></li>
-            <li><a href="contact.html">ติดต่อเรา</a></li>
-            <li><a href="about.html">เกี่ยวกับเรา</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>โครงการของเรา</h4>
-          <ul class="footer-links">
-            <li><a href="project-grand-verona-house.html">Grand Verona บ้านเดี่ยว</a></li>
-            <li><a href="project-grand-verona-townhome.html">Grand Verona ทาวน์โฮม</a></li>
-            <li><a href="project-osaka.html">Osaka — คู้บอน</a></li>
-            <li><a href="project-hampton.html">The Hampton — พระราม 9</a></li>
-            <li><a href="project-the-nice.html">The Nice — รังสิต</a></li>
-            <li><a href="project-the-verona.html">The Verona Village</a></li>
-            <li><a href="project-hampton-grove.html">Hampton Grove</a></li>
-            <li><a href="project-the-corner.html">The Corner</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>ติดต่อเรา</h4>
-          <ul class="footer-links footer-contact-list">
-            <li><i class="fas fa-phone-alt"></i>&nbsp;<a href="tel:+6625407999">02-540-7999</a></li>
-            <li><i class="fab fa-line"></i>&nbsp;<a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener">Line: @rungkij</a></li>
-            <li><i class="fab fa-facebook-f"></i>&nbsp;<a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener">Facebook Rungkij</a></li>
-            <li><i class="fab fa-instagram"></i>&nbsp;<a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener">@rungkij_official</a></li>
-
-          </ul>
-          <p class="footer-seo-kw">บ้านจัดสรร กรุงเทพ &middot; ทาวน์โฮม ราคาถูก &middot; บ้านเดี่ยว ใกล้สนามบิน &middot; บ้านใกล้รถไฟฟ้า &middot; บ้านมือหนึ่ง กรุงเทพ</p>
+  <div class="footer-horizon"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img loading="eager" src="images/logo.png" alt="RUNGKIJ" class="logo-img logo-img-footer">
+        <p>บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate) ผู้พัฒนาอสังหาริมทรัพย์คุณภาพกว่า 50 ปี</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/rungkijcorp/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/rungkij_official" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://line.me/R/ti/p/@rungkij" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+          <a href="https://www.tiktok.com/@rungkij_official" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 บริษัท วี.เอส.เค. เอสเตท จำกัด (V.S.K. Estate Co., Ltd.) สงวนลิขสิทธิ์ทุกประการ</span>
-        <div>
-          <a href="#">นโยบายความเป็นส่วนตัว</a>
-          <a href="#">เงื่อนไขการใช้งาน</a>
-          <a href="sitemap.xml">Sitemap</a>
-        </div>
+      <div>
+        <h4>เมนูหลัก</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">หน้าหลัก</a></li>
+          <li><a href="projects.html">โครงการทั้งหมด</a></li>
+          <li><a href="promotion.html">โปรโมชั่น</a></li>
+          <li><a href="blog.html">บล็อก</a></li>
+          <li><a href="contact.html">ติดต่อเรา</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>โครงการของเรา</h4>
+        <ul class="footer-links">
+          <li><a href="project-grand-verona-house.html">Grand Verona บ้านเดี่ยว</a></li>
+          <li><a href="project-grand-verona-townhome.html">Grand Verona ทาวน์โฮม</a></li>
+          <li><a href="project-hampton.html">The Hampton</a></li>
+          <li><a href="project-the-nice.html">The Nice</a></li>
+          <li><a href="project-osaka.html">Osaka</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>ติดต่อเรา</h4>
+        <ul class="footer-links footer-contact-list">
+          <li><i class="fas fa-phone-alt"></i>&nbsp;<a href="tel:+6625407999">02-540-7999</a></li>
+          <li><i class="fab fa-line"></i>&nbsp;<a href="https://line.me/R/ti/p/@rungkij" target="_blank">Line: @rungkij</a></li>
+          <li><i class="fab fa-facebook-f"></i>&nbsp;<a href="https://www.facebook.com/rungkijcorp/" target="_blank">Facebook Rungkij</a></li>
+        </ul>
       </div>
     </div>
-  </footer>
-
-    <!-- ── Floating Sticky Action Bar ── -->
-  <div class="sticky-bar" id="stickyBar" role="complementary" aria-label="ติดต่อเรา">
-    <div class="sticky-bar-inner">
-      <div class="sticky-social">
-        <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Facebook Messenger">
-          <i class="fab fa-facebook-messenger"></i>
-        </a>
-        <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line">
-          <i class="fab fa-line"></i>
-        </a>
-        <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร 02-540-7999">
-          <i class="fas fa-phone"></i>
-        </a>
-      </div>
-      <a href="#calculator" class="sticky-btn sticky-btn-calc">
-        <i class="fas fa-calculator"></i>
-        <span>คำนวณสินเชื่อ</span>
-      </a>
-      <a href="#" onclick="ChatWidget.open();return false;" class="sticky-btn sticky-btn-ask">
-        <span class="icon-sparkle"><i class="fas fa-bolt"></i></span>
-        <span>ถามมาได้เลย</span>
-      </a>
+    <div class="footer-bottom">
+      <span>&copy; 2026 บริษัท วี.เอส.เค. เอสเตท จำกัด สงวนลิขสิทธิ์ทุกประการ</span>
+      <div><a href="#">นโยบายความเป็นส่วนตัว</a><a href="#">เงื่อนไขการใช้งาน</a></div>
     </div>
   </div>
+</footer>
 
-  <script>
+<!-- ══ GLOBAL STICKY BAR ═══════════════════════════════════════ -->
+<div class="sticky-bar" id="stickyBar">
+  <div class="sticky-bar-inner">
+    <div class="sticky-social">
+      <a href="https://m.me/rungkijcorp" class="sticky-icon fb" target="_blank" rel="noopener" aria-label="Facebook Messenger"><i class="fab fa-facebook-messenger"></i></a>
+      <a href="https://line.me/R/ti/p/@rungkij" class="sticky-icon line" target="_blank" rel="noopener" aria-label="Line"><i class="fab fa-line"></i></a>
+      <a href="tel:+6625407999" class="sticky-icon phone" aria-label="โทร"><i class="fas fa-phone"></i></a>
+    </div>
+    <a href="#calculator" class="sticky-btn sticky-btn-calc"><i class="fas fa-calculator" style="margin-right:6px"></i>คำนวณสินเชื่อ</a>
+    <a href="#register" class="sticky-btn sticky-btn-register"><i class="fas fa-calendar-check" style="margin-right:6px"></i>สนใจชมโครงการ</a>
+  </div>
+</div>
+
+<!-- ══ MOBILE FLOATING CTA ═════════════════════════════════════ -->
+<div class="gv-float-bar" id="gvFloatBar">
+  <a href="tel:+6625407999" class="gv-float-phone">
+    <i class="fas fa-phone"></i> โทรเลย
+  </a>
+  <a href="#register" class="gv-float-register">
+    <i class="fas fa-calendar-check"></i> ลงทะเบียน
+  </a>
+</div>
+
+<!-- ══ SCRIPTS ════════════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
 /* ── HAMBURGER OVERLAY SYNC ────────────────────────────── */
 /* main.js handles toggle; we just sync the overlay + body scroll */
 (function() {
@@ -2003,7 +1995,7 @@ function gvCalcReset() {
   document.getElementById('calcOutput').style.display = 'none';
 }
 </script>
+<script src="main.js" defer></script>
 <script src="chat-widget.js" defer></script>
-  <script src="main.js" defer></script>
 </body>
 </html>
