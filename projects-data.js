@@ -14,7 +14,7 @@ var RK_PROJECTS = [
     district: "สะพานสูง",
     nearby: ["มอเตอร์เวย์", "กรุงเทพกรีฑา", "สุวรรณภูมิ", "สนามบิน", "ลาดกระบัง"],
     price: "เริ่ม 5.59 ล้าน",
-    image: "images/hampton/render-1.png",
+    image: "images/hampton/render-1.webp",
     url: "project-hampton-grove.html",
     badge: "Coming Soon",
     status: "soon"
@@ -27,7 +27,7 @@ var RK_PROJECTS = [
     district: "มีนบุรี",
     nearby: ["รามคำแหง", "ร่มเกล้า", "สุวินทวงศ์", "มีนบุรี", "สนามบิน", "สุวรรณภูมิ", "มอเตอร์เวย์"],
     price: "เริ่ม 2.99 ล้าน",
-    image: "images/grand-verona/maingate.jpg",
+    image: "images/grand-verona/maingate.webp",
     url: "project-grand-verona.html",
     badge: "Premium",
     status: "open"
@@ -40,7 +40,7 @@ var RK_PROJECTS = [
     district: "บางเขน",
     nearby: ["รามอินทรา", "คู้บอน", "ออเงิน", "บางเขน", "สายไหม"],
     price: "เริ่ม 2.69 ล้าน",
-    image: "images/osaka/clubhouse.jpg",
+    image: "images/osaka/clubhouse.webp",
     url: "project-osaka.html",
     badge: "",
     status: "open"
@@ -53,7 +53,7 @@ var RK_PROJECTS = [
     district: "สะพานสูง",
     nearby: ["พระราม 9", "กรุงเทพกรีฑา", "ศรีนครินทร์", "มอเตอร์เวย์", "สนามบิน", "สุวรรณภูมิ"],
     price: "เริ่ม 6.59 ล้าน",
-    image: "images/hampton/render-1.png",
+    image: "images/hampton/render-1.webp",
     url: "project-hampton.html",
     badge: "",
     status: "open"
@@ -66,7 +66,7 @@ var RK_PROJECTS = [
     district: "ธัญบุรี",
     nearby: ["รังสิต", "คลอง 3", "ธัญบุรี", "ปทุมธานี", "ลำลูกกา", "ฟิวเจอร์พาร์ค"],
     price: "เริ่ม 1.99 ล้าน",
-    image: "images/the-nice/exterior-1.jpg",
+    image: "images/the-nice/exterior-1.webp",
     url: "project-the-nice.html",
     badge: "",
     status: "open"
@@ -79,7 +79,7 @@ var RK_PROJECTS = [
     district: "สะพานสูง",
     nearby: ["พระราม 9", "กรุงเทพกรีฑา", "ศรีนครินทร์", "มอเตอร์เวย์"],
     price: "เริ่ม 2.59 ล้าน",
-    image: "images/grand-verona/single-a-1.jpg",
+    image: "images/grand-verona/single-a-1.webp",
     url: "project-the-verona.html",
     badge: "",
     status: "open"
@@ -92,7 +92,7 @@ var RK_PROJECTS = [
     district: "มีนบุรี",
     nearby: ["นิมิตรใหม่", "มีนบุรี", "หนองจอก", "รามคำแหง"],
     price: "เริ่ม 4.99 ล้าน",
-    image: "images/grand-verona/clubhouse-int-1.jpg",
+    image: "images/grand-verona/clubhouse-int-1.webp",
     url: "project-the-corner.html",
     badge: "",
     status: "open"

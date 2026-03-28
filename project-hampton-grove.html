@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <!-- ═══ SEO / Social Meta ═══ -->
@@ -56,6 +56,8 @@
     }
   }
   </script>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="images/hampton-grove/hero-1.webp" as="image" type="image/webp">
 </head>
 <body>
 
@@ -80,7 +82,7 @@
   </nav>
 
   <!-- PAGE HEADER -->
-  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.55), rgba(248,247,242,0.42)), url('images/hampton-grove/hero-1.jpg'); background-size: cover; background-position: center;">
+  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.55), rgba(248,247,242,0.42)), url('images/hampton-grove/hero-1.webp'); background-size: cover; background-position: center;">
     <div class="ph-shimmer"></div>
     <div class="ph-horizon"></div>
     <div class="page-header-content">
@@ -113,14 +115,14 @@
     <div class="container">
       <div class="project-gallery">
         <div class="project-gallery-main">
-          <img loading="lazy" src="images/hampton-grove/hero-1.jpg" alt="Hampton Grove">
+          <img loading="lazy" src="images/hampton-grove/hero-1.webp" alt="Hampton Grove">
         </div>
         <div class="project-gallery-side">
           <div class="project-gallery-thumb">
-            <img loading="lazy" src="images/hampton-grove/hero-2.jpg" alt="Hampton Grove Walkthrough">
+            <img loading="lazy" src="images/hampton-grove/hero-2.webp" alt="Hampton Grove Walkthrough">
           </div>
           <div class="project-gallery-thumb">
-            <img loading="lazy" src="images/hampton-grove/hero-3.jpg" alt="Hampton Grove Vision">
+            <img loading="lazy" src="images/hampton-grove/hero-3.webp" alt="Hampton Grove Vision">
           </div>
         </div>
       </div>
@@ -169,7 +171,7 @@
             </div>
           </div>
           <div style="margin-top:24px;">
-            <img loading="lazy" src="images/hampton-grove/hero-1.jpg" alt="Hampton Grove Render" style="width:100%; border-radius:2px; display:block;">
+            <img loading="lazy" src="images/hampton-grove/hero-1.webp" alt="Hampton Grove Render" style="width:100%; border-radius:2px; display:block;">
           </div>
         </div>
       </div>

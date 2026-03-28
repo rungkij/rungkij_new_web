@@ -70,16 +70,16 @@ const BLOG_POSTS = [
     dateLabel: "15 มีนาคม 2569",
     readTime: 4,
     featured: true,
-    cover: "images/grand-verona/aerial-1.png",
+    cover: "images/grand-verona/aerial-1.webp",
     images: [
-      "images/grand-verona/aerial-1.png",
-      "images/grand-verona/house-1.jpg",
-      "images/grand-verona/house-2.jpg",
-      "images/grand-verona/clubhouse-1.jpg",
-      "images/grand-verona/clubhouse-2.jpg",
-      "images/grand-verona/maingate.jpg"
+      "images/grand-verona/aerial-1.webp",
+      "images/grand-verona/house-1.webp",
+      "images/grand-verona/house-2.webp",
+      "images/grand-verona/clubhouse-1.webp",
+      "images/grand-verona/clubhouse-2.webp",
+      "images/grand-verona/maingate.webp"
     ],
-    video: { type: "local", src: "images/videos/video-1.mp4", poster: "images/grand-verona/aerial-1.png" },
+    video: { type: "local", src: "images/videos/video-1.mp4", poster: "images/grand-verona/aerial-1.webp" },
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
       { text: "ดูรายละเอียดโครงการ Grand Verona", url: "project-grand-verona.html" },
@@ -140,11 +140,11 @@ const BLOG_POSTS = [
     dateLabel: "28 กุมภาพันธ์ 2569",
     readTime: 3,
     featured: false,
-    cover: "images/grand-verona/clubhouse-2.jpg",
+    cover: "images/grand-verona/clubhouse-2.webp",
     images: [
-      "images/grand-verona/clubhouse-2.jpg",
-      "images/grand-verona/clubhouse-1.jpg",
-      "images/grand-verona/clubhouse-int-1.jpg"
+      "images/grand-verona/clubhouse-2.webp",
+      "images/grand-verona/clubhouse-1.webp",
+      "images/grand-verona/clubhouse-int-1.webp"
     ],
     video: null,
     author: { name: "ฝ่ายประชาสัมพันธ์รุ่งกิจ", role: "V.S.K. Estate Company Limited", initials: "PR" },
@@ -186,11 +186,11 @@ const BLOG_POSTS = [
     dateLabel: "10 กุมภาพันธ์ 2569",
     readTime: 6,
     featured: false,
-    cover: "images/hampton/photo-1.jpg",
+    cover: "images/hampton/photo-1.webp",
     images: [
-      "images/hampton/photo-1.jpg",
-      "images/hampton/photo-2.jpg",
-      "images/hampton/render-1.png"
+      "images/hampton/photo-1.webp",
+      "images/hampton/photo-2.webp",
+      "images/hampton/render-1.webp"
     ],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
@@ -262,13 +262,13 @@ const BLOG_POSTS = [
     dateLabel: "25 มกราคม 2569",
     readTime: 4,
     featured: false,
-    cover: "images/the-nice/exterior-3.jpg",
+    cover: "images/the-nice/exterior-3.webp",
     images: [
-      "images/the-nice/exterior-1.jpg",
-      "images/the-nice/exterior-2.jpg",
-      "images/the-nice/exterior-3.jpg",
-      "images/the-nice/show-1.png",
-      "images/the-nice/show-2.png"
+      "images/the-nice/exterior-1.webp",
+      "images/the-nice/exterior-2.webp",
+      "images/the-nice/exterior-3.webp",
+      "images/the-nice/show-1.webp",
+      "images/the-nice/show-2.webp"
     ],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
@@ -318,11 +318,11 @@ const BLOG_POSTS = [
     dateLabel: "10 ธันวาคม 2568",
     readTime: 8,
     featured: false,
-    cover: "images/hampton/render-3.png",
+    cover: "images/hampton/render-3.webp",
     images: [
-      "images/hampton/render-3.png",
-      "images/hampton/photo-5.jpg",
-      "images/hampton/photo-6.jpg"
+      "images/hampton/render-3.webp",
+      "images/hampton/photo-5.webp",
+      "images/hampton/photo-6.webp"
     ],
     video: null,
     author: { name: "ทีมวิเคราะห์การลงทุน", role: "V.S.K. Estate Research Division", initials: "RD" },
@@ -366,12 +366,12 @@ const BLOG_POSTS = [
     dateLabel: "20 พฤศจิกายน 2568",
     readTime: 7,
     featured: false,
-    cover: "images/grand-verona/house-1.jpg",
+    cover: "images/grand-verona/house-1.webp",
     images: [
-      "images/grand-verona/house-1.jpg",
-      "images/grand-verona/house-2.jpg"
+      "images/grand-verona/house-1.webp",
+      "images/grand-verona/house-2.webp"
     ],
-    video: { type: "local", src: "images/videos/video-2.mp4", poster: "images/grand-verona/house-1.jpg" },
+    video: { type: "local", src: "images/videos/video-2.mp4", poster: "images/grand-verona/house-1.webp" },
     author: { name: "ทีมที่ปรึกษาการเงิน", role: "V.S.K. Estate Financial Team", initials: "FT" },
     backlinks: [
       { text: "เครื่องคำนวณสินเชื่อบ้าน", url: "calculator.html" },
@@ -427,13 +427,13 @@ const BLOG_POSTS = [
     dateLabel: "10 มกราคม 2569",
     readTime: 3,
     featured: false,
-    cover: "images/osaka/townhouse.jpg",
+    cover: "images/osaka/townhouse.webp",
     images: [
-      "images/osaka/townhouse.jpg",
-      "images/osaka/show-1.png",
-      "images/osaka/show-2.png",
-      "images/osaka/show-3.png",
-      "images/osaka/show-4.png"
+      "images/osaka/townhouse.webp",
+      "images/osaka/show-1.webp",
+      "images/osaka/show-2.webp",
+      "images/osaka/show-3.webp",
+      "images/osaka/show-4.webp"
     ],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
@@ -482,8 +482,8 @@ const BLOG_POSTS = [
     dateLabel: "20 มีนาคม 2569",
     readTime: 6,
     featured: false,
-    cover: "images/grand-verona/house-2.jpg",
-    images: ["images/grand-verona/house-2.jpg", "images/grand-verona/house-1.jpg"],
+    cover: "images/grand-verona/house-2.webp",
+    images: ["images/grand-verona/house-2.webp", "images/grand-verona/house-1.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -520,8 +520,8 @@ const BLOG_POSTS = [
     dateLabel: "18 มีนาคม 2569",
     readTime: 5,
     featured: false,
-    cover: "images/grand-verona/house-3.jpg",
-    images: ["images/grand-verona/house-3.jpg"],
+    cover: "images/grand-verona/house-3.webp",
+    images: ["images/grand-verona/house-3.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -559,8 +559,8 @@ const BLOG_POSTS = [
     dateLabel: "15 มีนาคม 2569",
     readTime: 4,
     featured: false,
-    cover: "images/grand-verona/single-a-1.jpg",
-    images: ["images/grand-verona/single-a-1.jpg", "images/grand-verona/house-1.jpg"],
+    cover: "images/grand-verona/single-a-1.webp",
+    images: ["images/grand-verona/single-a-1.webp", "images/grand-verona/house-1.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -597,8 +597,8 @@ const BLOG_POSTS = [
     dateLabel: "12 มีนาคม 2569",
     readTime: 5,
     featured: false,
-    cover: "images/grand-verona/single-d-1.jpg",
-    images: ["images/grand-verona/single-d-1.jpg"],
+    cover: "images/grand-verona/single-d-1.webp",
+    images: ["images/grand-verona/single-d-1.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -639,8 +639,8 @@ const BLOG_POSTS = [
     dateLabel: "10 มีนาคม 2569",
     readTime: 5,
     featured: false,
-    cover: "images/the-nice/exterior-1.jpg",
-    images: ["images/the-nice/exterior-1.jpg"],
+    cover: "images/the-nice/exterior-1.webp",
+    images: ["images/the-nice/exterior-1.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -681,8 +681,8 @@ const BLOG_POSTS = [
     dateLabel: "8 มีนาคม 2569",
     readTime: 6,
     featured: false,
-    cover: "images/grand-verona/clubhouse-2.jpg",
-    images: ["images/grand-verona/clubhouse-2.jpg"],
+    cover: "images/grand-verona/clubhouse-2.webp",
+    images: ["images/grand-verona/clubhouse-2.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -724,8 +724,8 @@ const BLOG_POSTS = [
     dateLabel: "5 มีนาคม 2569",
     readTime: 7,
     featured: false,
-    cover: "images/grand-verona/aerial-1.png",
-    images: ["images/grand-verona/aerial-1.png", "images/grand-verona/aerial-2.png"],
+    cover: "images/grand-verona/aerial-1.webp",
+    images: ["images/grand-verona/aerial-1.webp", "images/grand-verona/aerial-2.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -762,8 +762,8 @@ const BLOG_POSTS = [
     dateLabel: "3 มีนาคม 2569",
     readTime: 5,
     featured: false,
-    cover: "images/grand-verona/clubhouse-3.jpg",
-    images: ["images/grand-verona/clubhouse-3.jpg", "images/grand-verona/clubhouse-int-1.jpg"],
+    cover: "images/grand-verona/clubhouse-3.webp",
+    images: ["images/grand-verona/clubhouse-3.webp", "images/grand-verona/clubhouse-int-1.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -801,8 +801,8 @@ const BLOG_POSTS = [
     dateLabel: "28 กุมภาพันธ์ 2569",
     readTime: 4,
     featured: false,
-    cover: "images/grand-verona/maingate2.jpg",
-    images: ["images/grand-verona/maingate2.jpg", "images/grand-verona/maingate.jpg"],
+    cover: "images/grand-verona/maingate2.webp",
+    images: ["images/grand-verona/maingate2.webp", "images/grand-verona/maingate.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [
@@ -839,8 +839,8 @@ const BLOG_POSTS = [
     dateLabel: "25 กุมภาพันธ์ 2569",
     readTime: 4,
     featured: false,
-    cover: "images/grand-verona/house-1.jpg",
-    images: ["images/grand-verona/house-1.jpg"],
+    cover: "images/grand-verona/house-1.webp",
+    images: ["images/grand-verona/house-1.webp"],
     video: null,
     author: { name: "ทีมผู้เชี่ยวชาญรุ่งกิจ", role: "V.S.K. Estate · ประสบการณ์ 50 ปี", initials: "VSK" },
     backlinks: [

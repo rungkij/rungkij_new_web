@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -83,6 +83,33 @@
       background: var(--accent);
       opacity: 0.5;
     }
+  
+    /* ── Project Card Mockup ── */
+    .project-card-mockup {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #EDE8DF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .project-card-mockup-logo {
+      width: 80px;
+      filter: brightness(0);
+      opacity: 0.18;
+      display: block;
+    }
+    .project-card-mockup-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.60rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(9,23,54,0.22);
+    }
+
   </style>
   <!-- ═══ SEO / Social Meta ═══ -->
   <meta name="keywords" content="โครงการบ้าน กรุงเทพ, บ้านจัดสรร, บ้านเดี่ยว พระราม9, ทาวน์โฮม รังสิต, บ้านรามอินทรา, บ้านรามคำแหง, house project Bangkok">
@@ -128,6 +155,8 @@
   ]
 }
   </script>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="images/grand-verona/aerial-1.webp" as="image" type="image/webp">
 </head>
 <body>
 
@@ -152,7 +181,7 @@
   </nav>
 
   <!-- PAGE HEADER -->
-  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.68) 0%, rgba(248,247,242,0.28) 40%, rgba(248,247,242,0.28) 60%, rgba(248,247,242,0.72) 100%), url('images/grand-verona/aerial-2.png'); background-size: cover; background-position: center;">
+  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.68) 0%, rgba(248,247,242,0.28) 40%, rgba(248,247,242,0.28) 60%, rgba(248,247,242,0.72) 100%), url('images/grand-verona/aerial-2.webp'); background-size: cover; background-position: center;">
     <div class="ph-shimmer"></div>
     <div class="ph-horizon"></div>
     <div class="page-header-content">
@@ -186,7 +215,7 @@
         <div class="project-card reveal" data-type="house">
           <div class="project-badge coming-soon">Coming Soon</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/hampton/render-1.png" alt="HAMPTON GROVE">
+            <img loading="lazy" src="images/hampton-grove/hero-1.webp" alt="HAMPTON GROVE">
             <div class="project-card-overlay">
               <a href="project-hampton-grove.html" class="btn btn-outline">View Details</a>
             </div>
@@ -202,7 +231,7 @@
         <div class="project-card reveal" data-type="house townhome">
           <div class="project-badge">Premium</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/maingate.jpg" alt="GRAND VERONA">
+            <img loading="lazy" src="images/grand-verona/maingate.webp" alt="GRAND VERONA">
             <div class="project-card-overlay">
               <a href="project-grand-verona.html" class="btn btn-outline">View Details</a>
             </div>
@@ -217,7 +246,7 @@
         <!-- OSAKA -->
         <div class="project-card reveal" data-type="townhome">
           <div class="project-card-image">
-            <img loading="lazy" src="images/osaka/clubhouse.jpg" alt="OSAKA">
+            <img loading="lazy" src="images/osaka/clubhouse.webp" alt="OSAKA">
             <div class="project-card-overlay">
               <a href="project-osaka.html" class="btn btn-outline">View Details</a>
             </div>
@@ -232,7 +261,7 @@
         <!-- THE HAMPTON -->
         <div class="project-card reveal" data-type="house">
           <div class="project-card-image">
-            <img loading="lazy" src="images/hampton/render-1.png" alt="THE HAMPTON">
+            <img loading="lazy" src="images/hampton/type-a-1.webp" alt="THE HAMPTON">
             <div class="project-card-overlay">
               <a href="project-hampton.html" class="btn btn-outline">View Details</a>
             </div>
@@ -247,7 +276,10 @@
         <!-- THE CORNER -->
         <div class="project-card reveal" data-type="townhome">
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/clubhouse-int-1.jpg" alt="THE CORNER">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="project-the-corner.html" class="btn btn-outline">View Details</a>
             </div>
@@ -262,7 +294,7 @@
         <!-- THE NICE (Rangsit) -->
         <div class="project-card reveal" data-type="townhome">
           <div class="project-card-image">
-            <img loading="lazy" src="images/the-nice/exterior-1.jpg" alt="THE NICE">
+            <img loading="lazy" src="images/the-nice/exterior-1.webp" alt="THE NICE">
             <div class="project-card-overlay">
               <a href="project-the-nice.html" class="btn btn-outline">View Details</a>
             </div>
@@ -277,7 +309,10 @@
         <!-- THE VERONA VILLAGE -->
         <div class="project-card reveal" data-type="townhome">
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/single-a-1.jpg" alt="THE VERONA VILLAGE">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="project-the-verona.html" class="btn btn-outline">View Details</a>
             </div>
@@ -293,7 +328,7 @@
         <div class="project-card reveal" data-type="soldout townhome">
           <div class="project-badge sold-out">Sold Out</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/the-nice/exterior-2.jpg" alt="THE NICE RAMINTRA">
+            <img loading="lazy" src="images/the-nice/exterior-2.webp" alt="THE NICE RAMINTRA">
             <div class="project-card-overlay">
               <a href="project-the-nice.html" class="btn btn-outline">View Details</a>
             </div>
@@ -309,7 +344,10 @@
         <div class="project-card reveal" data-type="soldout townhome">
           <div class="project-badge sold-out">Sold Out</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/house-2.jpg" alt="NEW YORK">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="project-new-york.html" class="btn btn-outline">View Details</a>
             </div>
@@ -325,7 +363,10 @@
         <div class="project-card reveal" data-type="soldout house">
           <div class="project-badge sold-out">Sold Out</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/hampton/photo-1.jpg" alt="RK HOME PARK 2">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="#" class="btn btn-outline">View Details</a>
             </div>
@@ -341,7 +382,10 @@
         <div class="project-card reveal" data-type="soldout townhome">
           <div class="project-badge sold-out">Sold Out</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/house-3.jpg" alt="HAUS THE HAMBURG">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="project-hamburg.html" class="btn btn-outline">View Details</a>
             </div>
@@ -357,7 +401,10 @@
         <div class="project-card reveal" data-type="soldout townhome">
           <div class="project-badge sold-out">Sold Out</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/hampton/render-2.png" alt="THE REGENT STREET">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="project-regent-street.html" class="btn btn-outline">View Details</a>
             </div>
@@ -373,7 +420,10 @@
         <div class="project-card reveal" data-type="soldout">
           <div class="project-badge sold-out">Sold Out</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/clubhouse-int-1.jpg" alt="RK BIZ CENTER">
+            <div class="project-card-mockup">
+              <img src="images/logo.png" alt="RUNGKIJ" class="project-card-mockup-logo">
+            <span class="project-card-mockup-label">Image Coming Soon</span>
+            </div>
             <div class="project-card-overlay">
               <a href="project-biz-center.html" class="btn btn-outline">View Details</a>
             </div>

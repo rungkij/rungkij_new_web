@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <!-- ═══ SEO / Social Meta ═══ -->
@@ -89,6 +89,7 @@
   ]
 }
   </script>
+  <link rel="preload" href="style.css" as="style">
 </head>
 <body>
 
@@ -113,9 +114,10 @@
   </nav>
 
   <!-- PAGE HEADER -->
-  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.55), rgba(248,247,242,0.42)), url('images/grand-verona/single-a-1.jpg'); background-size: cover; background-position: center;">
+  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.55), rgba(248,247,242,0.42)), url('images/grand-verona/single-a-1.webp'); background-size: cover; background-position: center;">
     <div class="ph-shimmer"></div>
     <div class="ph-horizon"></div>
+    <div class="ph-logo-mockup" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:1;"><img src="images/logo.png" style="width:120px;filter:brightness(0);opacity:0.12;" alt=""></div>
     <div class="page-header-content">
       <span class="section-subtitle">Townhome + Home Office — Rama 9 / Bangkok Sports Club</span>
       <h1>The Verona</h1>
@@ -131,14 +133,29 @@
     <div class="container">
       <div class="project-gallery">
         <div class="project-gallery-main">
-          <img loading="lazy" src="images/grand-verona/single-a-1.jpg" alt="The Verona Exterior">
+          <div class="img-mockup ratio-4-3">
+          <div class="img-mockup-inner">
+            <img src="images/logo.png" alt="RUNGKIJ mockup">
+            <span class="img-mockup-label">Image Coming Soon</span>
+          </div>
+        </div>
         </div>
         <div class="project-gallery-side">
           <div class="project-gallery-thumb">
-            <img loading="lazy" src="images/grand-verona/single-d-1.jpg" alt="The Verona Side View">
+            <div class="img-mockup ratio-4-3">
+          <div class="img-mockup-inner">
+            <img src="images/logo.png" alt="RUNGKIJ mockup">
+            <span class="img-mockup-label">Image Coming Soon</span>
+          </div>
+        </div>
           </div>
           <div class="project-gallery-thumb">
-            <img loading="lazy" src="images/grand-verona/house-1.jpg" alt="The Verona Garden">
+            <div class="img-mockup ratio-4-3">
+          <div class="img-mockup-inner">
+            <img src="images/logo.png" alt="RUNGKIJ mockup">
+            <span class="img-mockup-label">Image Coming Soon</span>
+          </div>
+        </div>
           </div>
         </div>
       </div>
@@ -188,7 +205,12 @@
             </div>
           </div>
           <div style="margin-top:24px;">
-            <img loading="lazy" src="images/grand-verona/house-2.jpg" alt="The Verona Community" style="width:100%; border-radius:2px; display:block;">
+            <div class="img-mockup ratio-4-3" style="width:100%; border-radius:2px; display:block">
+          <div class="img-mockup-inner">
+            <img src="images/logo.png" alt="RUNGKIJ mockup">
+            <span class="img-mockup-label">Image Coming Soon</span>
+          </div>
+        </div>
           </div>
         </div>
       </div>

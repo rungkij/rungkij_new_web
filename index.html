@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <!-- ═══ SEO / Social Meta ═══ -->
@@ -124,6 +124,8 @@
   }
 }
   </script>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="images/grand-verona/aerial-1.webp" as="image" type="image/webp">
 </head>
 <body>
 
@@ -213,8 +215,8 @@
   <!-- ========== PROJECT SHOWCASE SLIDER ========== -->
   <section class="pss-section" id="pssSection">
     <!-- Animated background (updates on tab switch / card hover) -->
-    <div class="pss-bg" id="pssBg" style="background-image: url('images/grand-verona/aerial-1.png');"></div>
-    <div class="pss-bg pss-bg-b" id="pssBgB" style="background-image: url('images/grand-verona/aerial-1.png');"></div>
+    <div class="pss-bg" id="pssBg" style="background-image: url('images/grand-verona/aerial-1.webp');"></div>
+    <div class="pss-bg pss-bg-b" id="pssBgB" style="background-image: url('images/grand-verona/aerial-1.webp');"></div>
 
     <div class="pss-inner">
 
@@ -258,7 +260,7 @@
 
             <!-- Main large image -->
             <div class="pgal-item pgal-item--main">
-              <img loading="lazy" src="images/grand-verona/house-1.jpg" alt="Grand Verona บ้านเดี่ยว">
+              <img loading="lazy" src="images/grand-verona/house-1.webp" alt="Grand Verona บ้านเดี่ยว">
               <div class="pgal-overlay">
                 <span class="pgal-label"><i class="fas fa-home"></i> Grand Verona บ้านเดี่ยว</span>
               </div>
@@ -273,19 +275,19 @@
             <!-- Right column: 3 stacked smaller images -->
             <div class="pgal-col-right">
               <div class="pgal-item">
-                <img loading="lazy" src="images/grand-verona/town-a-1.jpg" alt="Grand Verona ทาวน์โฮม">
+                <img loading="lazy" src="images/grand-verona/town-a-1.webp" alt="Grand Verona ทาวน์โฮม">
                 <div class="pgal-overlay">
                   <span class="pgal-label"><i class="fas fa-building"></i> ทาวน์โฮม</span>
                 </div>
               </div>
               <div class="pgal-item">
-                <img loading="lazy" src="images/grand-verona/clubhouse-1.jpg" alt="Clubhouse">
+                <img loading="lazy" src="images/grand-verona/clubhouse-1.webp" alt="Clubhouse">
                 <div class="pgal-overlay">
                   <span class="pgal-label"><i class="fas fa-swimming-pool"></i> Clubhouse</span>
                 </div>
               </div>
               <div class="pgal-item">
-                <img loading="lazy" src="images/grand-verona/maingate.jpg" alt="Main Gate">
+                <img loading="lazy" src="images/grand-verona/maingate.webp" alt="Main Gate">
                 <div class="pgal-overlay">
                   <span class="pgal-label"><i class="fas fa-shield-alt"></i> Security Gate</span>
                 </div>
@@ -362,7 +364,7 @@
         <div class="project-card reveal" data-type="house">
           <div class="project-badge">New</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/house-1.jpg" alt="GRAND VERONA บ้านเดี่ยว">
+            <img loading="lazy" src="images/grand-verona/house-1.webp" alt="GRAND VERONA บ้านเดี่ยว">
             <div class="project-card-overlay">
               <a href="project-grand-verona-house.html" class="btn btn-outline">ดูรายละเอียด</a>
             </div>
@@ -377,7 +379,7 @@
         <div class="project-card reveal" data-type="townhome">
           <div class="project-badge">New</div>
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/town-a-1.jpg" alt="GRAND VERONA ทาวน์โฮม">
+            <img loading="lazy" src="images/grand-verona/town-a-1.webp" alt="GRAND VERONA ทาวน์โฮม">
             <div class="project-card-overlay">
               <a href="project-grand-verona-townhome.html" class="btn btn-outline">ดูรายละเอียด</a>
             </div>
@@ -391,7 +393,7 @@
         <!-- The Hampton -->
         <div class="project-card reveal" data-type="house">
           <div class="project-card-image">
-            <img loading="lazy" src="images/hampton/render-1.png" alt="THE HAMPTON">
+            <img loading="lazy" src="images/hampton/render-1.webp" alt="THE HAMPTON">
             <div class="project-card-overlay">
               <a href="project-hampton.html" class="btn btn-outline">ดูรายละเอียด</a>
             </div>
@@ -405,7 +407,7 @@
         <!-- Osaka -->
         <div class="project-card reveal" data-type="homeoffice">
           <div class="project-card-image">
-            <img loading="lazy" src="images/osaka/clubhouse.jpg" alt="OSAKA">
+            <img loading="lazy" src="images/osaka/clubhouse.webp" alt="OSAKA">
             <div class="project-card-overlay">
               <a href="project-osaka.html" class="btn btn-outline">ดูรายละเอียด</a>
             </div>
@@ -419,7 +421,7 @@
         <!-- The Nice -->
         <div class="project-card reveal" data-type="homeoffice">
           <div class="project-card-image">
-            <img loading="lazy" src="images/the-nice/exterior-1.jpg" alt="THE NICE">
+            <img loading="lazy" src="images/the-nice/exterior-1.webp" alt="THE NICE">
             <div class="project-card-overlay">
               <a href="project-the-nice.html" class="btn btn-outline">ดูรายละเอียด</a>
             </div>
@@ -433,7 +435,7 @@
         <!-- The Verona Village -->
         <div class="project-card reveal" data-type="homeoffice">
           <div class="project-card-image">
-            <img loading="lazy" src="images/grand-verona/single-a-1.jpg" alt="THE VERONA VILLAGE">
+            <img loading="lazy" src="images/grand-verona/single-a-1.webp" alt="THE VERONA VILLAGE">
             <div class="project-card-overlay">
               <a href="project-the-verona.html" class="btn btn-outline">ดูรายละเอียด</a>
             </div>
@@ -511,76 +513,25 @@
       var cat  = p.categoryLabel || 'บทความ';
       var date = p.dateLabel || '';
       var time = (p.readTime || 3) + ' นาที';
-      var tags = (p.tags || []).slice(0, 2).map(function(t){
-        return '<span class="blog-tag">#' + t + '</span>';
-      }).join('');
-      var authorName     = (p.author && p.author.name)     ? p.author.name     : 'ทีมรุ่งกิจ';
-      var authorInitials = (p.author && p.author.initials) ? p.author.initials : 'VSK';
+      var authorName = (p.author && p.author.name) ? p.author.name : 'ทีมรุ่งกิจ';
 
       var d = document.createElement('div');
 
-      // ── TOP ROW CARD STYLES ──────────────────────────────────────────────
-      if (idx === 0) {
-        // Card A: Image-only (top-left)
-        d.className = 'bmg-card bmg-card--img-only reveal';
-        d.innerHTML =
-          '<a href="' + url + '" class="bmg-img-wrap">' +
-            '<img loading="lazy" src="' + p.cover + '" alt="' + p.title + '">' +
+      // All cards: uniform overlay style
+      d.className = 'bmg-card bmg-card--overlay reveal';
+      d.innerHTML =
+        '<a href="' + url + '" class="bmg-img-wrap">' +
+          '<img loading="lazy" src="' + p.cover + '" alt="' + p.title + '">' +
+          '<div class="bmg-overlay-body">' +
             '<span class="bmg-cat-pill">' + cat + '</span>' +
-          '</a>';
-
-      } else if (idx === 1) {
-        // Card B: Featured text card (top-center)
-        d.className = 'bmg-card bmg-card--featured reveal';
-        d.innerHTML =
-          '<a href="' + url + '" class="bmg-img-wrap bmg-featured-img">' +
-            '<img loading="lazy" src="' + p.cover + '" alt="' + p.title + '">' +
-            '<span class="bmg-cat-pill">' + cat + '</span>' +
-          '</a>' +
-          '<div class="bmg-featured-body">' +
-            '<div class="bmg-meta">' +
+            '<h3 class="bmg-overlay-title">' + p.title + '</h3>' +
+            '<div class="bmg-overlay-meta">' +
+              '<span><i class="far fa-user"></i> ' + authorName + '</span>' +
               '<span><i class="far fa-calendar-alt"></i> ' + date + '</span>' +
               '<span><i class="far fa-clock"></i> ' + time + '</span>' +
             '</div>' +
-            '<h3 class="bmg-title"><a href="' + url + '">' + p.title + '</a></h3>' +
-            '<p class="bmg-excerpt">' + p.excerpt + '</p>' +
-            '<div class="bmg-card-footer">' +
-              '<div class="bmg-author">' +
-                '<span class="bmg-avatar">' + authorInitials + '</span>' +
-                '<span class="bmg-author-name">' + authorName + '</span>' +
-              '</div>' +
-              '<a href="' + url + '" class="bmg-readmore">อ่านต่อ <i class="fas fa-arrow-right"></i></a>' +
-            '</div>' +
-          '</div>';
-
-      } else if (idx === 2) {
-        // Card C: Overlay card (top-right)
-        d.className = 'bmg-card bmg-card--overlay reveal';
-        d.innerHTML =
-          '<a href="' + url + '" class="bmg-img-wrap">' +
-            '<img loading="lazy" src="' + p.cover + '" alt="' + p.title + '">' +
-            '<div class="bmg-overlay-body">' +
-              '<span class="bmg-cat-pill">' + cat + '</span>' +
-              '<h3 class="bmg-overlay-title">' + p.title + '</h3>' +
-              '<span class="bmg-overlay-meta">' + authorName + ' &nbsp;·&nbsp; ' + date + '</span>' +
-            '</div>' +
-          '</a>';
-
-      } else {
-        // Cards D–F: Compact bottom row
-        d.className = 'bmg-card bmg-card--compact reveal';
-        d.innerHTML =
-          '<a href="' + url + '" class="bmg-img-wrap bmg-compact-img">' +
-            '<img loading="lazy" src="' + p.cover + '" alt="' + p.title + '">' +
-          '</a>' +
-          '<div class="bmg-compact-body">' +
-            '<h4 class="bmg-compact-title"><a href="' + url + '">' + p.title + '</a></h4>' +
-            '<div class="bmg-compact-meta">' +
-              '<span>' + authorName + '</span>' +
-              '<span><i class="far fa-calendar-alt"></i> ' + date + '</span>' +
-            '</div>' +
-          '</div>';
-      }
+          '</div>' +
+        '</a>';
 
       grid.appendChild(d);
     });
@@ -838,87 +789,87 @@
       headline: '<span class="pss-hl-en">The Best Location</span><br><span class="pss-hl-th">ทำเลศักยภาพทั่วกรุงเทพฯ</span>',
       body: 'บ้านเดี่ยวและทาวน์โฮมคุณภาพในทุกย่านศักยภาพ เดินทางสะดวก ใกล้รถไฟฟ้า ใกล้ทางด่วน ไม่ว่าจะอยู่เองหรือลงทุน',
       cta: 'ดูทำเลทั้งหมด',
-      bg: 'images/grand-verona/aerial-1.png',
+      bg: 'images/grand-verona/aerial-1.webp',
       cards: [
         {
-          image: 'images/locations/location-card-1.jpg',
+          image: 'images/locations/location-card-1.webp',
           type:  'บ้านเดี่ยว',
           name:  'ติดถนนร่มเกล้า',
           desc:  'ทำเลหน้าถนนใหญ่ เดินทางสะดวกทุกเส้นทาง',
           href:  'project-grand-verona-house.html'
         },
         {
-          image: 'images/locations/location-card-2.jpg',
+          image: 'images/locations/location-card-2.webp',
           type:  'บ้านเดี่ยว',
           name:  'ใกล้สถานศึกษาชั้นนำ',
           desc:  'สารสาสน์วิเทศร่มเกล้า เตรียมอุดมพัฒนาการสุวรรณภูมิ ม.พระจอมเกล้าลาดกระบัง',
           href:  'project-grand-verona-house.html'
         },
         {
-          image: 'images/locations/location-card-3.jpg',
+          image: 'images/locations/location-card-3.webp',
           type:  'บ้านเดี่ยว',
           name:  'ใกล้มอเตอร์เวย์',
           desc:  'เชื่อมต่อทุกเส้นทางออกกรุงเทพฯ สะดวกทุกวัน',
           href:  'project-hampton.html'
         },
         {
-          image: 'images/locations/location-card-4.jpg',
+          image: 'images/locations/location-card-4.webp',
           type:  'บ้านเดี่ยว',
           name:  'ใกล้ Airport Link–สนามบินสุวรรณภูมิ',
           desc:  'สะดวกทุกการเดินทาง เพียง 15 นาที',
           href:  'project-hampton.html'
         },
         {
-          image: 'images/locations/location-card-5.jpg',
+          image: 'images/locations/location-card-5.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้ศูนย์การค้า',
           desc:  'Big C ร่มเกล้า ไทวัสดุ ตลาดมีนบุรี ตลาดบวรร่มเกล้า ตลาดกลางร่มเกล้า',
           href:  'project-grand-verona-townhome.html'
         },
         {
-          image: 'images/locations/location-card-6.jpg',
+          image: 'images/locations/location-card-6.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้สถานศึกษา',
           desc:  'ม.เกษมบัณฑิต ร.ร.รัตนโกสินทร์สมโภชลาดกระบัง เตรียมอุดมน้อมเกล้า ม.พระจอมเกล้าลาดกระบัง',
           href:  'project-grand-verona-townhome.html'
         },
         {
-          image: 'images/locations/location-card-7.jpg',
+          image: 'images/locations/location-card-7.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้รถไฟฟ้าสีชมพู',
           desc:  'สถานีคู้บอน — เชื่อมต่อใจกลางเมืองอย่างสะดวก',
           href:  'project-osaka.html'
         },
         {
-          image: 'images/locations/location-card-8.jpg',
+          image: 'images/locations/location-card-8.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้แฟชั่นไอส์แลนด์',
           desc:  'ช้อปปิ้ง ทานอาหาร บันเทิง ครบในที่เดียว',
           href:  'project-osaka.html'
         },
         {
-          image: 'images/locations/location-card-9.jpg',
+          image: 'images/locations/location-card-9.webp',
           type:  'ทาวน์โฮม',
           name:  'ย่านคู้บอน',
           desc:  'ทำเลศักยภาพ รามอินทรา–คู้บอน ราคากำลังเติบโต',
           href:  'project-osaka.html'
         },
         {
-          image: 'images/locations/location-card-10.jpg',
+          image: 'images/locations/location-card-10.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้วงแหวนรอบนอกฝั่งตะวันออก',
           desc:  'ออกได้ทุกทิศทาง ไม่ติดการจราจร',
           href:  'project-the-nice.html'
         },
         {
-          image: 'images/locations/location-card-11.jpg',
+          image: 'images/locations/location-card-11.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้ดอนเมืองโทลล์เวย์',
           desc:  'เชื่อมทั้งในเมืองและนอกเมืองสะดวก',
           href:  'project-the-nice.html'
         },
         {
-          image: 'images/locations/location-card-12.jpg',
+          image: 'images/locations/location-card-12.webp',
           type:  'ทาวน์โฮม',
           name:  'ใกล้ฟิวเจอร์พาร์ครังสิต',
           desc:  'เมเจอร์รังสิต เซียร์ รังสิต ครบทุกการใช้ชีวิต',
@@ -932,115 +883,115 @@
       headline: 'บ้านที่ใช่<br>ทุกไลฟ์สไตล์',
       body: 'ไม่ใช่แค่บ้าน แต่คือทุกมิติของชีวิตที่คุณต้องการ',
       cta: 'ดูโครงการทั้งหมด',
-      bg: 'images/hampton/render-2.png',
+      bg: 'images/hampton/render-2.webp',
       cards: [
         {
-          image: 'images/the-nice/exterior-2.jpg',
+          image: 'images/the-nice/exterior-2.webp',
           type:  'ทาวน์โฮมราคา',
           name:  '3 - 5 ล้าน',
           desc:  'เริ่มต้นชีวิตใหม่ในบ้านคุณภาพ ราคาเข้าถึงได้',
           href:  'project-the-nice.html'
         },
         {
-          image: 'images/osaka/show-2.png',
+          image: 'images/osaka/show-2.webp',
           type:  'คอนโดไม่เกิน 3 ล้าน',
           name:  'ลงตัวทุกตารางเมตร',
           desc:  'คอนโดใกล้รถไฟฟ้า พร้อมสิ่งอำนวยความสะดวกครบ',
           href:  'project-osaka.html'
         },
         {
-          image: 'images/hampton/photo-4.jpg',
+          image: 'images/hampton/photo-4.webp',
           type:  'บ้านอบอุ่นครอบครัวใหญ่',
           name:  'พื้นที่กว้าง ฟังก์ชันครบ',
           desc:  'สำหรับครอบครัวที่ต้องการพื้นที่ส่วนตัวและพื้นที่รวม',
           href:  'project-hampton.html'
         },
         {
-          image: 'images/grand-verona/maingate.jpg',
+          image: 'images/grand-verona/maingate.webp',
           type:  'บ้านเดี่ยวหรูสไตล์ยุโรป',
           name:  'ดีไซน์ระดับ Luxury',
           desc:  'สถาปัตยกรรมยุโรปร่วมสมัย โดดเด่นทุกรายละเอียด',
           href:  'project-grand-verona.html'
         },
         {
-          image: 'images/the-nice/exterior-4.jpg',
+          image: 'images/the-nice/exterior-4.webp',
           type:  'ทาวน์โฮมสไตล์โมเดิร์น',
           name:  'คอมแพ็ค ครบ สวยงาม',
           desc:  'ออกแบบให้ทุกตารางนิ้วใช้งานได้จริง',
           href:  'project-the-nice.html'
         },
         {
-          image: 'images/hampton/photo-3.jpg',
+          image: 'images/hampton/photo-3.webp',
           type:  'บ้านใกล้รถไฟฟ้า',
           name:  'เดินทางสะดวก ทุกวัน',
           desc:  'ใกล้สถานีรถไฟฟ้า BTS/MRT ประหยัดเวลาเดินทาง',
           href:  'project-hampton.html'
         },
         {
-          image: 'images/grand-verona/aerial-2.png',
+          image: 'images/grand-verona/aerial-2.webp',
           type:  'บ้านใกล้ทางด่วน',
           name:  'เชื่อมต่อทุกเส้นทาง',
           desc:  'เข้าออกทางด่วนสะดวก ไม่เสียเวลาบนท้องถนน',
           href:  'project-grand-verona.html'
         },
         {
-          image: 'images/osaka/show-3.png',
+          image: 'images/osaka/show-3.webp',
           type:  'บ้านใกล้โรงเรียนชั้นนำ',
           name:  'เพื่ออนาคตลูกรัก',
           desc:  'ทำเลใกล้โรงเรียนนานาชาติและสถาบันชั้นนำ',
           href:  'project-osaka.html'
         },
         {
-          image: 'images/the-nice/exterior-5.jpg',
+          image: 'images/the-nice/exterior-5.webp',
           type:  'บ้านเริ่มต้นสำหรับคู่รัก',
           name:  'สร้างครอบครัวใหม่',
           desc:  'ขนาดพอดี ราคาเข้าถึงได้ พร้อมเริ่มชีวิตคู่',
           href:  'project-the-nice.html'
         },
         {
-          image: 'images/hampton/photo-5.jpg',
+          image: 'images/hampton/photo-5.webp',
           type:  'บ้านพร้อมสวนส่วนตัว',
           name:  'ธรรมชาติในบ้านคุณ',
           desc:  'พื้นที่สีเขียวส่วนตัว ผ่อนคลายทุกวัน',
           href:  'project-hampton.html'
         },
         {
-          image: 'images/the-nice/show-1.png',
+          image: 'images/the-nice/show-1.webp',
           type:  'ทาวน์โฮมพร้อมอยู่',
           name:  'ตกแต่งครบ เข้าอยู่ได้เลย',
           desc:  'บ้านพร้อมเฟอร์นิเจอร์ Built-in ครบทุกฟังก์ชัน',
           href:  'project-the-nice.html'
         },
         {
-          image: 'images/grand-verona/single-a-1.jpg',
+          image: 'images/grand-verona/single-a-1.webp',
           type:  'บ้านเดี่ยวพื้นที่กว้าง',
           name:  'กว้างขวาง เป็นส่วนตัว',
           desc:  'ที่ดินเริ่ม 50 ตร.วา พร้อมที่จอดรถ 2-3 คัน',
           href:  'project-grand-verona.html'
         },
         {
-          image: 'images/osaka/show-4.png',
+          image: 'images/osaka/show-4.webp',
           type:  'บ้านสไตล์ญี่ปุ่น',
           name:  'มินิมอล สะอาดตา',
           desc:  'ดีไซน์ญี่ปุ่นร่วมสมัย เน้นความเรียบง่ายลงตัว',
           href:  'project-osaka.html'
         },
         {
-          image: 'images/grand-verona/clubhouse-1.jpg',
+          image: 'images/grand-verona/clubhouse-1.webp',
           type:  'คอมมูนิตี้มอลล์ในโครงการ',
           name:  'ครบจบในโครงการ',
           desc:  'ร้านค้า คาเฟ่ ฟิตเนส สระว่ายน้ำ ในโครงการ',
           href:  'project-grand-verona.html'
         },
         {
-          image: 'images/hampton/render-3.png',
+          image: 'images/hampton/render-3.webp',
           type:  'โฮมออฟฟิศ',
           name:  'ทำงานจากบ้านอย่างสมบูรณ์',
           desc:  'พื้นที่ออกแบบสำหรับ Work from Home โดยเฉพาะ',
           href:  'project-hampton.html'
         },
         {
-          image: 'images/grand-verona/aerial-1.png',
+          image: 'images/grand-verona/aerial-1.webp',
           type:  'บ้านใกล้สนามบิน',
           name:  'สะดวกทุกการเดินทาง',
           desc:  'เดินทางถึงสนามบินสุวรรณภูมิภายใน 15-20 นาที',
@@ -1255,4 +1206,3 @@
   </script>
 </body>
 </html>
-                                                                                                                                                

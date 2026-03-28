@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/rafelya-carrotin&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <!-- ═══ SEO / Social Meta ═══ -->
@@ -60,6 +60,8 @@
   ]
 }
   </script>
+  <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="images/grand-verona/aerial-1.webp" as="image" type="image/webp">
 </head>
 <body>
 
@@ -84,7 +86,7 @@
   </nav>
 
   <!-- PAGE HEADER -->
-  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.68) 0%, rgba(248,247,242,0.28) 40%, rgba(248,247,242,0.28) 60%, rgba(248,247,242,0.72) 100%), url('images/grand-verona/maingate2.jpg'); background-size: cover; background-position: center;">
+  <section class="page-header" style="position:relative; background-image: linear-gradient(rgba(248,247,242,0.68) 0%, rgba(248,247,242,0.28) 40%, rgba(248,247,242,0.28) 60%, rgba(248,247,242,0.72) 100%), url('images/grand-verona/maingate2.webp'); background-size: cover; background-position: center;">
     <div class="ph-shimmer"></div>
     <div class="ph-horizon"></div>
     <div class="page-header-content">
@@ -107,7 +109,7 @@
       <!-- Promo 1 -->
       <div class="promo-card reveal">
         <div class="promo-card-image">
-          <img loading="lazy" src="images/grand-verona/house-1.jpg" alt="Grand Verona Promotion" style="width:100%;height:100%;object-fit:cover;">
+          <img loading="lazy" src="images/grand-verona/house-1.webp" alt="Grand Verona Promotion" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="promo-card-content">
           <div class="promo-tag">Promotion</div>
@@ -120,7 +122,7 @@
       <!-- Promo 2 -->
       <div class="promo-card reveal">
         <div class="promo-card-image">
-          <img loading="lazy" src="images/hampton/render-3.png" alt="The Hampton Promotion" style="width:100%;height:100%;object-fit:cover;">
+          <img loading="lazy" src="images/hampton/render-3.webp" alt="The Hampton Promotion" style="width:100%;height:100%;object-fit:cover;">
         </div>
         <div class="promo-card-content">
           <div class="promo-tag">Exclusive</div>
@@ -143,7 +145,7 @@
       <div class="news-grid">
         <div class="news-card reveal">
           <div class="news-card-image">
-            <img loading="lazy" src="images/grand-verona/aerial-1.png" alt="News">
+            <img loading="lazy" src="images/grand-verona/aerial-1.webp" alt="News">
           </div>
           <div class="news-card-content">
             <div class="news-card-date">March 15, 2026</div>
@@ -154,7 +156,7 @@
         </div>
         <div class="news-card reveal">
           <div class="news-card-image">
-            <img loading="lazy" src="images/grand-verona/clubhouse-2.jpg" alt="News">
+            <img loading="lazy" src="images/grand-verona/clubhouse-2.webp" alt="News">
           </div>
           <div class="news-card-content">
             <div class="news-card-date">February 28, 2026</div>
@@ -165,7 +167,7 @@
         </div>
         <div class="news-card reveal">
           <div class="news-card-image">
-            <img loading="lazy" src="images/hampton/photo-1.jpg" alt="News">
+            <img loading="lazy" src="images/hampton/photo-1.webp" alt="News">
           </div>
           <div class="news-card-content">
             <div class="news-card-date">February 10, 2026</div>
@@ -176,7 +178,7 @@
         </div>
         <div class="news-card reveal">
           <div class="news-card-image">
-            <img loading="lazy" src="images/the-nice/exterior-3.jpg" alt="News">
+            <img loading="lazy" src="images/the-nice/exterior-3.webp" alt="News">
           </div>
           <div class="news-card-content">
             <div class="news-card-date">January 25, 2026</div>
@@ -187,7 +189,7 @@
         </div>
         <div class="news-card reveal">
           <div class="news-card-image">
-            <img loading="lazy" src="images/osaka/townhouse.jpg" alt="News">
+            <img loading="lazy" src="images/osaka/townhouse.webp" alt="News">
           </div>
           <div class="news-card-content">
             <div class="news-card-date">January 10, 2026</div>
@@ -198,7 +200,7 @@
         </div>
         <div class="news-card reveal">
           <div class="news-card-image">
-            <img loading="lazy" src="images/grand-verona/single-d-1.jpg" alt="News">
+            <img loading="lazy" src="images/grand-verona/single-d-1.webp" alt="News">
           </div>
           <div class="news-card-content">
             <div class="news-card-date">December 28, 2025</div>
@@ -221,11 +223,11 @@
       </div>
       <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:25px;">
         <div class="reveal" style="aspect-ratio:16/9; background:var(--primary); display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; overflow:hidden;">
-          <img loading="lazy" src="images/hampton/photo-5.jpg" alt="Video" style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
+          <img loading="lazy" src="images/hampton/photo-5.webp" alt="Video" style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
           <i class="fas fa-play-circle" style="position:absolute; font-size:3.5rem; color:var(--white); opacity:0.85; transition: var(--transition);"></i>
         </div>
         <div class="reveal" style="aspect-ratio:16/9; background:var(--primary); display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative; overflow:hidden;">
-          <img loading="lazy" src="images/osaka/show-1.png" alt="Video" style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
+          <img loading="lazy" src="images/osaka/show-1.webp" alt="Video" style="width:100%;height:100%;object-fit:cover;opacity:0.45;">
           <i class="fas fa-play-circle" style="position:absolute; font-size:3.5rem; color:var(--white); opacity:0.85; transition: var(--transition);"></i>
         </div>
       </div>
