@@ -452,7 +452,10 @@ window.addEventListener('scroll', () => {
     border-right: none;
     border-radius: 14px 0 0 14px;
     box-shadow: -3px 0 22px rgba(0,0,0,0.20), inset 1px 0 0 rgba(185,154,91,0.12);
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(12px);
   `;
 
   links.forEach(function(item) {
@@ -501,6 +504,20 @@ window.addEventListener('scroll', () => {
   });
 
   document.body.appendChild(sidebar);
+
+  /* Show sidebar after scrolling past 300px */
+  function handleSidebarScroll() {
+    if (window.scrollY > 300) {
+      sidebar.style.opacity = '1';
+      sidebar.style.pointerEvents = 'auto';
+      sidebar.style.transform = 'translateY(-50%) translateX(0)';
+    } else {
+      sidebar.style.opacity = '0';
+      sidebar.style.pointerEvents = 'none';
+      sidebar.style.transform = 'translateY(-50%) translateX(12px)';
+    }
+  }
+  window.addEventListener('scroll', handleSidebarScroll, { passive: true });
 })();
 
 
