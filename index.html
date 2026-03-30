@@ -126,6 +126,48 @@
   </script>
   <link rel="preload" href="style.css" as="style">
   <link rel="preload" href="images/grand-verona/aerial-1.webp" as="image" type="image/webp">
+
+  <!-- JSON-LD: FAQ for AI Search Overview -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "รุ่งกิจ V.S.K. Estate คือใคร?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "รุ่งกิจ V.S.K. Estate เป็นบริษัทพัฒนาอสังหาริมทรัพย์ชั้นนำที่มีประสบการณ์กว่า 50 ปี พัฒนาโครงการบ้านจัดสรรคุณภาพมากกว่า 35 โครงการทั่วกรุงเทพฯ และปริมณฑล ทั้งบ้านเดี่ยวและทาวน์โฮม"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "รุ่งกิจมีโครงการบ้านอะไรบ้าง?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "โครงการที่กำลังเปิดขาย ได้แก่ Grand Verona (รามคำแหง–ร่มเกล้า), The Hampton (พระราม9–กรุงเทพกรีฑา), Hampton Grove (Coming Soon), Osaka (รามอินทรา–คู้บอน), The Nice (รังสิต คลอง 3), The Verona, และ The Corner"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "บ้านรุ่งกิจราคาเริ่มต้นเท่าไหร่?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ราคาเริ่มต้นตั้งแต่ 2.99 ล้านบาท สำหรับทาวน์โฮม The Nice จนถึง 8.29 ล้านบาท สำหรับบ้านเดี่ยว Grand Verona มีหลากหลายงบประมาณให้เลือก"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "ติดต่อรุ่งกิจได้อย่างไร?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ติดต่อสำนักงานใหญ่รุ่งกิจ โทร 02-540-7999 หรือ LINE @rungkij เปิดทำการทุกวัน 08:30-17:30 น. สำนักงานตั้งอยู่ที่ถนนรามคำแหง กรุงเทพมหานคร"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -196,8 +238,6 @@
           <button class="hsb-search-btn" id="hsbSearchBtn" aria-label="ค้นหา">
             <i class="fas fa-search"></i>
           </button>
-          <!-- Live search results -->
-          <div class="hsb-results" id="hsbResults"></div>
         </div>
 
         <!-- AI assistant button -->
@@ -205,6 +245,8 @@
           <i class="fas fa-sparkles"></i> ผู้ช่วยค้นหาโครงการ
         </button>
       </div>
+      <!-- Live search results — positioned below the entire search bar -->
+      <div class="hsb-results" id="hsbResults"></div>
     </div>
     <!-- ========== /HERO SEARCH BAR ========== -->
 
@@ -552,36 +594,33 @@
   <!-- ========== JOIN US STRIP ========== -->
   <style>
     .join-section {
-      background:
-        radial-gradient(ellipse 70% 60% at 50% 50%, rgba(201,168,94,0.10) 0%, rgba(185,154,91,0.05) 55%, transparent 80%),
-        linear-gradient(160deg, #fdf8f0 0%, #fffef9 40%, #fdf6ec 100%);
+      background: #ffffff;
       position: relative; overflow: hidden;
-      border-top: 1.5px solid rgba(185,154,91,0.25);
-      border-bottom: 1.5px solid rgba(185,154,91,0.20);
+      border-top: 1.5px solid rgba(9,23,54,0.10);
+      border-bottom: 1.5px solid rgba(9,23,54,0.08);
     }
     .join-section::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(201,168,94,0.07) 0%, transparent 70%);
+      background: transparent;
       pointer-events: none;
     }
     .join-gold-rule-top, .join-gold-rule-bot {
-      position: absolute; left: 0; right: 0; height: 1.5px;
-      background: linear-gradient(90deg, transparent 0%, rgba(185,154,91,0.35) 30%, rgba(201,168,94,0.65) 50%, rgba(185,154,91,0.35) 70%, transparent 100%);
+      display: none;
     }
     .join-gold-rule-top { top: 0; }
     .join-gold-rule-bot { bottom: 0; }
     .join-header {
       text-align: center;
       padding: 52px 0 40px;
-      border-bottom: 1px solid rgba(185,154,91,0.15);
+      border-bottom: 1px solid rgba(9,23,54,0.08);
     }
     .join-header-eyebrow {
       font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif;
       font-size: 0.68rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(160,120,50,0.75);
+      color: rgba(9,23,54,0.55);
     }
     .join-header h3 {
       font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif;
@@ -600,13 +639,13 @@
       transition: background 0.35s;
       position: relative;
     }
-    .join-card:hover { background: rgba(185,154,91,0.09); }
+    .join-card:hover { background: rgba(9,23,54,0.04); }
     .join-card + .join-card {
-      border-left: 1px solid rgba(185,154,91,0.22);
+      border-left: 1px solid rgba(9,23,54,0.10);
     }
     .join-icon-wrap {
       width: 62px; height: 62px;
-      border: 1px solid rgba(185,154,91,0.42);
+      border: 1px solid rgba(9,23,54,0.20);
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 22px;
@@ -615,8 +654,8 @@
       transition: background 0.3s, border-color 0.3s;
     }
     .join-card:hover .join-icon-wrap {
-      background: rgba(185,154,91,0.12);
-      border-color: rgba(185,154,91,0.8);
+      background: rgba(9,23,54,0.06);
+      border-color: rgba(9,23,54,0.50);
     }
     .join-title {
       font-family: 'Noto Sans Thai', 'Noto Sans', sans-serif;
@@ -632,19 +671,19 @@
       font-size: 0.68rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(140,100,35,0.65);
+      color: rgba(9,23,54,0.50);
       margin: 0 0 18px;
     }
     .join-arrow {
       font-size: 0.70rem;
-      color: rgba(160,120,50,0.45);
+      color: rgba(9,23,54,0.35);
       transition: color 0.3s, transform 0.3s;
       display: inline-block;
     }
     .join-card:hover .join-arrow { color: var(--accent); transform: translateX(5px); }
     @media (max-width: 640px) {
       .join-grid { grid-template-columns: 1fr; }
-      .join-card + .join-card { border-left: none; border-top: 1px solid rgba(185,154,91,0.18); }
+      .join-card + .join-card { border-left: none; border-top: 1px solid rgba(9,23,54,0.08); }
     }
   </style>
 

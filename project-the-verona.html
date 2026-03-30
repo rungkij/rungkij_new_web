@@ -1340,6 +1340,32 @@
   .gv-unit-specs { grid-template-columns: 1fr 1fr; }
 }
 </style>
+
+  <!-- JSON-LD: FAQ for AI Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "The Verona อยู่ที่ไหน?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Verona เป็นโครงการทาวน์โฮมคุณภาพจากรุ่งกิจ ทำเลดี เดินทางสะดวก"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "The Verona ราคาเริ่มต้นเท่าไหร่?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Verona มี 2 แบบ — Townhome พื้นที่ 135 ตร.ม. เริ่มต้น 3.59 ล้าน และ Office พื้นที่ 220 ตร.ม. เริ่มต้น 8.99 ล้าน"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
   <!-- NAVBAR -->
@@ -1438,19 +1464,19 @@
         <div class="reveal">
           <div class="project-highlights">
             <div class="project-highlight-item">
-              <span class="project-highlight-number">4–5</span>
+              <span class="project-highlight-number">2–3</span>
               <span class="project-highlight-label">Bedrooms</span>
             </div>
             <div class="project-highlight-item">
-              <span class="project-highlight-number">320–480</span>
+              <span class="project-highlight-number">135–220</span>
               <span class="project-highlight-label">Sq.m. Usable Area</span>
             </div>
             <div class="project-highlight-item">
-              <span class="project-highlight-number">12M+</span>
+              <span class="project-highlight-number">3.59M+</span>
               <span class="project-highlight-label">Starting Price (THB)</span>
             </div>
             <div class="project-highlight-item">
-              <span class="project-highlight-number">100</span>
+              <span class="project-highlight-number">200</span>
               <span class="project-highlight-label">Exclusive Units</span>
             </div>
           </div>
@@ -1461,6 +1487,50 @@
             <span class="img-mockup-label">Image Coming Soon</span>
           </div>
         </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- HOUSE TYPES -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-70 reveal">
+        <span class="section-subtitle">Floor Plans</span>
+        <h2 class="section-title">แบบบ้าน</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="house-types-grid">
+        <div class="house-type-card reveal">
+          <div class="img-mockup ratio-4-3" style="width:100%; border-radius:2px; display:block; aspect-ratio:1/1; background:#f0f0f0; display:flex; align-items:center; justify-content:center;">
+            <div class="img-mockup-inner" style="text-align:center;">
+              <img src="images/logo.png" alt="RUNGKIJ mockup" style="max-width:120px; opacity:0.3;">
+              <span class="img-mockup-label" style="display:block; font-size:0.75rem; color:#999; margin-top:8px;">Image Coming Soon</span>
+            </div>
+          </div>
+          <div class="house-type-info">
+            <div class="type-badge">ทาวน์โฮม 2 ชั้น</div>
+            <h4>The Verona — Townhome</h4>
+            <p class="type-area">พื้นที่ใช้สอย 135 ตร.ม. | ที่ดิน 21 ตร.วา</p>
+            <p>2 ห้องนอน 3 ห้องน้ำ จอดรถ 2 คัน ทาวน์โฮม 2 ชั้น ดีไซน์ทันสมัย ราคาเริ่มต้น 3.59 ล้าน</p>
+            <a href="contact.html" class="btn-text">Enquire <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="house-type-card reveal">
+          <div class="img-mockup ratio-4-3" style="width:100%; border-radius:2px; display:block; aspect-ratio:1/1; background:#f0f0f0; display:flex; align-items:center; justify-content:center;">
+            <div class="img-mockup-inner" style="text-align:center;">
+              <img src="images/logo.png" alt="RUNGKIJ mockup" style="max-width:120px; opacity:0.3;">
+              <span class="img-mockup-label" style="display:block; font-size:0.75rem; color:#999; margin-top:8px;">Image Coming Soon</span>
+            </div>
+          </div>
+          <div class="house-type-info">
+            <div class="type-badge">อาคารพาณิชย์</div>
+            <h4>The Verona — Office</h4>
+            <p class="type-area">พื้นที่ใช้สอย 220 ตร.ม. | ที่ดิน 16 ตร.วา</p>
+            <p>2 ห้องนอน 4 ห้องน้ำ อาคารพาณิชย์ เหมาะทั้งอยู่อาศัยและทำธุรกิจ ราคาเริ่มต้น 8.99 ล้าน</p>
+            <a href="contact.html" class="btn-text">Enquire <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -1530,7 +1600,7 @@
         <div id="gvCalcPaymentForm">
           <div class="gv-calc-field">
             <label class="gv-calc-label" for="calcAmount">จำนวนเงินที่ขอกู้ (บาท)</label>
-            <input class="gv-calc-input" id="calcAmount" type="number" value="8990000" min="100000" step="10000" placeholder="8,990,000">
+            <input class="gv-calc-input" id="calcAmount" type="number" value="3590000" min="100000" step="10000" placeholder="3,590,000">
           </div>
           <div class="gv-calc-field">
             <label class="gv-calc-label" for="calcAge">อายุ (ของผู้กู้)</label>
@@ -1744,6 +1814,11 @@
   var current = 0;
   var timer;
 
+  if (!dotsWrap || slides.length === 0) return;
+  var prevBtn = document.getElementById('heroPrev');
+  var nextBtn = document.getElementById('heroNext');
+  if (!prevBtn || !nextBtn) return;
+
   // Build dots
   slides.forEach(function(_, i) {
     var d = document.createElement('div');
@@ -1765,8 +1840,8 @@
     timer = setInterval(function() { goTo(current + 1); }, 5000);
   }
 
-  document.getElementById('heroPrev').addEventListener('click', function() { goTo(current - 1); });
-  document.getElementById('heroNext').addEventListener('click', function() { goTo(current + 1); });
+  prevBtn.addEventListener('click', function() { goTo(current - 1); });
+  nextBtn.addEventListener('click', function() { goTo(current + 1); });
   resetTimer();
 })();
 
@@ -1800,21 +1875,23 @@ document.querySelectorAll('.gv-toggle-btn').forEach(function(btn) {
 });
 
 /* ── FACILITIES SWIPER ─────────────────────────────────── */
-new Swiper('#facSwiper', {
-  loop: true,
-  speed: 900,
-  autoplay: { delay: 4000, disableOnInteraction: false },
-  slidesPerView: 1.1,
-  spaceBetween: 12,
-  centeredSlides: true,
-  pagination: { el: '.swiper-pagination', clickable: true },
-  navigation: { prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' },
-  breakpoints: {
-    640:  { slidesPerView: 1.5 },
-    900:  { slidesPerView: 2.2, centeredSlides: false },
-    1200: { slidesPerView: 2.8, centeredSlides: false }
-  }
-});
+if (document.getElementById('facSwiper')) {
+  new Swiper('#facSwiper', {
+    loop: true,
+    speed: 900,
+    autoplay: { delay: 4000, disableOnInteraction: false },
+    slidesPerView: 1.1,
+    spaceBetween: 12,
+    centeredSlides: true,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' },
+    breakpoints: {
+      640:  { slidesPerView: 1.5 },
+      900:  { slidesPerView: 2.2, centeredSlides: false },
+      1200: { slidesPerView: 2.8, centeredSlides: false }
+    }
+  });
+}
 
 /* ── LIGHTBOX ──────────────────────────────────────────── */
 var lbImages = [
@@ -1849,16 +1926,23 @@ function lbGo(dir) {
   lbImg.src = lbImages[lbCurrent];
   lbCounter.textContent = (lbCurrent + 1) + ' / ' + lbImages.length;
 }
-document.getElementById('lbClose').addEventListener('click', closeLightbox);
-document.getElementById('lbPrev').addEventListener('click',  function() { lbGo(-1); });
-document.getElementById('lbNext').addEventListener('click',  function() { lbGo(1); });
-lb.addEventListener('click', function(e) { if (e.target === lb) closeLightbox(); });
-document.addEventListener('keydown', function(e) {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') lbGo(-1);
-  if (e.key === 'ArrowRight') lbGo(1);
-});
+var lbCloseEl = document.getElementById('lbClose');
+var lbPrevEl  = document.getElementById('lbPrev');
+var lbNextEl  = document.getElementById('lbNext');
+if (lbCloseEl) lbCloseEl.addEventListener('click', closeLightbox);
+if (lbPrevEl)  lbPrevEl.addEventListener('click',  function() { lbGo(-1); });
+if (lbNextEl)  lbNextEl.addEventListener('click',  function() { lbGo(1); });
+
+
+if (lb) {
+  lb.addEventListener('click', function(e) { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', function(e) {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbGo(-1);
+    if (e.key === 'ArrowRight') lbGo(1);
+  });
+}
 
 /* ── STICKY NAV SCROLL SPY ─────────────────────────────── */
 var sections = ['overview','units','gallery','facilities','promotions','location','register'];
@@ -1993,9 +2077,10 @@ function gvCalcRun() {
     document.getElementById('resultTenor').innerHTML = maxYears2 + ' <span class="gv-result-unit">ปี</span>';
     document.getElementById('resultIncomeRow').style.display = 'none';
     document.getElementById('resultMaxLoanRow').style.display = '';
-    document.getElementById('resultMaxLoan').innerHTML = gvFmt(maxLoan) + ' <span class="gv-result-unit">บาท</span>';
-    document.getElementById('resultMainLabel').textContent = 'ยอดผ่อนชำระต่อเดือน';
-    document.getElementById('resultMain').innerHTML = gvFmt(maxPayment) + ' <span class="gv-result-unit">บาท</span>';
+    document.getElementById('resultMaxLoan').innerHTML = gvFmt(maxPayment) + ' <span class="gv-result-unit">บาท</span>';
+    document.querySelector('#resultMaxLoanRow .gv-result-row-label').textContent = 'ยอดผ่อนชำระต่อเดือน';
+    document.getElementById('resultMainLabel').textContent = 'วงเงินกู้สูงสุด';
+    document.getElementById('resultMain').innerHTML = gvFmt(maxLoan) + ' <span class="gv-result-unit">บาท</span>';
   }
 
   /* populate bank card */
@@ -2008,7 +2093,7 @@ function gvCalcRun() {
 }
 
 function gvCalcReset() {
-  document.getElementById('calcAmount').value = '8990000';
+  document.getElementById('calcAmount').value = '3590000';
   document.getElementById('calcAge').value    = '30';
   document.getElementById('calcIncome').value = '80000';
   document.getElementById('calcAge2').value   = '30';

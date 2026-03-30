@@ -1,4 +1,40 @@
+# ──────────────────────────────────────
+# RUNGKIJ — V.S.K. Estate
+# robots.txt
+# ──────────────────────────────────────
+
 User-agent: *
 Allow: /
+Disallow: /images/icons/
+Disallow: /project-template.html
 
-Sitemap: https://rungkij.com/sitemap.xml
+# Sitemaps
+Sitemap: https://www.rungkij.com/sitemap.xml
+
+# Crawl-delay (optional, for polite crawling)
+# Crawl-delay: 1
+
+# AI Crawlers — allow for AI search overview
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
